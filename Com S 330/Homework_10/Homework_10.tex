@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathabx}
+
+\begin{document}
+
+\let\iff\leftrightarrow
+
+\title{Com Sci 330 Assignment 10}
+\author{Adam Hammes, hammesa@iastaste.edu}
+\maketitle
+
+\section*{Problem 1}
+\begin{enumerate}[(a)]
+	\item
+	For each color of shirt there are 4 sizes, giving $8*4$ color/size combinations. Extending this to the other variations yields $8*4*2*2= 128$
+	different shirts.
+	
+	\item
+	We can use the same formula as before by applying it to collared and tees separately and adding the cases.
+	
+	Collared shirts: $5 \times 2 \times 2 = 20$; tees: $8 \times 4 \times 2 = 64.$
+	
+	$20 + 64 = 84$ different types of shirts. 	
+\end{enumerate}
+
+\section*{Problem 2}
+\begin{enumerate}[(a)]
+	\item
+	There are 26 possibilities for the first place; since repetition is allowed, there are also 26 possibilities for the second spot, and so on.
+	Therefore there are $26^4 = 456976$ possible four-letter codes.
+	
+	\item
+	Since we are not allowing repetitions and order matters, we can use the permutation formula. $P(26, 4) = \frac{26!}{(26-4)!} = 358, 800$.
+	
+	\item
+	First we pick the two letters besides $x$ and $y$ ($24 \times 23$) and then we multiply by the number of possible arrangements of those four 
+	letters, $4!$, to give $13,248$ possible codes.
+\end{enumerate}
+
+\section*{Problem 3}
+	First, find all numbers divisible by 4, 5, or 9. The number of multiples can be found simply be calculating the multiples of each under 99999 
+	and subtracting those under 100000.
+	
+	$\left\lfloor{	\dfrac{ 99999 }{4} } \right\rfloor - \left\lfloor{	\dfrac{ 99999 }{4} } \right\rfloor +
+	\left\lfloor{	\dfrac{ 99999 }{5} } \right\rfloor - \left\lfloor{	\dfrac{ 99999 }{5} } \right\rfloor +
+	\left\lfloor{	\dfrac{ 99999 }{9} } \right\rfloor - \left\lfloor{	\dfrac{ 99999 }{9} } \right\rfloor = 50498$\\
+
+	Next, subtract the common multiples to avoid double counting. \\
+
+	$\left\lfloor{	\dfrac{ 99999 }{20} } \right\rfloor - \left\lfloor{	\dfrac{ 99999 }{20} } \right\rfloor +
+	\left\lfloor{	\dfrac{ 99999 }{45} } \right\rfloor - \left\lfloor{	\dfrac{ 99999 }{45} } \right\rfloor +
+	\left\lfloor{	\dfrac{ 99999 }{36} } \right\rfloor - \left\lfloor{	\dfrac{ 99999 }{36} } \right\rfloor = 8997$\\
+	
+	
+	The exclusion also double counts! We have to add the last multiple.\\
+	
+	$ \left\lfloor{	\dfrac{ 99999 }{180} } \right\rfloor - \left\lfloor{	\dfrac{ 99999 }{180} } \right\rfloor = 499$\\
+	
+	Accounting for everything yields $50497-9496+499 = 42000$ numbers. 
+
+\section*{Problem 4}
+	Same principle as the previous problem. Look at each part individually, then subtract the double counting. Bit strings starting with two $1$'s leave five open slots, for $2^5 = 32$ possibilities; ending with three $1$'s leaves four open slots and $2^4 = 16$ possibilities. Finally, we have to subtract the strings starting with two $1$'s and ending with three $1$'s. Those have $2^2 = 4$. $32+16-4 = 44$ possible strings.
+
+
+\section*{Problem 5}
+\begin{enumerate}[(a)]
+	\item
+	There are 5 possibilities for the last digit (0, 2, 4, 6, 8) and $10^7$ options for the rest of the digits, so there are $5\times 10^7$ 
+	possible numbers.
+	
+	\item
+	The number of strings without any repeated digits is $P( 10,\ 8 )$. We can use permutations because they already disallow repetitions and order 
+	matters; the 10 comes from the number of possible digits and 8 from the length of the string. Subtracting that number from the total number of 
+	strings gives $10^7 - P(10,\ 8) = 98185600$ possibilities.
+
+\end{enumerate}
+
+\section*{Problem 6}
+\begin{enumerate}[(a)]
+	\item
+	Since the 3 friends are in a specific order, we can treat them as one unit in our formulas. Five units can be arranged $5! = 120 $ ways.
+	\item
+	Same as (a), but the friends can be shuffled amongst themselves. $120 *\ 3! = 720$ different arrangements.
+\end{enumerate}
+
+
+\section*{Problem 7}
+\begin{enumerate}[(a)]
+	\item
+	Each item in $A$ can be mapped to any of 8 elements, so there are $8^5 = 32768$ possible functions.
+	
+	\item
+	Since an output can't be repeated twice, you can think of the problem as arranging 5 elements from $B$ to be mapped to. $P(8, 5) = 6720$ 
+	possible 1:1 functions.
+	
+	\item
+	A relation can be written as a set of ordered pairs $(a,\ b)$ where $a \in A$ and $b \in B$. Since $|A| = 5$ and $|B| = 8$, there are $8 \times 
+	5$ possible ordered pairs; each pair is either in the set or not, so there are $2^{5 \times 8}$ possible relations.
+
+\end{enumerate}
+	
+\section*{Problem 8}
+\begin{enumerate}[(a)]
+	\item
+	First, choose the other six people to be in the photo, $8 \choose 6$. Then multiply by the all possible orderings of eight people, $8!$ to 
+	give ${8 \choose 6} \times 8! = 1,128,960$ different arrangements.
+
+	\item
+	First choose the other six people to be in the photo, $8 \choose 6$. Since the bride and groom are next to each other, we can treat them as a 
+	unit with two possible orderings to give $7! \times 2$ total possible orderings. Therefore there are ${8 \choose 6} \times 7! \times 2 = 
+	282,240$ possible arrangements.
+
+	\item
+	Let's consider the cases where the bride is in the photo. Since the groom is not in the photo, there are $8 \choose 7$ possibilities of other 
+	people in the photo, multiplied by $8!$ possible orderings. Repeating the process with the groom doubles the potential arrangements for a total 
+	of ${8 \choose 7} \times 8! \times 2 = 645,120$ arrangements.
+\end{enumerate}
+
+\section*{Problem 9}
+\begin{enumerate}[(a)]
+	\item
+	The worst case scenario is we draw four tickets for each movie before finally getting five tickets to the same movie. $12 \times 4 + 1 = 49$ 
+	tickets.
+	
+	\item
+	Pigeonhole Principle
+	
+	\item
+	I assume that Captain America tickets are actually present in the bag. Worst case scenario is I draw every ticket to every movie before finally 
+	getting five tickets to Captain America tickets. $11 \times 20 + 5 = 225$ tickets.
+\end{enumerate}
+
+\section*{Problem 10}
+\begin{enumerate}[(a)]
+	\item
+	Each element $n$ in the set has a counterpart $22-n$ also in the set. By definition the sum of $n$ and $22-n$ is 22. Therefore I can't have 
+	more than half of the set without getting a pair that adds up to 22. Since I only need one pair, the answer is one more than half of the size 
+	of the set, which is 10. $10 \div 2 + 1 = 6$ numbers to guarantee that at least one pair adds up to 22.
+	
+	\item
+	Same as (a), except we need two pairs. $10/2 +2 = 7$ numbers to guarantee that at least two pairs add up to 22.	
+\end{enumerate}
+
+\section*{Problem 11}
+	Assume for contradiction that the proposition is false; that is, there is less than 29 CS majors, less than 25 SE majors and less than 18 CprE 
+	majors. Therefore the max amount of people in the class is $28 + 24+ 17=69$ people, a contradiction. Therefore there are at least 29 CS majors, 
+	at least 25 SE majors, or at least 18 CprE majors.
+
+
+\section*{Problem 12}
+\begin{enumerate}[(a)]
+	\item
+	We simply have to choose the spots for the $1$'s; ${9 \choose 3} = 84$ possible bit strings.
+	\item
+	Adding the number of bit strings with two $1$'s, $9 \choose 2$, one $1$, $9 \choose 1$ and zero $1$'s, $9 \choose 0$ to part (a) gives an 
+	answer of $36 + 9 + 1 + 84 = 130$ bit strings.
+
+	\item
+	Part (b) gave us the number of strings with less than $1$'s, $36 + 9 + 1 =46$. Subtracting this from the total number of bit strings yields 
+	 $2^9 - 46 = 466$ possible bit strings.
+\end{enumerate}
+
+\section*{Problem 13}
+	We simply have to sum the $r$-combinations from $r = 5$ to $r = 9$.\\
+	
+	$\displaystyle\sum\limits_{r = 5}^9 {9 \choose r} = 126 + 84 + 36 + 9 + 1 = 256$ possible outcomes.\\
+	
+	I could have also have found the number of outcomes with less than five heads and subtracted from the total number of possible outcomes. 
+	Alternatively I could calculate the number of outcomes with at most four tails.
+
+
+\section*{Problem 14}
+\begin{enumerate}[(a)]
+	\item
+	Three cases:
+		\begin{enumerate}[1.]
+		\item
+		Claire is in the committee. There are 11 remaining women to choose from, and 9 men (since Bob can't serve). Also, we only need to select 		
+		for 6 spots since Claire is on the committee. Therefore there are ${11 +9 \choose 6} = 38760$ possibilities.
+		
+		\item
+		Bob is in the committee. There are 9 remaining men to choose from, and 11 women. Therefore there are ${11 +9 \choose 6} = 38760$ 
+		possibilities.
+		
+		\item
+		Neither Claire nor Bob are in the committee. There is the same number of people to pick from as earlier, but now with seven open spots. 
+		${11+9 \choose 7} = 77520$ possibilities.
+		\end{enumerate}
+		
+	Adding the cases yields a total of $155,040$ possibilities.
+
+	\item
+	Since a women is in the committee, we can subtract the number of all-male committees from the total number of committees to find our answer. 
+	${22 \choose 7} - {10 \choose 7} = 170,424$ possibilities.
+	
+	\item
+	Same as the previous problem, but we also have to subtract the all-female committees. $170,424- {12 \choose 7} = $ possibilities.
+\end{enumerate}
+
+For parts (b) and (c) I could have started by choosing a women, and then choosing the rest of the committee from the remaining pool of people. For part (a) I could have subtracted the number of committees with both Bob and Claire and without Bob and Claire from the total number of committees.
+
+
+\section*{Problem 15}
+
+\begin{description}
+	\item[Base Case: ] $m$ = 2. Let $a$ be the number of ways to do the first task and $b$ the same for the second task. Prove that there are $a 
+	\times b$ ways to complete the procedure.
+
+
+	For each way to do the first task, there are $b$ ways to do the second task $y$. Since there $a$ possibilities for the first task, in total 
+	there are $a \times b$ ways to complete the procedure.
+	
+	
+	\item[Inductive Step: ] Assume that $m$ tasks have $a$ possible procedures. Prove that adding a task $w$ (for $m+1$ tasks total) with $b$ possible ways makes the total number of ways to complete the procedure equal to $a \times b$.
+	
+	
+	There are $a$ ways to complete the first $m$ tasks; however, task $w$ still has to completed. For each of the possibilities to do the first $m$ tasks, there are $b$ ways to complete the last task $w$; therefore there are $a \times b$ different ways to do $m+1$ tasks, concluding the inductive step.
+\end{description}
+
+\section*{Problem 16}
+
+Ignoring the men, there are $10!$ ways to order the women. Consider the places to put the men. Since men can't neighbor each other, there are 11 places they can go (before each of the 10 women and at the end of the line) so the number of places the men can be is $11 \choose 6$. Finally, there are $6!$ ways to order the men once they have found their spots. Therefore the number of possibles lines is $10! \times {11 \choose 6} \times 6! = 1,207,084,032,000 $.
+
+
+\end{document}

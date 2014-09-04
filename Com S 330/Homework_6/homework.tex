@@ -1,0 +1,223 @@
+\documentclass[11pt]{article}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathabx}
+
+\begin{document}
+
+\title{Com Sci 330 Assignment 6}
+\author{Adam Hammes}
+\maketitle
+
+\section*{Problem 1}
+	\begin{enumerate}[(a)]
+		\item $a_0 = 2$\\
+			  $a_{n+1} = a_n + 4$
+	\end{enumerate}
+	\begin{enumerate}[(d)]
+		\item $a_0 = 1$ \\
+			  $a_{n+1} = (\sqrt{a_n} + 1)^2$
+	\end{enumerate}
+
+\section*{Problem 2}
+	\begin{description}
+
+	\item[Base case:] $n =1$
+	\begin{align*}
+		f_{2}f_0 - f_1^2 &= (-1)^n\\
+		1*0 -1^2 &= (-1)^1 \\
+		-1 &= -1 && \text{True}
+	\end{align*}
+	Therefore we have proved the base case.
+	
+	\item[Inductive Step:] Assume $f_{n+1}f_{n-1}-f_n^2 = (-1)^n$. Prove $f_(n+2)f_n -f(n+1)^2 = (-1)^{n+1}$.
+	
+	\begin{align*}
+		f_{n+2}f_{n+1}-f_{n+1}^2 &= (-1)^{n+1} \\
+		f_{n+2}f_{n+1}-f_{n+1}^2 &= (-1)^n*-1 \\
+		f_n^2 -f_{n-1}f_{n+1} &= (-1)^n\\
+		f_n^2-(f_{n+1}-f_n)f_{n+1} &= (-1)^{n+1}\\
+		f_n^2-f_{n+1}^2 + f_nf_{n+1} &= (-1)^{n+1}\\
+		f_n(f_n+f_{n+1})-f_{n+1}^2 &= (-1)^{n+1}\\
+		f_nf_{n+1}-f_{n+1}^2 &= (-1)^{n+1} && \text{same as what we assumed}
+	\end{align*}
+	Therefore we have completed the inductive step.
+	\end{description}	
+	Taken together, the base case and inductive step prove $f_{n+1}f_{n-1} - f_n^2 = (-1)^n, n \in \mathbb{Z}^+$
+	
+
+\section*{Problem 3}
+	\begin{description}
+	\item[Base Case:] $n=1$
+	\begin{align*}
+	f_0 -f_1 + f_2 &= f_{2-1} -1 \\
+	0 -1 + 1 & = 1-1 \\
+	0 &= 0 && \text{True}
+	\end{align*}		
+	Therefore we have proved the base case.
+	
+	\item[Inductive Step:]
+	\begin{description}
+	\item{} Assume: $ f_0-f_1+f_2-\ldots - f_{2n-1} + f_{2n} = f_{2n-1} -1$
+	\item{} Prove:  $ f_0-f_1+f_2-\ldots - f_{2n-1} + f_{2n} -f_{2n+1}+f_{2n+2} = f_{2n+1} -1$
+	
+	\end{description}
+	
+	\begin{align*}
+	f_0-f_1+f_n-\ldots-f_{2n-1} + f_{2n} -f_{2n+1}+f_{2n+2} &= f_{2n+1} -1 \\
+	f_{2n-1} -1 -f_{2n+1}+f_{2n+2} &= f_{2n+1} -1 && \text{Inductive Hypothesis}\\
+	f_{2n-1}-f_{2n+1}+f_{2n+2} &= f_{2n+1}\\
+	f_{2n-1}-f_{2n+1}+f_{2n}+f_{2n+1} &= f_{2n+1}\\
+	f_{2n-1}f_{2n} &= f_{2n+1}\\
+	f_{2n+1} &= f_{2n+1} && \text{True}
+	\end{align*}
+	Therefore we have completed the inductive step.
+	\end{description}
+	
+	Taken together, the base case and inductive step prove $f_0-f_1+f_2-\ldots-f_{2n-1} + f_{2n} = f_{2n-1} -1, n\in\mathbb{Z}^+$.
+	
+	
+
+
+
+\section*{Problem 4}
+Prove: Let $L(a)$ be the proposition that a length of the periphery of a structure of $a$ squares is even. $\forall n \ge 0, L(n)$.
+
+	\begin{description}
+	
+		\item[Base case:] Prove $L(1)$.
+		
+		
+			The length of the periphery is equal to the square's perimeter, 
+			which is four. Four is divisible by two, so $L(1)$.
+	
+		\item[Inductive case:] Assume $L(k)$. Prove $L(k+1)$.
+		
+		
+			Every edge that does not border the added square remains in
+			the periphery; it follows that we need only consider only 
+			the edges touched by the new square and the edges of the 
+			square itself when recalculating the perimeter. 
+			
+			By the inductive hypothesis, the perimeter can be written as $2m, 
+			m \in \mathbb{Z}$. If the net change in perimeter is even, then it 
+			can be 
+			written as $2m + 2n, n \in \mathbb{Z}$, and the 
+			resulting shape has an even-length perimeter. Looking at 
+			the possible	 placement of the new square, there are four 
+			cases.
+		
+			\begin{enumerate}[{Case } 1:]
+				\item The square shares one edge with the shape. The shape 
+				loses one unit of periphery from the shared edge and gains 
+				three units from the exposed edges of the new square, 
+				resulting in a net change of $3-1 = 2$ units. Two is even, 
+				therefore the resulting shape has an even-length periphery.
+				
+				\item The square shares two edges with the shape. The shape 
+				loses two units of periphery from the shared edges and gains 
+				two units from the exposed edges of the new square, resulting 
+				in a net change of $2-2 = 0$ units. Zero is even, therefore 
+				the resulting shape has an even-length periphery.
+				
+				\item The square shares three edges with the shape. The shape 
+				loses three units of periphery from the shared edges and gains 
+				one unit from the exposed edge of the new square, resulting in 
+				a net change of $1-3 = -2$ units. Negative two is even, 
+				therefore the resulting shape has an even-length periphery.
+				
+				\item The square shares all four edges with the shape. The 
+				shape loses 4 units of periphery from the the shared edges and 
+				gains no units back from the square, resulting in a net loss 
+				of four units. Negative four is even, therefore the resulting 
+				shape has an even length periphery.
+			
+			\end{enumerate}
+	\end{description}					
+				Since one square has an even length periphery, and all 
+				possible additions of squares result in an even length 
+				periphery, all possible arrangement of squares results in an 
+				even length periphery.
+			
+			
+		
+\section*{Problem 5}
+	\begin{enumerate}[(a)]
+		\item 3, 5, 6, 7
+		\item 4, 5, 7, 8
+	\end{enumerate}
+
+
+\section*{Problem 6}
+	Strengthened inductive hypothesis: after $k$ steps, the state machine is in state $k \bmod 4$.
+	
+	\begin{description}
+	\item[Base Case:] $n=0$\\
+	If no steps are taken, then the machine is in state $0$. $0 \bmod 4=0$, so we have proved the base case.
+
+	\item[Inductive Step:] Assume that after $n$ steps, the machine is in state $n \bmod 4$. Prove that in $n+1$ steps, the machine is in state $(n+1)\bmod 4$.
+	
+	By corollary 2 of section 1 of chapter 4 in Rosen's textbook, $(n+a) \bmod m = ((a\bmod m) + (b\bmod m)) \bmod m$. Since $1\bmod4 = 1$ and $ m, n\in\mathbb{Z}$, $(n\bmod 4) + 1 = (n+1)\bmod 4$, proving the inductive step.
+
+	\end{description}
+By the preceding proof, if after $n$ steps we are in state $k$, then after $n+1$ we are in state $0$ if and only if $k=3$.
+	
+	
+
+
+
+
+\section*{Problem 7}
+
+	\begin{description}
+		\item[States:] $\{x, y \mid x, y \in \mathbb{Z}\}$
+		\item[Start states:] $(0, 0)$
+		\item[Transitions:] 
+			$\{(x, y) \rightarrow (x+1, y+2) \mid x, y \in \mathbb{Z} \} \cup \{(x, y) \rightarrow (x+3, y) \mid x, y \in \mathbb{Z} \} \cup \{(x, y) \rightarrow (x-2, y-1) \mid x, y\in \mathbb{Z} \}$
+			
+		\item[Invariant:] For state $R= (m, n)$ reachable from $(0, 0)$, $3 
+		\mid m+n$
+		 
+		\item[Proof:] The base case is true because $0 + 0 = 0$, and zero is 
+		divisible by 3.	We prove that for any state $S = (a, b)$, if $3 \mid a 
+		+ b$, all states leading from $S$ this property also holds.
+
+	Let $Q$ be a state such that	$ R \rightarrow Q $. There are three possibilities for the value of $Q$, one for each possible transition.
+	
+	\begin{description}
+		\item{Case 1:} $Q = (a+1,\, b+2)$.
+\begin{align*}
+    (a+ 1) + (b+2) &= a + 1 + b + 2 \\
+    &= a + b + 3\\
+    &= 3l + 3,\,l\in \mathbb{Z}  && \text{Inductive Hypothesis}\\
+    &= 3(l + 1),\, l + 1\in\mathbb{Z}
+\end{align*}
+	Therefore the Invariant Principle holds.
+	
+		\item{Case 2:} $Q = (a+3,\, y)$
+		\begin{align*}
+		(a+3) + (b) &= a + b + 3 \\
+		&= 3(l + 1),\, l+1\in\mathbb{Z} &&\text{From Case 1}	
+		\end{align*}
+	Therefore the Invariant Principle holds.
+	
+		\item{Case 3:} $Q = (a-2,\,b-1)$
+		\begin{align*}
+		(a-2) + (b-1+ &= a - 2 + b -1 \\
+		&= a + b -3\\
+		&= 3l -3, l\in\mathbb{Z} && \text{Inductive Hypothesis}\\
+		&= 3(l + 1), l\in\mathbb{Z}
+		\end{align*}
+	Therefore the Invariant Principle holds for all states reachable from $Q$, and we have proved the Inductive Step. This, along with the base case, allow us to conclude that for any state $A = (c,\,d)$, if $A$ is reachable then $3 \mid (c + d)$. Since $1 + 1 = 2$ and $ 3 \notdivides 2$, the robot will never get to $(1, 1)$.
+		
+	
+	
+	\end{description}
+	
+	\end{description}
+	
+
+
+
+\end{document}

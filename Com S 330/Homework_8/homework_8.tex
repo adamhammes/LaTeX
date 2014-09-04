@@ -1,0 +1,265 @@
+\documentclass[11pt]{article}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathabx}
+
+\begin{document}
+
+\let\iff\leftrightarrow
+
+\title{Com Sci 330 Assignment 8}
+\author{Adam Hammes}
+\maketitle
+
+\section*{Problem 1}
+	\begin{enumerate}[(a)]
+	
+	\item
+		Not reflexive. $0+0 \neq 5 \implies (0,\ 0) \not\in R_1$
+		
+		Not anti-reflexive. $\frac{5}{2} + \frac{5}{2} = 5 \implies (\frac{5}{2} 
+		,\ \frac{5}{2}) \in R_1$
+		
+		Symmetric: Assume $(x,\ y) \in R_1$ -
+		
+		\begin{align*}
+		&\implies x+y = 5 \\
+		&\implies y+x = 5 \\
+		&\implies (y,\ x) \in R_1
+		\end{align*}
+		
+		Not anti-symmetric: $(1,\ 4)$ and $ (4,\ 1) \in R_1$, $(1,\ 4) \ne (4,\ 
+		1)$ 
+		
+		Not transitive: $(1,\ 4) \in R_1$ and $(4,\ 1) \in R_1$ but $(1,\ 1)\in 
+		R_1$
+
+	\item
+		Not Reflexive: $ 1 \ne 2(1) \implies  (1,\ 1) \not\in R_2$
+		
+		Not Anti-Reflexive: $0 = 2(0) \implies (0,\ 0) \in R_2$
+		
+		Not symmetric:  $(2,\ 1) \in R_2$, but $(1,\ 2)\not\in R_2$ because $1 
+		\ne 2(2)$
+		
+		
+		Anti-Symmetric: $(x,\ y) \in R_2$
+		\begin{align*}
+		x &= 2y \\
+		y &= \frac{1}{2}x \\
+		(y,\ x) &\not\in R_2\  \forall x, y, xy \ne 0
+		\end{align*}
+		\indent Since $(0,\ 0)$ is the only symmetric pair and $0 = 0$, $R_2$ is anti-
+		symmetric.
+		
+		Not transitive: Assume $(a,\ b),\ (b,\ c) \in R_2$. $a = 2b,\ b = 2c 
+		\implies a = 4c \implies (a,\ c) \not\in R_2$
+		
+	\item
+		Not reflexive: $(2,\ 2) \not\in R_3$
+		
+		Not anti-reflexive: $(1,\ 1) \in R_2$
+		
+		Symmetric: Let $(a,\ b) \in R_3$. Two cases:
+		\begin{align*}
+		a = 1 \text{.}\ (b,\ a) &\in R_3\ \text{because}\ a = 1\\	
+		b = 1 \text{.}\ (b,\ a) &\in R_3\ \text{because}\ b = 1
+		\end{align*}
+		
+		Not anti-symmetric: $(2,\ 1), (1,\ 2) \in R_3$, $\ (2,\ 1) \ne (1,\ 2)$
+		
+		Not transitive: $(2,\ 1), (1,\ 2) \in R_3$, but $(2,\ 2) \not\in R_3$
+		
+	\item
+		Reflexive: If $r \in \mathbb{R}$, $(r,\ r) \in R_4$ because $r,\ 
+		r\in \mathbb{R}$
+		
+		Not anti-reflexive: $(1,\ 1) \in R_4,\ 1 = 1$
+		
+		Symmetric: $(a,\ b) \in R_4 \implies a,\ b \in \mathbb{R} \implies (b,\ 
+		a) \in R_4$
+		
+		Not anti-symmetric:  $(2,\ 1), (1,\ 2) \in R_3$, $\ (2,\ 1) \ne (1,\ 2)$
+		
+		Transitive: $(a,\ b), (b,\ c) \in R_4 \implies a, c \in \mathbb{R} 
+		\implies (a,\ c)\in R_4$	
+	\end{enumerate}
+
+\section*{Problem 2}
+	\begin{enumerate}[(a)]
+	
+	\item
+	
+	Reflexive: $\forall a \in \mathbb{Z}, f(a) = f(a)$; $\therefore f(0) = f(0)$ 
+	and $f(1) = f(1)$.
+
+	Symmetric: Let $(f,\ g) \in R$. $f(0) = g(0) \implies g(0) = f(0)$, and 
+	likewise for $1$. $\therefore (g,\ f) \in R$.
+	
+	Transitive: Assume $(f,\ g), (g,\ h) \in R$.\\
+	$f(0) = g(0), g(0) = h(0) \implies f(0) = h(0)$\\
+	$f(1) = g(1), g(1) = h(1) \implies f(1) = h(1)$\\
+	$\implies (f,\ h) \in R$
+	
+	\item
+	Reflexive: Let $C = 0$. $\forall x, f(x) -f(x) - 0 = 0-0 = 0$. $\therefore 
+	(f,\ f) \in R$.
+	
+	Symmetric: Assume $(f,\ g) \in R$. By definition of $R$,
+	
+	$\exists\ C\ \forall x\ f(x) -g(x) = C,\ C \in \mathbb{Z}$. Rearrangement of 
+	terms yields $g(x) -f(x) = -C$. Since $C \in \mathbb{Z}, -C \in \mathbb{Z}$, 
+	and $(g,\ f) \in R$.
+	
+	Transitive: Assume $(f,\ g), (g,\ h) \in R$. Let $a$ denote $f(x)-g(x)$ and 
+	$b$ denote $g(x)-h(x)$. Since $f, g, h \in R,\ a, b\in \mathbb{Z}$.
+	
+	\begin{align*}
+	f(x) - g(x) + g(x) -h(x) &= a + b\\
+	f(x) -h(x) &= a + b
+	\end{align*}
+	Since $a, b\in \mathbb{Z}, a+b \in \mathbb{Z}$ and $(f, h) \in R$.
+
+	\end{enumerate}
+	
+\section*{Problem 3}
+	\begin{enumerate}[(a)]
+	
+	\item
+		Reflexive: $\forall x,\ f(x) = f(x) \implies f(0) = f(0) \implies (f,\ 
+		f) \in R$.
+		
+		Symmetric: Assume $(f,\ g) \in R$. Two cases:
+		\begin{align*}
+		f(0) = g(0) \implies g(0) = f(0) \implies (f,\ g) \in R\\
+		f(1) = g(1) \implies g(1) = f(1) \implies (f,\ g) \in R
+		\end{align*}
+		$\therefore (g,\ f) \in R$.
+		
+		Not transitive: Let $f(x) = 0, g(x) = x, h(x) = 1$.
+		\begin{align*}
+		f(0) = 0 = g(0) \implies (f,\ g) \in R\\
+		g(1) = 1 = g(1) \implies (g,\ f) \in R
+		\end{align*}
+		$\forall x\ f(x) \neq g(x)$ so $(f,\ h) \not\in R$ and the relation is 
+		not transitive.
+		
+	\item
+		Not reflexive: Let $f(x) = 0$. $\forall x\ f(x) -f(x) = 0 \neq 1 
+		\implies (f,\ f) \not\in R$.
+		
+		Not symmetric: Let $(f,\ g) \in R$:
+		\begin{align*}
+		\forall x\ f(x)-g(x) &= 1\\
+		\implies \forall x\ g(x)-f(x) &= -1
+		\end{align*}
+		$\therefore (g,\ f) \not\in R$ and the function is not symmetric.
+		
+		Not transitive: Let $(f,\ g), (g,\ h) \in R$; therefore, $\forall x\ 
+		f(x) -g(x) =1, g(x) -h(x) = 1$ and $f(x) -g(x) + g(x) -h(x) = 1 + 1 = 2 
+		\neq 1$ and $(f,\ h) \not\in R.$ and the function is not transitive.
+		
+	\end{enumerate}
+\section*{Problem 4}
+	\begin{enumerate}[(a)]
+	\item
+		Reflexive: $\forall a,b \in \mathbb{Z},\ a-b=a-b$ so $((a,\ b),	(a,\ b)) 
+		\in R$.
+		
+		Symmetric: Assume $((a,\ b),(c, d)) \in R$. Prove $((c,\ d),(a,\ b) \in 
+		R$.
+		\begin{align*}
+		a-c &= b-d&&\text{definition of R}\\
+		c-a &= d-b &&\times\ -1\\
+		\implies ((c,\ d),&(a,\ b) \in R
+		\end{align*}
+		
+		Transitive: Assume $((a,\ b),(c, d)),\ ((c,\ d),(e,\ f) \in R$. Then,
+		\begin{align*}
+		a -c &= b-d\ \text{and}\\
+		c-e  &= d-f
+		\end{align*}
+		
+		Therefore,
+		\begin{align*}
+		a -c + c -e &= b -d + d - f\\
+		a -e &= b - f\\
+		\implies ((a,\ b),\ &(e,\ f) \in R
+		\end{align*}
+		and $R$ is transitive.
+		
+	\item
+		$f(a,\ b) = a + b$
+	
+	\item
+		$[(1,\ 1)] = \{x,y\ |\ x,y \in \mathbb{Z}\ \text{and}\ x+y = 2\}$
+	\item
+		$[(a,\ b)] = \{x,y\ |\ x,y \in \mathbb{Z}\ \text{and}\ x+y = a+b\}$
+		
+		There are an infinite number of classes, each with an infinite amount of
+		elements.
+		
+		
+	\end{enumerate}
+
+\section*{Problem 5}
+	\begin{enumerate}[(a)]
+	\item
+		$[0] = \{x\ |\ x\in \mathbb{Z}, x \mod 5 = 0\} $\\
+		$[1] = \{x\ |\ x\in \mathbb{Z}, x \mod 5 = 1\} $\\
+		$[2] = \{x\ |\ x\in \mathbb{Z}, x \mod 5 = 2\} $\\
+		$[3] = \{x\ |\ x\in \mathbb{Z}, x \mod 5 = 3\} $\\
+		$[4] = \{x\ |\ x\in \mathbb{Z}, x \mod 5 = 4\} $
+		
+	\item
+		$[2]$ represents all positive integers who have remainder 2 modulus 3.
+	\end{enumerate}		
+		
+\section*{Problem 6}
+	\begin{enumerate}[1)]
+	\item	devise logo
+	\item	seize control
+	\item	open chain
+	\item	get shots
+	\item	train army
+	\item	build fleet
+	\item	launch fleet
+	\item	defeat Microsoft
+	\end{enumerate}
+
+\section*{Extra Credit}
+	\begin{description}
+	
+	\item{(b)}
+		37 days; this might not be accurate because one person might have to 
+		spend a day or more waiting for the other person to finish a task before 
+		they can move on to the next task.
+		
+	\item{(c)}
+		39 days. Again, this is a not a guaranteed lower bound - I'll give an example using the given graph.
+		
+		The critical path is as follows: "devise logo" $\rightarrow$ "seize 
+		control" $\rightarrow$ "open chain" $\rightarrow$ "train army" 
+		$\rightarrow$ "defeat Microsoft". 
+		
+		Say Giulani follows the critical path, and 
+		Sharon gets every other edge. Giulani will "devise logo", "seize control", and "open chain" with no help from Sharon because all of those nodes have a single dependency. However, "get shots" needs to be done by Sharon before or at the same time that Giulani accomplishes "open chain" so "train army" can be done right away; similarly, "build fleet" must be finished by Sharon at the same time or earlier than "train army".  I consider two cases:
+		\begin{enumerate}
+		\item Sharon does "get shots" before "build fleet".
+		
+		If Sharon starts with "get shots", she first needs to wait 8 days for Giulani to "devise logo". When "devise logo" is complete she can "get shots", for a total time of 17 days. After "get shots", she still needs to do "build fleet" to prepare for "launch fleet"; the 18 additional days bring the total up to 35 days. However, Giulani following the critical path will need "build fleet" to be ready after 31 days; therefore part of her time will be spent doing nothing, making the critical path an inaccurate lower bound.
+		
+		\item Sharon does "build fleet" before "get shots"
+		
+		Giulani needs "get shots" done in 27 days, which is when she has completed the first 3 steps of the critical path and needs to be able to start "train army". "Build fleet" and "get shots" together take 29 days, again forcing Giulani to wait and making the critical path an optimistic lower bound.
+		\end{enumerate}
+		
+	Phrased more abstractly, because Sharon herself depends on actions that Giulani takes, the critical path might be too low of a lower bound on the time to world domination.
+
+	\item{(d)}
+		47 days.		
+	\end{description}
+
+
+\end{document}
