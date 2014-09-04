@@ -1,4 +1,6 @@
 ux
+*.aux
+*.blg
 .DS_STORE
 *.glo
 *.idx
@@ -22,3 +24,23 @@ ux
 *.mtc1
 *.out
 *.synctex.gz
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
