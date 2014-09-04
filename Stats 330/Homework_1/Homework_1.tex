@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathabx}
+
+\begin{document}
+
+\author{Adam Hammes}
+\title{Stats 330 Homework 1}
+\maketitle
+
+\section*{Problem 1}
+	\begin{enumerate}[(a)]
+	\item
+		Let $hth$ denote the results of flipping a coin three times and getting a heads, then a tails, then a heads in that order. $\Omega$ then consists of the following:	
+		\begin{itemize}
+			\item $hhh$
+			\item $hht$
+			\item $hth$
+			\item $htt$
+			\item $thh$
+			\item $tht$
+			\item $tth$
+			\item $ttt$
+		\end{itemize}
+	
+	\item 
+		\begin{enumerate}[i.]
+			\item $A$ = $\{ hhh,\ hht,\ hth,\ thh\}$
+			\item $B$ = $\{ hhh,\ hht \}$
+			\item $C$ = $\{ hht,\ htt,\ tht,\ ttt\}$
+		\end{enumerate}
+		
+	\item
+		\begin{enumerate}[i.]
+			\item $\overline{A} = \{htt,\ tht,\ tth,\ ttt\} $
+			\item $ A \cap C = \{ hht \} $
+			\item $ A \cup C = \{ hhh,\ hht,\ hth,\ thh,\ htt,\ tht,\ ttt\}$
+
+		\end{enumerate}
+	\end{enumerate}
+
+\section*{Problem 2} 
+	\begin{enumerate}[(a)]
+		\item
+		\begin{itemize}
+			\item $ccc$
+			\item $ccs$
+			\item $csc$
+			\item $css$
+			\item $scc$
+			\item $scs$
+			\item $ssc$
+			\item $sss$		
+		\end{itemize}	
+		
+		\item
+			Since all outcomes are equally likely, and only one of the eight possible 
+			outcomes results in the commuter not stopping, the probability is $\dfrac{1}
+			{8} = 0.125$.
+			
+		\item
+			\begin{enumerate}[i.]
+			\item $ A = \{ scc,\ scs,\ ssc,\ sss\}$
+			\item $ B = \{ csc,\ css,\ ssc,\ sss\}$
+			\item $ \overline{B} = \{ ccc,\ ccs,\ scc,\ scs \}$
+			\item $ A \cup B = \{ scc,\ scs,\ ssc,\ sss,\ csc,\ css \}$
+			\item $ A \cap B = \{ ssc,\ sss \}$
+			\item $ A \cap \overline{B} = \{ scc,\ scs \}$
+			\end{enumerate}
+	\end{enumerate}
+	
+\section*{Problem 3}
+	\begin{enumerate}[(a)]
+		\item  $\Omega =$	\{(1,1),	(1,2),	(1,3), (1,4),	(1,5),	(1,6),
+		
+					(2,1),	(2,2),	(2,3),	(2,4),	(2,5),	(2,6),
+
+					(3,1),	(3,2),	(3,3),	(3,4),	(3,5),	(3,6),
+
+					(4,1),	(4,2),	(4,3),	(4,4),	(4,5),	(4,6),
+
+					(5,1),	(5,2),	(5,3),	(5,4),	(5,5),	(5,6),
+
+					(6,1),	(6,2),	(6,3),	(6,4),	(6,5),	(6,6)\}
+					
+		\item 0
+		\item $\dfrac{5}{36}$
+		\item $\dfrac{7}{36}$
+
+	\end{enumerate}
+	
+\section*{Problem 4}
+	Let the good computer chips be numbered $1,\ 2,\ 3,\ 4$, and the bad ones $a,\ b$. Then $\Omega = \{ $ 
+	
+	(1,2),  (1,3), (1,4), (1, a), (1, b),
+	
+	(2, 3), (2, 4), (2, a), (2, b),
+	
+	(3, 4), (3, a ), ( 3, b), (4, a), (4, b), (a, b) \}\\\\
+	Since there is only one way of drawing two bad chips out of the bag, the probability of such an event is $\dfrac{1}{|\Omega|} = \dfrac{1}{15}$.
+	
+	
+\section*{Problem 5}
+	From the book we have $P( MB ) = .4$, $P( HD) = .3$, and $ P( MB \cap HD ) = .15$. Add the probabilities $P( MB )$ and $ P( HD)$, then subtract $P( MB ) \cap P(HD)$ to avoid double-counting. This will give us the probability that there \textit{is} a failure. To find the probability that there \textit{isn't} a failure, we subtract the previous probability from 1. 
+	
+	\[1- (.4 + .3 -.15) =  .45\]
+	
+\section*{Problem 6}
+	\begin{enumerate}[(a)]
+		\item $P( \c{F} ) = 1 - P( F ) = 1-.6 = .4$
+		\item \begin{align*}
+			P( \overline{F} \cap \overline{C} ) &= 1- (\ P( F) + P( C ) - P(F \cap C\ ) \\
+			&= 1-(.7 + .6 - .5)\\
+			&= .2
+		\end{align*}
+		
+		\item
+		\begin{align*}
+		P( C - F ) &= P(C) - P ( C \cup F )\\
+		&= .7-.5\\
+		&= .2
+		\end{align*}
+		
+		\item
+		\hfill \begin{align*}
+		P( F - C ) &= P(F) - P( C \cup F)\\
+		&= .6 -.5\\
+		&= .1
+		\end{align*}
+
+	\end{enumerate}
+
+	
+	  
+	  
+	
+	
+	
+	
+	
+\end{document}

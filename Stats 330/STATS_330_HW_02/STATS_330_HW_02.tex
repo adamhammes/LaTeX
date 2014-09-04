@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathabx}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+
+
+\begin{document}
+
+\title{Stats 330 Assignment 2}
+\author{Adam Hammes $\bullet$ hammesa@iastate.edu $\bullet$ Section B}
+\maketitle
+
+\section*{Problem 1}
+	\begin{enumerate}[(a)]
+		\item Ordered drawing without replacement. $P( 7, 3) = \dfrac{7!}{4!} = 
+		210$.
+		
+		\item Ordered drawing with replacement. $7^3 = 343$.
+		
+		\item Unordered (note the key word grouping) drawing without replacement. $\binom{7}{3} = \dfrac{7!}{4!3!} = 35$.
+		
+		\item 
+		
+	
+	\end{enumerate}
+	
+\section*{Problem 2}
+
+From the 7 remaining digits, we have to pick a sequence of 4 distinct digits, which is a permutation. $P(7, 4) = \dfrac{7!}{3!} = 840$.
+
+\section*{Problem 2}
+
+The formula for probability of equally likely, independent events is $\dfrac{|E|}{|\Omega|}$. We must find the size of both sets.
+\begin{itemize}
+	\item $\Omega$ is the total number of possible license plates. For the letters, 
+	there are 26 possibilities each for 3 spots, and then 10 possibilities for 3 spots 
+	for the numbers. $|\Omega| = 26^3 * 10^ 3 = 1.7576 * 10^7$.
+	
+	\item $E$ is similar to $\Omega$, but with less possible letters and numbers. $|E| = (26-3)^3 * (10-2)^3 = 6229504$.
+	
+Using these numbers in the formula, we find that the probability is
+\begin{align*}
+\dfrac{|E|}{|\Omega|} = \dfrac{6229504}{1.7576 * 10^7} \approx 0 .354
+\end{align*}
+\end{itemize}
+
+
+ 
+
+
+
+
+\end{document}
