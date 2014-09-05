@@ -15,7 +15,7 @@
 
 \section*{Problem 1}
 
-$01$ is in $A$; therefore $s = 0101$ is in $A^*$. However, since $s$ alternates between 0 and 1, it is clearly not in $A$. Therefore $A^* \neq A$.
+$01$ is in $A$; therefore $s = 0101$ is in $A^*$. However, since $s$ alternates between 0 and 1, it is clearly not in $A$. Therefore $A^* \neq A$. $\checkmark$
 
 \section*{Problem 2}
 $B^*$ is  the union of all $B^n, n \in \mathbb{N}$, which in turn is defined recursively as
@@ -29,11 +29,25 @@ I prove by induction that $B^n, n \in \mathbb{N} \subseteq B$.
 	\item[Base Case:] Base: $n = 0$. $B^0$ has one element, $\lambda$. $\lambda$ has the same amount of zeroes and ones (none), and is therefore in $B$.
 	
 	\item[Inductive step:] Assume $B^n \subseteq B$. Prove that $B^{n+1}$ $\subseteq B$\\
-	Let $x$ be any element in $B^n$, and $y$ an element in $B$. By the inductive hypothesis, $\#(0,x) =\#(1,x)$ and by definition of $B$ $\#(0,y) = \#(1,y)$. The concatenation $xy$ also shares this property, since $\#(0,xy)$ and $\#(1, xy)$ are the sum of the zeroes and ones in $x,y$ and are therefore equal. Therefore $B^{n+1} \subseteq B$ and by induction $B^* \subseteq B$
+	Let $x$ be any element in $B^n$, and $y$ an element in $B$. By the inductive hypothesis, $\#(0,x) =\#(1,x)$ and by definition of $B$ $\#(0,y) = \#(1,y)$. The concatenation $xy$ also shares this property, since $\#(0,xy)$ and $\#(1, xy)$ are the sum of the zeroes and ones in $x,y$ and are therefore equal. Therefore $B^{n+1} \subseteq B$ and by induction $B^* \subseteq B$.
 \end{description}
-By concatenating any string in $B$ with $\lambda$ (also found in $B$), you find the same string in $B^*$; therefore $B \subseteq B^*$. Since $B \subseteq B^*$ and $B^* \subseteq B$, $B = B^*$
+By concatenating any string in $B$ with $\lambda$ (also found in $B$), you find the same string in $B^*$; therefore $B \subseteq B^*$. Since $B \subseteq B^*$ and $B^* \subseteq B$, $B = B^*$. $\checkmark$
 
 
+\section*{Problem 4}
+
+$\forall x \in A^*$, $\lambda x = x$ and $ \lambda x \in A^{**}$. Therefore $A^* \subseteq A^{**}$.\\\\
+Consider any element $a \in A^{**}$. $a$ is the concatenation of strings $b_0, b_1,...$, $b_i \in A^*$. Each string $b_i$ is in turn composed of substrings $c_{i,1}, c_{i,2}, ...$, where $c_{i,j} \in A$. Therefore $a$ is composed solely of strings found in $A$. Since $a$ is any string in $A^{**}$, and $A^*$ contains every possible concatenation of the strings in $A$, $A** \subseteq A*$.\\\\
+Since $A^* \subseteq A^{**}$ and $A** \subseteq A*$, $A^* = A^{**}$. $\checkmark$
+
+\section*{Problem 5}
+
+I prove the contrapositive, $ S \subsetneq T \implies S^* \neq T^*$.\\\\
+For $S \subsetneq T$ to be true, there is an element $a \in S$ that is not in $T$. This element is in $S^*$, but not in $T^*$. Therefore $S^* \neq T^*$. $\checkmark$
+
+
+\section*{Problem 6}
+$ S = \{0, 1, 11\}$, $T = \{0, 1\}$
 
 
 \end{document}
