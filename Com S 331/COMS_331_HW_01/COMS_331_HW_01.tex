@@ -17,6 +17,23 @@
 
 $01$ is in $A$; therefore $s = 0101$ is in $A^*$. However, since $s$ alternates between 0 and 1, it is clearly not in $A$. Therefore $A^* \neq A$.
 
+\section*{Problem 2}
+$B^*$ is  the union of all $B^n, n \in \mathbb{N}$, which in turn is defined recursively as
+	\begin{itemize}
+		\item 		$B^0	= \{\lambda\}$
+		\item		$B^{n+1}	 = BB^n$
+	\end{itemize}
+I prove by induction that $B^n, n \in \mathbb{N} \subseteq B$.
+
+\begin{description}
+	\item[Base Case:] Base: $n = 0$. $B^0$ has one element, $\lambda$. $\lambda$ has the same amount of zeroes and ones (none), and is therefore in $B$.
+	
+	\item[Inductive step:] Assume $B^n \subseteq B$. Prove that $B^{n+1}$ $\subseteq B$\\
+	Let $x$ be any element in $B^n$, and $y$ an element in $B$. By the inductive hypothesis, $\#(0,x) =\#(1,x)$ and by definition of $B$ $\#(0,y) = \#(1,y)$. The concatenation $xy$ also shares this property, since $\#(0,xy)$ and $\#(1, xy)$ are the sum of the zeroes and ones in $x,y$ and are therefore equal. Therefore $B^{n+1} \subseteq B$ and by induction $B^* \subseteq B$
+\end{description}
+By concatenating any string in $B$ with $\lambda$ (also found in $B$), you find the same string in $B^*$; therefore $B \subseteq B^*$. Since $B \subseteq B^*$ and $B^* \subseteq B$, $B = B^*$
+
+
 
 
 \end{document}
