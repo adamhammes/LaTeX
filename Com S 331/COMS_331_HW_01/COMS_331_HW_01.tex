@@ -54,7 +54,7 @@ We prove through induction.
 
 $\forall x \in A^*$, $\lambda x = x$ and $ \lambda x \in A^{**}$. Therefore $A^* \subseteq A^{**}$.\\\\
 Consider any element $a \in A^{**}$. $a$ is the concatenation of strings $b_0, b_1,...$, $b_i \in A^*$. Each string $b_i$ is in turn composed of substrings $c_{i,1}, c_{i,2}, ...$, where $c_{i,j} \in A$. Therefore $a$ is composed solely of strings found in $A$. Since $a$ is any string in $A^{**}$, and $A^*$ contains every possible concatenation of the strings in $A$, $A** \subseteq A*$.\\\\
-Since $A^* \subseteq A^{**}$ and $A** \subseteq A*$, $A^* = A^{**}$. $\checkmark$
+Since $A^* \subseteq A^{**}$ and $A^{**} \subseteq A*$, $A^* = A^{**}$. $\checkmark$
 
 \section*{Problem 5}
 
@@ -65,6 +65,7 @@ For $S \subsetneq T$ to be true, there is an element $a \in S$ that is not in $T
 \section*{Problem 6}
 $ S = \{0, 1, 11\}$, $T = \{0, 1\}$\\
 Since $T \subset S$, $T^* \subseteq S^*$. Also, since the only difference between $S$ and $T$ is $11$, which can be replicated by repeating a $1$, $S^* \subseteq T^*$ and by implication $S^* = T^*$. $\checkmark$
+
 
 
 \end{document}
