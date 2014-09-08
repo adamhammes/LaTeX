@@ -32,7 +32,7 @@ I prove by induction that $B^n, n \in \mathbb{N} \subseteq B$.
 	\item[Inductive step:] Assume $B^n \subseteq B$. Prove that $B^{n+1}$ $\subseteq B$\\
 	Let $x$ be any element in $B^n$, and $y$ an element in $B$. By the inductive hypothesis, $\#(0,x) =\#(1,x)$ and by definition of $B$ $\#(0,y) = \#(1,y)$. The concatenation $xy$ also shares this property, since $\#(0,xy)$ and $\#(1, xy)$ are the sum of the zeroes and ones in $x,y$ and are therefore equal. Therefore $B^{n+1} \subseteq B$ and by induction $B^* \subseteq B$
 \end{description}
-By concatenating any string in $B$ with $\lambda$ (also found in $B$), you find the same string in $B^*$; therefore $B \subseteq B^*$. Since $B \subseteq B^*$ and $B^* \subseteq B$, $B = B^*$. $\checkmark$
+By concatenating any string in $B$ with $\lambda$ (also $\in B$), you find the same string in $B^*$; therefore $B \subseteq B^*$. Since $B \subseteq B^*$ and $B^* \subseteq B$, $B = B^*$. $\checkmark$
 
 \section*{Problem 3}
 
@@ -54,7 +54,7 @@ We prove through induction.
 
 $\forall x \in A^*$, $\lambda x = x$ and $ \lambda x \in A^{**}$. Therefore $A^* \subseteq A^{**}$.
 
-Consider any element $a \in A^{**}$. $a$ is the concatenation of strings $b_0, b_1,...$, $b_i \in A^*$. Each string $b_i$ is in turn composed of substrings $c_{i,1}, c_{i,2}, ...$, where $c_{i,j} \in A$. Therefore $a$ is composed solely of strings found in $A$. Since $a$ is any string in $A^{**}$, and $A^*$ contains every possible concatenation of the strings in $A$, $A** \subseteq A*$.
+Consider any element $a \in A^{**}$. $a$ is the concatenation of strings $b_0, b_1,...$, $b_i \in A^*$. Each string $b_i$ is in turn composed of substrings $c_{i,1}, c_{i,2}, ...$, where $c_{i,j} \in A$. Therefore $a$ is composed solely of strings found in $A$. Since $a$ is any string in $A^{**}$, and $A^*$ contains every possible concatenation of the strings in $A$, $A^{**} \subseteq A*$.
 
 
 Since $A^* \subseteq A^{**}$ and $A^{**} \subseteq A*$, $A^* = A^{**}$. $\checkmark$
@@ -72,7 +72,21 @@ $ S = \{0, 1, 11\}$, $T = \{0, 1\}$
 Since $T \subset S$, $T^* \subseteq S^*$. Also, since the only difference between $S$ and $T$ is $11$, which can be replicated by repeating a $1$, $S^* \subseteq T^*$ and by implication $S^* = T^*$. $\checkmark$
 
 \section*{Problem 7}
-There are an infinite number of strings $w$ such that $ww \sqsubseteq s$. Since two different strings of the same length cannot both be prefixes of the same string, 
+There are an infinite number of strings $w$ such that $ww \sqsubseteq s$. Since two different strings of the same length cannot both be prefixes of the same string, there is no cap on the length of $w$.
+
+Consider a string $w \sqsubseteq s$.  The first bits $b_1 - b_{|w| -1}$ are $w$, and so are the bits $b_{w} - b_{w-1}$; that is to say, the first $w$ bits are the same as the next $w$ bits. The probability of this resulting from independent coin tosses is directly proportional to the size of $w$:
+	\begin{align*}
+	P = \dfrac{1}{2^{|w|}}
+	\end{align*}
+Since for any finite length $a\ \exists w \sqsubseteq s$ such that $|w| > a$, this probability can be written as the limit
+	\begin{align*}
+	P &= \dfrac{1}{2^{\infty}} \\
+	&=0\ \checkmark
+	\end{align*}
+	
+
+
+
 
 
 \end{document}
