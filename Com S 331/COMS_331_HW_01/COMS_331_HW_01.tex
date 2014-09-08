@@ -45,7 +45,25 @@ We prove through induction.
 		\end{align*}
 		
 	\item[Inductive Step:] Assume $\sum\limits_{k=1}^n \dfrac{1}{k^2} \leq 2 - \dfrac{1}{n}$. Prove $\sum\limits_{k=1}^{n+1} \dfrac{1}{k^2} \leq 2 - \dfrac{1}{n+1}$. \\
-	We can subtract $\sum\limits_{k=1}^{n} \dfrac{1}{k^2}$ from each side to reach the following:
+	We subtract $\sum\limits_{k=1}^{n} \dfrac{1}{k^2}$ from both sides to reach the following:
+		\begin{equation}
+		\dfrac{1}{(n+1)^2} \leq 2 - \dfrac{1}{n+1} - \sum\limits_{k=1}^{n} \dfrac{1}{k^2}
+		\end{equation}
+		Also, the following can be reached from the inductive hypothesis by diving by $-1$:
+		\begin{equation*}
+		-\sum\limits_{k=1}^n \dfrac{1}{k^2} \geq \dfrac{1}{n} -2
+		\end{equation*}
+		Since the right hand side of $(2)$ is less than $-\sum\limits_{k=1}^n \dfrac{1}{k^2}$, we can substitute it into $(1)$ and still hold the inequality.
+		
+	\begin{align*}
+	\dfrac{1}{(n+1)^2} &\leq 2 - \dfrac{1}{n+1} + \dfrac{1}{n} -2 \\
+	\dfrac{1}{(n+1)^2} &\leq - \dfrac{1}{n+1} + \dfrac{1}{n}	\\
+	\dfrac{1}{(n+1)^2} &\leq \dfrac{1}{n^2 +1}\\
+	1 &\leq \dfrac{(n+1)^2}{n^2 +1}\\
+	1 &\leq \dfrac{n^2 + 2n + 1}{n^2 + 1}
+	\end{align*}
+	
+	Because of the $2n$ term, this inequality is true for $\mathbb{Z^+}$, concluding the inductive step. $\checkmark$
 
 
 \end{description}
