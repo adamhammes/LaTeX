@@ -1,3 +1,4 @@
+
 \documentclass[11pt]{article}
 \usepackage{enumerate}
 \usepackage{amsfonts}
@@ -5,6 +6,7 @@
 \usepackage{mathabx}
 \usepackage{graphicx}
 \usepackage{adjustbox}
+\usepackage{parskip}
 
 
 \begin{document}
@@ -22,7 +24,10 @@
 		
 		\item Unordered (note the key word grouping) drawing without replacement. $\binom{7}{3} = \dfrac{7!}{4!3!} = 35$.
 		
-		\item 
+		\item We have $n= 5$ objects and need to choose $r=3$ of them. Using the formula for combinations with replacement, we get
+		\begin{align*}
+		\binom{n+r-1}{r} =\dfrac{7!}{4!3!} = 35 
+		\end{align*}
 		
 	
 	\end{enumerate}
@@ -31,7 +36,7 @@
 
 From the 7 remaining digits, we have to pick a sequence of 4 distinct digits, which is a permutation. $P(7, 4) = \dfrac{7!}{3!} = 840$.
 
-\section*{Problem 2}
+\section*{Problem 3}
 
 The formula for probability of equally likely, independent events is $\dfrac{|E|}{|\Omega|}$. We must find the size of both sets.
 \begin{itemize}
