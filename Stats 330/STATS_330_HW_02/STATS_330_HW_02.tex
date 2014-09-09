@@ -57,6 +57,13 @@ Two of the cards are aces. From the remaining 50 cards, we need to pick a combin
 	\binom{50}{3} = \dfrac{50!}{47!3!} =19,600
 \end{align*}
 
+\section*{Problem 4}
+	$\Omega$ is the number of 4-combinations possible from a set of 12. Therefore $|\Omega| = \binom{12}{4} = \dfrac{12!}{4!\ 8!} = 495$. For the two problems we simply need to find the size of the event and divide by 495.
+	
+\begin{enumerate}[(a)]
+	\item Because there are 4 ethnic groups and only four spots, we simply need to choose the representative from each ethnicity. $\binom{n}{1} = n$, so $|E| = 5*3*2*2 = 60$ and the probability is $60/495 = 4/33$.
+	\item  First choose the non-Caucasian member, for which there are 8 possibilities. Then, from the remaining 11 committee members choose the other 3 to fill the subcommittee, $8 * \binom{11}{3} = 1320$, then divide by the four spots the first guy can be in since order doesn't matter. $|E| = 1320/4 = 330$. The probability is then $330/495 = 2/3$.
+\end{enumerate}
 
 \section*{Problem 6}
 Assume that the spyware chooses passwords to try randomly. Also, let $G$ denote the probability of the spyware guessing the password.
