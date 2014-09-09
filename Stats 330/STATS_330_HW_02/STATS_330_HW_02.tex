@@ -40,22 +40,28 @@ From the 7 remaining digits, we have to pick a sequence of 4 distinct digits, wh
 
 The formula for probability of equally likely, independent events is $\dfrac{|E|}{|\Omega|}$. We must find the size of both sets.
 \begin{itemize}
-	\item $\Omega$ is the total number of possible license plates. For the letters, 
-	there are 26 possibilities each for 3 spots, and then 10 possibilities for 3 spots 
-	for the numbers. $|\Omega| = 26^3 * 10^ 3 = 1.7576 * 10^7$.
+	\item $\Omega$ is the total number of possible license plates. For the letters, there are 26 possibilities each for 3 spots, and then 10 possibilities for 3 spots for the numbers. $|\Omega| = 26^3 * 10^ 3 = 1.7576 * 10^7$.
 	
 	\item $E$ is similar to $\Omega$, but with less possible letters and numbers. $|E| = (26-3)^3 * (10-2)^3 = 6229504$.
-	
+\end{itemize}	
+
 Using these numbers in the formula, we find that the probability is
-\begin{align*}
-\dfrac{|E|}{|\Omega|} = \dfrac{6229504}{1.7576 * 10^7} \approx 0 .354
-\end{align*}
-\end{itemize}
+	\begin{align*}
+		\dfrac{|E|}{|\Omega|} = \dfrac{6229504}{1.7576 * 10^7} \approx 0 .354
+	\end{align*}
 
 
- 
+\section{Problem 6}
+Assume that the spyware chooses passwords to try randomly. Also, let $G$ denote the probability of the spyware guessing the password.
 
+\begin{enumerate}[(a)]
+	\item $G = \dfrac{10^6}{P(26, 6)} = \dfrac{10^7}{26!/20!} \approx 0.00603"$
+	\item $G = \dfrac{10^6}{P(52, 6)} = \dfrac{10^7}{52!/46!} =$\\
+	$\dfrac{1}{11202524329297760912730644007833856524345764644567121920000}$
+	\item $G = \dfrac{10^6}{52^6}$ I'm not going to attempt to calculate this.
+	\item Assuming case sensitive, $G = \dfrac{10^6}{62^6}$; else $G = \dfrac{10^6}{36^6}$
 
-
+	
+\end{enumerate}
 
 \end{document}
