@@ -24,9 +24,9 @@
 		
 		\item Unordered (note the key word grouping) drawing without replacement. $\binom{7}{3} = \dfrac{7!}{4!3!} = 35$.
 		
-		\item We have $n= 5$ objects and need to choose $r=3$ of them. Using the formula for combinations with replacement, we get
+		\item We have $n= 7$ objects and need to choose $r=3$ of them. Using the formula for combinations with replacement, we get
 		\begin{align*}
-		\binom{n+r-1}{r} =\dfrac{7!}{4!3!} = 35 
+		\binom{n+r-1}{r} = \binom{7+3-1}{3} = \binom{9}{3} =\dfrac{9!}{6!3!} = 84 
 		\end{align*}
 		
 	
@@ -34,7 +34,7 @@
 	
 \section*{Problem 2}
 
-From the 7 remaining digits, we have to pick a sequence of 4 distinct digits, which is a permutation. $P(7, 4) = \dfrac{7!}{3!} = 840$.
+From the 7 remaining digits, we have to pick a sequence of 4 distinct digits, which is a permutation. $P(7, 4) = 7!/3! = 840$. Ignoring the restrictions, the number of possible permutations is $7^4$. Our probability is thus $\dfrac{840}{7^4} \approx 0.35$.
 
 \section*{Problem 3}
 
@@ -56,7 +56,7 @@ Using these numbers in the formula, we find that the probability is
 	
 \begin{enumerate}[(a)]
 	\item Because there are 4 ethnic groups and only four spots, we simply need to choose the representative from each ethnicity. $\binom{n}{1} = n$, so $|E| = 5*3*2*2 = 60$ and the probability is $60/495 = 4/33$.
-	\item  First choose the non-Caucasian member, for which there are 8 possibilities. Then, from the remaining 11 committee members choose the other 3 to fill the subcommittee, $8 * \binom{11}{3} = 1320$, then divide by the four spots the first guy can be in since order doesn't matter. $|E| = 1320/4 = 330$. The probability is then $330/495 = 2/3$.
+	\item  First find the number of committees with no caucasians, $|E'|$. To pick this group we simply select four members from the 7 non-caucasian members, $\binom{7}{4} = \dfrac{7}{4!3!} = 35$. $P(E) = 1- P(E') = 1 - \dfrac{35}{495} = \dfrac{92}{99}$.
 \end{enumerate}
 
 \section*{Problem 5}
@@ -65,13 +65,15 @@ Two of the cards are aces. From the remaining 50 cards, we need to pick a combin
 	\binom{50}{3} = \dfrac{50!}{47!3!} =19,600
 \end{align*}
 
+The number of possible 5-card hands is $\binom{52}{5}$, so the probability becomes $\dfrac{19,600}{\binom{52}{5}} = \dfrac{5}{663}$. 
+
 \section*{Problem 6}
 Assume that the spyware chooses passwords to try randomly. Also, let $G$ denote the probability of the spyware guessing the password.
 
 \begin{enumerate}[(a)]
-	\item $G = \dfrac{10^6}{P(26, 6)} = \dfrac{10^7}{26!/20!} \approx 0.00603"$
+	\item $G = \dfrac{10^6}{P(26, 6)} = \dfrac{10^7}{26!/20!} \approx 0.00603$
 	\item $G = \dfrac{10^6}{P(52, 6)} = \dfrac{10^7}{52!/46!} =$\\
-	$\dfrac{1}{11202524329297760912730644007833856524345764644567121920000}$
+	$\dfrac{1}{4580667}$
 	\item $G = \dfrac{10^6}{52^6}$ I'm not going to attempt to calculate this.
 	\item Assuming case sensitive, $G = \dfrac{10^6}{62^6}$; else $G = \dfrac{10^6}{36^6}$
 
