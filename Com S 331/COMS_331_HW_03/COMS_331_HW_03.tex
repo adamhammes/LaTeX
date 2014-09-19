@@ -6,7 +6,7 @@
 \usepackage{graphicx}
 \usepackage{adjustbox}
 \usepackage{parskip}
-
+\usepackage{commath}
 
 \begin{document}
 
@@ -39,6 +39,26 @@ Obviously, $n$ will be increased by one to account for the mistake we just read.
 Finally, we arrive at the last two parts of our NFA, the starting and accepting states. $N$ will start where $M$ did, and with zero mistakes; thus, $S = \{ (s, 0) \}$. Likewise, $N$ will accept the states $M$ did, as long as haven't made too many mistakes, so the accepting states are $(f, n )\ |\ f \in F $ and $ n \in \{0, 1, 2\}$.
 
 Let us now examine $N$ intuitively. If a string is in $N_2(A)$, $N$ will find the related string in $A$ and follow it, using the mistake transitions at most twice. If a string is not in $N_2(A)$, then $N$ will "jam" on some state after it runs out of mistakes. Because $N$ decides any $N_2(A)$ such that $A$ is regular, if $A$ is regular, $N_2(A)$ is regular. $\checkmark$
+
+\section*{Problem 20}
+I prove through induction.
+\begin{description}
+	\item [Base Case:] $n = 0$
+	There are only two possible outputs for $\hat{\delta(u, v)}$; if $u,\ v$ are distinct, then it's not possible for the automaton to reach $u$ and therefore $\hat{\delta(u,v)}= \emptyset$. If $u = v$, then the automaton can reach $v$ simply by reading the empty string. Therefore the transition matrix is $\{\lambda \}$ if $u =v$, else $\emptyset$, which is the definition of $I$, which is $A^0$. $\checkmark$
+	
+	\item [Inductive Step:] $(A^{n+1})_{uv} =$
+	\begin{align*}
+		&(A^n)_{uw} * (A_{wv}) &\text{def. of $A^{n+1}$} \\
+		&\{x \in \Sigma^* \mid\ |x| = n \wedge \hat{\delta(u,x)} = w\} * \{a \in \Sigma \mid \delta(w, a) = v\} &\text{ind. hypothesis}\\
+		&\{ xa \in \Sigma^* \mid |xa| = n+1 \wedge \hat{\delta(u, xa)} = v \} &\text {concat., def of $\hat{\delta}$}
+	\end{align*}
+	Defining $b$ to be the concatenation of $x, a$, we arrive at the following:
+	\[\{b \in \Sigma^* \mid\ \abs{b}= n +1 \wedge \hat{\delta(u, b) = v} \}\ \checkmark \]
+	
+
+\end{description}
+
+
 
 
 \section*{Problem 21}
