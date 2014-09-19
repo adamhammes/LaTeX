@@ -15,9 +15,30 @@
 \maketitle
 
 \section*{Problem 19}
-Consider a DFA $M = (Q, \Sigma = \{0,1\}, \delta, s, F)$. I define an "accepted" string $a$ to be a string for which $ \exists\ b \in \{0,1\}^*$ such that $M$ accepts $ab$; that is, there exists a path in the DFA from $a$ to an accepting state. Note that by this definition, $\lambda$ is an accepted string for any DFA with $F \neq \emptyset$.
+Consider a DFA $M$. I define a "good" string $a$ to be a string for which $ \exists\ b \in \Sigma^*$ such that $M$ accepts $ab$; that is, there exists a path in the DFA from $a$ to an accepting state. Note that by this definition, $\lambda$ is a good string for any DFA with $F \neq \emptyset$.
 
-Now, consider a string 
+Now, consider a string $s$ that is rejected by a $M$. While reading $s$, after some specific bit it became impossible for $M$ to accept $s$; that is, everything before the bit made up a good string, which concatenated with $b$ makes up a string that is "bad". I call this bit a mistake.
+
+The set $N_2(A)$ contains all the strings that are at most Hamming distance 2 away from $A$. With respect to the DFA that decides $A$, which I will call $M = (Q, \Sigma = \{0,1\}, \delta, s, F)$, the strings in $N_2(A)$ can have at most two mistakes; therefore the NFA that decides $N_2(A)$ can be very similar to $M$, but with the additional task of counting the number of mistakes. In the following paragraphs I will describe this NFA, which I will call $N$.  
+
+The states in $N$ have two parts; first, a state $q \in Q$ which keeps track of what state we are in; second, a number $n \in \{0, 1, 2\}$ that keeps track of how many mistakes we have made. The alphabet is the same as in $M$, $\Sigma$.
+
+The transition function is very similar to that of $M$. Consider the two possibilities when in state $(q, n)$ and reading a bit $b$:
+\begin{enumerate}
+	\item $b$ is not a mistake
+	\item $b$ is a mistake
+\end{enumerate}
+
+If $b$ is not a mistake, then our job is easy; we simply go the state $M$ would if we had read $b$ while in $q$, and the number of mistakes; put formally, when not reading a mistake \[ \Delta( (q, n), b ) = (\delta( q, b), n) \text{ if $b$ is not a mistake} \].
+
+If $b$ is a mistake , our job is a little complex, and depends on what $n$ is. If $n$ is 2, then we have already made two mistakes and $N$ should reject whatever string we've been reading. In an NFA, this is accomplished by simply not defining the transition. If $n$ is one or two, we can tolerate a mistake. The question is, what state do we go to? 
+
+Obviously, $n$ will be increased by one to account for the mistake we just read. Perhaps more subtly, our transition should pretend that we had read the opposite value of the mistake; this allows us to continue on our job of following $M$ while keeping track of how mistakes we've made. Borrowing the notation $\overline{b}$ to mean the logical negation of $b$, we can extend our $\Delta$ definition as follow:
+	\[ \Delta( (q, n), b) = (\delta(q, \overline{b}), n+1) \text{ if $b$ is a mistake and $n \neq$ 2}\]
+	
+Finally, we arrive at the last two parts of our NFA, the starting and accepting states. $N$ will start where $M$ did, and with zero mistakes; thus, $S = \{ (s, 0) \}$. Likewise, $N$ will accept the states $M$ did, as long as haven't made too many mistakes, so the accepting states are $(f, n )\ |\ f \in F $ and $ n \in \{0, 1, 2\}$.
+
+Let us now examine $N$ intuitively. If a string is in $N_2(A)$, $N$ will find the related string in $A$ and follow it, using the mistake transitions at most twice. If a string is not in $N_2(A)$, then $N$ will "jam" on some state after it runs out of mistakes. Because $N$ decides any $N_2(A)$ such that $A$ is regular, if $A$ is regular, $N_2(A)$ is regular. $\checkmark$
 
 
 
