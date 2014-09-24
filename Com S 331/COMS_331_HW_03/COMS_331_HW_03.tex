@@ -14,6 +14,22 @@
 \author{Adam Hammes $\bullet$ hammesa@iastate.edu }
 \maketitle
 
+\section*{Problem 18}
+Let $M = (Q, \Sigma, \delta, s, F)$ be a DFA that decides a language $A$. I construct an NFA $N$ that decides rev $ A$.
+
+The basic intuition behind $N$ is it does everything backwards. It starts in one of $M$'s accept states, it ends in $s$, the transition function is backwards, etc.
+
+First, the states in $N$ are the same as in $M$, as is the alphabet $\Sigma$. The set of start states $S$ is the same as the accepting states $F$ in $M$. The accepting state is the start state $s$.
+
+The transition function is slightly trickier. We want to backwards through the states, so intuitively if a state $\delta(x, a \in \Sigma) = y$, then we want $\Delta(y, a) = x$. Note that since there can be multiple states that lead to $y$, $\Delta : Q \rightarrow \mathbb{P}(Q)$, which is perfectly okay in an NFA. A more formal definition is as follow:
+	\[ \Delta(q \in Q, a \in \Sigma) = \{ p \mid \delta(p, a ) = q \} \]
+	
+Let's examine how $N$ works a little more. Think of a string $s= b_1, b_2, \dots, b_{n-1}, b_n$ accepted by $M$. Because $M$ accepts $s$, there exists a sequence of states starting at $s$ and ending in a state in $F$. Our NFA non-deterministically chooses which state in $F$ to start at, then follows the bits $b_n, b_{n-1}, \dots, b_2, b_1$ back to the accepting state ($s$). Therefore for any string $s \in A$, $N$ accepts rev $s$.
+
+Now consider a string not accepted by $D$. Because the string is not accepted by $D$, the path we used earlier no longer exists. Any attempt by the NFA to trace backwards will inevitably hit a dead-end/jam. Therefore $N$ accepts a string only if the reverse is accepted by $D$. Together with the previous paragraph, we can conclude that for any regular language $A \in \Sigma^*$, we can construct an NFA that decides rev $A$. $\checkmark$
+
+
+
 \section*{Problem 19}
 Consider a DFA $M$. I define a "good" string $a$ to be a string for which $ \exists\ b \in \Sigma^*$ such that $M$ accepts $ab$; that is, there exists a path in the DFA from $a$ to an accepting state. Note that by this definition, $\lambda$ is a good string for any DFA with $F \neq \emptyset$.
 
@@ -52,8 +68,8 @@ I prove through induction.
 		&\{x \in \Sigma^* \mid\ |x| = n \wedge \hat{\delta(u,x)} = w\} * \{a \in \Sigma \mid \delta(w, a) = v\} &\text{ind. hypothesis}\\
 		&\{ xa \in \Sigma^* \mid |xa| = n+1 \wedge \hat{\delta(u, xa)} = v \} &\text {concat., def of $\hat{\delta}$}
 	\end{align*}
-	Defining $b$ to be the concatenation of $x, a$, we arrive at the following:
-	\[\{b \in \Sigma^* \mid\ \abs{b}= n +1 \wedge \hat{\delta(u, b) = v} \}\ \checkmark \]
+	Defining $x'$ to be the concatenation of $x, a$, we arrive at the following:
+	\[\{x' \in \Sigma^* \mid\ \abs{x'}= n +1 \wedge \hat{\delta(u, x') = v} \}\ \checkmark \]
 	
 
 \end{description}
