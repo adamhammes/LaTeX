@@ -18,6 +18,15 @@
 
 The starting states can be any possible subset of $Q$, for a total of $\mathbb{P}(Q) = 2^n$ possible different starting states. Similarly, the accepting states are also any possible subset of $Q$, so there are $2^n$ possible different accepting states.
 
+$\Delta$ maps a state/symbol tuple to a subset of $Q$. As discussed in lecture, the number of functions mapping from $a$ items to $b$ items is $n^m$; therefore we simply need to find $b$, the number of subsets of $Q$ and $a$, the number of possible state/symbol pairings.
 
+There are $n$ states and 2 different symbols, thus the number of pairings $a$ is $2n$. As discussed in the first two paragraphs, the number of possible subsets $b= |\mathbb{P}(Q)| = 2^n$. Putting the two numbers together, the number of possible $\Delta$ is $(2^n)^{2n} = 2^{2n^2}$.
+
+Now, these numbers are independent of each other- having a certain $S$ doesn't preclude options for $F$ for example- so to find the total number of NFAs with $Q = \{1, 2, \dots, n \}$ we simply multiply our three numbers together.
+	\begin{align*}
+		2^n \times 2^n \times 2^{2n^2} &= 2^{2n} \times 2^{2n^2} \\
+		&= 2^{2n + 2n^2} \\
+		&= 2^{2n(n+1)} \ \checkmark
+	\end{align*}
 
 \end{document}
