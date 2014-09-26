@@ -66,4 +66,12 @@ With our NFA now defined, let's examine what actually happens. As we feed in a s
 
 Since our NFA solves $A$, and $A$ is any finite language, any finite language is regular.
 
+\section*{Problem 28}
+
+Let $A$ be $(01)^*\ ||\ (10)^*$. I define $A$ recursively:
+	\begin{itemize}
+		\item $\lambda \in A$
+		\item If $s \in A$, $s \cdot 01 \in A$ and $s \cdot 10 \in A$, where $\cdot$ is the concatenation operator.
+	\end{itemize}
+
 \end{document}
