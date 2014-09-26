@@ -51,6 +51,19 @@ Now, there are two facts we must consider about NFAs.
 
 Consider an NFA with $n$ states. By (1), we need only consider for this problem the possible NFAs with exactly $n$ states, since all smaller $n$ is a subset. A formula for the number of such an NFA was found in the previous exercise. If the number of possible NFAs is less than $2^{255}$, than by the Pigeonhole Principle/(2)/(1), the NFAs cannot decide every language $A$. Because the number of NFAs with 8 states is $2^{2*8(8+1)} = 2^{144} < 2^{255}$, the NFAs cannot decide every possible language $A$; therefore we need more than 8 states. $\checkmark$
 
+\section*{Problem 27}
+Consider any finite language $A$. I construct an NFA $N = (Q, \Sigma, \Delta, S, F)$ that decides $A$.
 
+First, let's define $Q$. The states of our automata are all the prefixes of the strings in $A$, including $\lambda$ and the strings themselves.
+
+The starting/accepting states reveal a little more about the NFA. Our set of start states is simply the singleton set $\{\lambda\}$; we accept every string (remember that we are representing our states as strings) that is in $A$. This is more simply expressed as $F = A$.
+
+Finally, we arrive at $\Delta$. Our definition of $\Delta$ is actually pretty simple- I'll write it formally then explain it.
+	\[ \Delta( q \in Q, a \in \Sigma ) = \{ qa \mid \exists s \in A \text{ such that } qa \sqsubseteq s \} \]
+In English, delta of a state (represented by a string)  and a symbol is the concatenation of the two, if that concatenation is a prefix of a string in $A$. If the concatenation is not such a prefix, then the delta of that state and symbol is not defined/$\emptyset$.
+
+With our NFA now defined, let's examine what actually happens. As we feed in a string $s \in A$, our NFA follows down a chain of prefixes in increasing size, starting with $\lambda$, that eventually ends in the state $s$. $s \in A = F$, so the NFA accepts $s$. If we feed in a string that is not in $A$, we'll eventually reach a point where our NFA cannot find a suitable prefix in $Q$, and will jam.
+
+Since our NFA solves $A$, and $A$ is any finite language, any finite language is regular.
 
 \end{document}
