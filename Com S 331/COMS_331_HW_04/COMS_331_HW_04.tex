@@ -73,5 +73,15 @@ Let $A$ be $(01)^*\ ||\ (10)^*$. I define $A$ recursively:
 		\item $\lambda \in A$
 		\item If $s \in A$, $s \cdot 01 \in A$ and $s \cdot 10 \in A$, where $\cdot$ is the concatenation operator.
 	\end{itemize}
+	
+\section*{Problem 29}
+Since $A, B$ are regular sets, there exist DFAs $M_1, M_2$ that solve $A, B$ respectively. The NFA that solves $A\ ||\ B$ will do so by keeping track of two "pebbles" that represent the state $M_1, M_2$, and non-deterministically advancing one pebble as we read in a string.
+
+Our start state is the singleton set $s_1 \times s_2$; similarly, our accepting states are $F_1 \times F_2$. Intuitively, we set the two pebbles down at the start states of $M_1$ and $M_2$, and accept only if both pebbles are in their respective accepting states.
+
+As we read in a string, we need to somehow advance exactly one pebble (since the symbol has to belong to either $A$ or $B$); non-determinism allows us to move exactly the right pebble. Thus $\Delta$ applies the transition function to exactly half of our state (which is an ordered pair), leaving the other part the same. Formally,
+	\[ \Delta( (q_1, q_2) \in Q, a \in \Sigma ) = \{ (\delta_1(q_1, a), q_2),\ (q_1, \delta_2(q,a)) \} \]
+	
+Since each string involved in the shuffle will eventually have all of its symbols read in, each DFA will have its pebble moved all the way to an accepting state and accept the string. If the NFA tries to read an invalid string, one of the DFAs will not reach an accepting state and thus the NFA will reject the string. Thus, the shuffle of any two regular languages is also regular. $\checkmark$
 
 \end{document}
