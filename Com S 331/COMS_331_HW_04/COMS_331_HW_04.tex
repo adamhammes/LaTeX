@@ -41,4 +41,14 @@ Using only two symbols, the number of possible strings of length $n$ is $2^n$; a
 	\[ \sum _{n=0} ^7 2^n = 255 \] 
 strings of length seven or less. Our language contains some subset of these strings, so the number of possible languages $A$ is $2^{255}$.
 
+Now, there are two facts we must consider about NFAs. 
+	\begin{enumerate}[(1)]
+		\item Any $n$ state NFA can be perfectly decided by an NFA with $n+1$ states, by copying the states of the former NFA and adding "junk" states that don't interact with the rest of the NFA. 
+		
+		Therefore \{languages decided by $n \leq 7$ state NFAs \} $\subset$ \{languages decided by 8 state NFAs\}.
+		\item An NFA $N$ decides exactly one language, L($N$). This follows from the definition of what it means for an NFA to solve a language.
+	\end{enumerate}
+
+Consider an NFA with $n$ states. By (1), we need only consider for this problem the possible NFAs with exactly $n$ states, since all smaller $n$ is a subset. A formula for the number of such an NFA was found in the previous exercise. If the number of possible NFAs is less than $2^{255}$, than by the Pigeonhole Principle/(2)/(1), the NFAs cannot decide every language $A$. Because the number of NFAs with 8 states is $2^{2*8(8+1)} = 2^144 < 2^255$, the NFAs cannot decide every possible language $A$; therefore we need more than 8 states. $\checkmark$
+
 \end{document}
