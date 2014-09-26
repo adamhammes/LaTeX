@@ -111,7 +111,7 @@ By repeatedly applying the process above to every pair of repeated states, we ev
 
 Now, consider an NFA with $k$ states that accepts at least one string, $s$. Since $s$ is accepted, the sequence that describes it begins with $a \in S$, and ends in $b \in F$. Because of Lemma 2, we can assume without loss of generality that there exists a sequence $x$ with the same starting and ending states as $s$, but with no repeated states (this could just be the same sequence); let the string described by this sequence be $s'$. 
 
-$x$ has no repeated states, and thus has at most $k$ length, implying that $|s'| \leq k -1$. $\checkmark$
+Since $x$ starts in a starting state and ends in an accepting state, it is accepted by the NFA. Also, $x$ has no repeated states, and thus has at most $k$ length, implying that $|s'| \leq k -1$. $\checkmark$
 
 
 
