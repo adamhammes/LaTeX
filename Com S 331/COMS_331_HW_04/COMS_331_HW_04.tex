@@ -49,6 +49,8 @@ Now, there are two facts we must consider about NFAs.
 		\item An NFA $N$ decides exactly one language, L($N$). This follows from the definition of what it means for an NFA to solve a language.
 	\end{enumerate}
 
-Consider an NFA with $n$ states. By (1), we need only consider for this problem the possible NFAs with exactly $n$ states, since all smaller $n$ is a subset. A formula for the number of such an NFA was found in the previous exercise. If the number of possible NFAs is less than $2^{255}$, than by the Pigeonhole Principle/(2)/(1), the NFAs cannot decide every language $A$. Because the number of NFAs with 8 states is $2^{2*8(8+1)} = 2^144 < 2^255$, the NFAs cannot decide every possible language $A$; therefore we need more than 8 states. $\checkmark$
+Consider an NFA with $n$ states. By (1), we need only consider for this problem the possible NFAs with exactly $n$ states, since all smaller $n$ is a subset. A formula for the number of such an NFA was found in the previous exercise. If the number of possible NFAs is less than $2^{255}$, than by the Pigeonhole Principle/(2)/(1), the NFAs cannot decide every language $A$. Because the number of NFAs with 8 states is $2^{2*8(8+1)} = 2^{144} < 2^{255}$, the NFAs cannot decide every possible language $A$; therefore we need more than 8 states. $\checkmark$
+
+
 
 \end{document}
