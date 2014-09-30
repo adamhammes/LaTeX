@@ -68,7 +68,7 @@
 \begin{enumerate}[(a)]
 	\item
 		\begin{align*}
-			E[Z] &= \frac{1}{n} (n \times E[X]) \\
+			E[Z] &= \frac{1}{n} E[n \times E[X]] \\
 			&= E[X] \\
 			&= 0.9 \\
 		\end{align*}
@@ -91,19 +91,19 @@ We can also do this with variance; in addition, since the image and probabilitie
 \section*{Problem 5}
 \begin{enumerate}[(a)]
 	\item 
-	$E[\text{100 shares of A}] = -2 \times 0.5 + 2 \times 0.5 = 0$
+	$E[\text{100 shares of A}] = 100(-2 \times 0.5 + 2 \times 0.5) = 0$
 	
-	$Var[\text{100 shares of A} ] = (-2 -0)^2  \times 0.5 + (2-0)^2 \times 0.5 = 4$
+	$Var[\text{100 shares of A} ] =100( (-2 -0)^2  \times 0.5 + (2-0)^2 \times 0.5) = 400$
 	
 	\item
-	$E[\text{100 shares of B}] = 4 \times 0.2 + -1 \times 0.8 = 0$
+	$E[\text{100 shares of B}] = 100(4 \times 0.2 + -1 \times 0.8) = 0$
 	
-	$Var[\text{100 shares of B}] = (4-0)^2 \times 0.2 + (-1 - 0)^2 \times 0.8 = 4$
+	$Var[\text{100 shares of B}] = 100((4-0)^2 \times 0.2 + (-1 - 0)^2 \times 0.8) = 400$
 	
 	\item
 	The expected value of each function is 0, so mixing our strategies just gives us $E[\text{mixed strategy}] = 0$
 	
-	The formula for independent $X$ and $Y$ is $Var(X+Y) = Var(X) +Var(Y)$; since the two strategies each account for half of the total shares, $Var[\text{mixed strategy}] = 4$.
+	The formula for independent $X$ and $Y$ is $Var(X+Y) = Var(X) +Var(Y)$; since the two strategies each account for half of the total shares and have identical variance, $Var[\text{mixed strategy}] = 400$.
 
 \end{enumerate}
 
@@ -113,12 +113,17 @@ We can model the search engine crawling web sites as individual Bernoulli experi
 
 \begin{itemize}
 	\item
-	Since we are conducting of searches (Bernoulli experiments), we can model this problem as a Bernoulli distribution. 
-	\[ P_x(5) = 0.2^5\ (1-0.2)^5\ \binom{10}{5}  \approx 0.026\]
+	Since we are conducting a set number of searches (Bernoulli experiments), we can model this problem as a Bernoulli distribution. 
+	\begin{align*}
+		P( X \ge 5) &= 1 - P(X \le 4) \\
+		&= 1 - \sum _{i=1} ^4 0.2^i\ (1-0.2)^{10-i}\ \binom{10}{i}  \\
+		& \approx 0.0328
+	\end{align*}
+
 	
 	\item 
 	We are concerned with the number of Bernoulli experiments required before success; a geometric distribution is natural.
-	\[P(x \ge 5) = 1- F_x(4) = 1 -(1- (1-0.2)^4) = 0.4096 \]
+	\[P(x \ge 5) = 1- F_x( x \le 4) = 1 -(1- (1-0.2)^4) = 0.4096 \]
 	
 \end{itemize}
 \end{document}
