@@ -85,8 +85,24 @@ We can also do this with variance; in addition, since the image and probabilitie
 	
 	\item
 	The expected value of each function is 0, so mixing our strategies just gives us $E[\text{mixed strategy}] = 0$
+	
+	The formula for independent $X$ and $Y$ is $Var(X+Y) = Var(X) +Var(Y)$; since the two strategies each account for half of the total shares, $Var[\text{mixed strategy}] = 4$.
 
 \end{enumerate}
+
+
+\section*{Problem 6}
+We can model the search engine crawling web sites as individual Bernoulli experiments with $\rho = 0.2 = $ probability that the site contains the keyword.
+	\begin{itemize}
+	\item
+	Since we are conducting of searches (Bernoulli experiments), we can model this problem as a Bernoulli distribution. 
+	\[ P_x(5) = 0.2^5\ (1-0.2)^5\ \binom{10}{5}  \approx 0.026\]
+	
+	\item 
+	We are concerned with the number of Bernoulli experiments required before success; a geometric distribution is natural.
+	\[P(x \ge 5) = 1- F_x(4) = 1 -(1- (1-0.2)^4) = 0.4096 \]
+	
+	\end{itemize}
 
 
 \end{document}
