@@ -27,6 +27,80 @@
 
 See Figures 34a, 34b, 34c
 
+\section*{Problem 35}
+Let $M = (Q,\ \Sigma,\ \delta,\ s,\ F)$ be a DFA for $A$.
+
+General intuition of an NFA $M'$ that solves MiddleThirds $A$: We have five pebbles- red, blue, green, yellow, black- on the automaton at any time. The red pebble starts on $s$, the blue/green pebbles on a nondeterministically chosen state of $M$, and the yellow/black pebbles on another such chosen state. While the pairs of pebbles each start in the same place, the blue and yellow pebbles never change state; they are used as "markers" for the 1/3 and 2/3 parts of the string.
+
+As we read in a string $x$, the red and yellow pebbles move forward according to some nondeterministically chosen symbol; the green pebble moves forward according to the input symbol. We accept a string if three conditions are met:
+\begin{enumerate}
+	\item The red pebble occupies the same state as the blue pebble
+	\item The green pebble occupies the same state as the yellow pebble
+	\item The black pebble is in an accepting state of $M$
+\end{enumerate}
+
+Since the green pebble follows the input symbols, it represents our string $x$  By the three conditions, we know that there are two strings $m$ and $n$, represented by the path that the red and black take, such that $|m| = |x| = |n|$. We also know from 1 and 2 that $mxn$ represents a string in $M$, thus the string $x$ which we accepted is in MiddleThirds $M$. Let's define this NFA, $M' = (Q',\ \Sigma,\ \Delta',\ S', F')$, more formally.
+
+\begin{description}
+	\item[$Q'$] We need to keep track of pebbles of (potentially) any arrangement of five pebbles; thus $Q' = Q^5$.
+	\item[$S'$] First, our red pebble starts at the beginning, or $s$. There is no restriction of the blue/green pebbles or the black/yellow pebbles, other than they start at the same state, so $S' = \{(s,\ a,\ a,\ b,\ b) \mid a,b \in Q\}$.
+	\item[$F'$] Our red pebble has caught up our blue pebble, and the same with green and yellow. Black is an accepting state. $F' = \{(a,\ a,\ b,\ b,\ c) \mid c \in F \}$.
+	\item[$\Delta'$] Two pebbles, blue and yellow, don't change no matter the input. The green pebble, following $x$, follows the original $\delta$ for the input symbols. Finally, the red and black pebbles go to the set of states that *any* input symbol could lead them to.
+	\[ \Delta'((u,\ v,\ w,\ y,\ z),\ a) = \{(\delta(u,b),\ v,\ \delta(w,a),\ y,\ \delta(z,c)) \mid b,c \in \Sigma \} \]
+
+\end{description}
+
+A lemma relating $\hat{\Delta}$ to $\hat{\delta}$ will be useful in our final proof, so I prove one next.
+
+
+
+Lemma 1: For any $x \in \Sigma^*$, 
+	\[ \hat{\Delta}'(S', x) = \{(\hat{\delta}(s,m),\ a,\ \hat{\delta}(a,x),\ b,\ \hat{\delta}(b,n)\ \mid m,n \in \Sigma^*\}\]
+	
+	Proof by induction on $x$. Base case: 
+\begin{align*}
+	\hat{\Delta}'(S', \lambda) &= S' \\
+	&= \{(s,a,a,b,b) \mid a,b \in Q\} \\
+	&= \{ ( \hat{\delta}(s,m),\  a,\ \hat{\delta}(a, \lambda),\ b,\ \hat{\delta}(b,n)) \mid m,n  \in \Sigma^0\}\ \text{\checkmark}	
+\end{align*}
+
+Inductive step: Assume
+	\[\hat{\Delta}'(s',\ x) = \{ (\hat{\delta}(s,m),\ a,\ \hat{\delta}(a,x),\ b,\ \hat{\delta}(b,n)) \mid a,b \in Q \wedge m,n \in \Sigma^{|x|}\} \]
+	
+Prove
+	\[\hat{\Delta}'(s',\ xc) = \{ (\hat{\delta}(s,md),\ a,\ \hat{\delta}(a,xc),\ b,\ \hat{\delta}(b,ne)) \mid a,b \in Q \wedge m,n \in \Sigma^{|x|}\} \]
+	
+$\hat{\Delta}(S', xc)$
+
+\begin{align*}
+&= \bigcup _{(u,a,w,b,y) \in \hat{\Delta}(S', x)} \hat{\Delta}'(\hat{\Delta}'(x),\ c)
+\\
+&= \bigcup _{a,b\ \in Q,\ n,m\ \in\ \Sigma^{|x|}} \Delta'((\hat{\delta}(s,m),\ a,\ \delta(\hat{\delta}(a, x),c),\ b, \delta(\hat{\delta}(b,n)), c) 
+\\
+&= \bigcup _{a,b\ \in Q,\ n,m\ \in\ \Sigma^{|x|}} \{ \delta(\hat{\delta}(s,m),d),\ a,\ \delta(\hat{\delta}(a, x), c),\ b,\ \delta(\hat{\delta}(b,n),e) \mid d,e \in \Sigma \}
+\\
+&= \{ ( \hat{\delta}(s, md),\ a,\ \hat{\delta}(a, xc),\ b,\ \hat{\delta}(b, ne)) \mid a,b \in Q \wedge m,n \in \Sigma^{|x|} \wedge d,e \in \Sigma \} \text{\checkmark}
+\end{align*}
+
+We now can prove that L(M') = MiddleThirds L(M). For any $x \in \Sigma^*$, $x\in $ L(M')
+\begin{align*}
+&\iff \hat{\Delta}'(S', x)\ \bigcap \ F' \neq \emptyset
+\\
+&\iff \{( \hat{\delta}(s,m), a, \hat{\delta}(a, x),\ b,\ \hat{\delta}(b,n) ) \mid n,m \in \Sigma^{|x|},\ a,b \in Q \}
+\\
+&\bigcap\ \{w,\ w,\ u,\ v,\ v) \mid w,v \in Q\ u \in F' \} \neq \emptyset
+\\
+&\iff \exists m,n \in \Sigma^{|x|},\ a,b \in Q\ \hat{\delta}(s,m) = a,\ \hat{\delta}(a, x) = b,\ \hat{\delta}(b, n) \in F
+\\
+&\iff \exists m,n \in \Sigma^{|x|}\ \hat{\delta}(\hat{\delta}(\hat{\delta}(s, m), x), n) \in F
+\\
+& \iff \exists m,n \in \Sigma^{|x|}\ \hat{\delta}(s, mxn) \in F
+\\
+& \iff \exists m,n \in \Sigma^{|x|}\ mxn \in \text{ L(M)}
+\\
+&\iff x \in \text{ MiddleThirds(M) \checkmark}
+\end{align*}
+
 \section*{Problem 36}
 
 See Figures 36a, 36b
