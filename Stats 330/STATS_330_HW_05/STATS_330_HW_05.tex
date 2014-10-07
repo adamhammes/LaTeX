@@ -14,5 +14,25 @@
 \author{Adam Hammes $\bullet$ hammesa@iastate.edu $\bullet$ Section B}
 \maketitle
 
+\section*{Problem 1}
+We can model a-c as a Bernoulli distribution with $\rho = .08$ and $n=10$; d is a geometric distribution, again with $\rho = .08$.
+
+\begin{enumerate}[(a)]
+	\item $P_x(2) = .08^2 \times (1-.08)^8 \times \binom{10}{2} = 0.148$
+	\item
+		\begin{align*}
+			P(x \leq 2)&= P_x(0) + P_x(1) + P_x(2) \\
+			&= .434 + .378 + .148 \\
+			&=0 .960
+		\end{align*}
+	\item
+		\begin{align*}
+			P( 1 < x < 4) &= P_x(2) + P_x(3) \\
+			&= .148 + .034 \\
+			&= 0.182
+		\end{align*}
+	\item $P( x > 3 ) =1- P( x \geq 4) = 1-(1- (1-.08)^4) = 0.716$
+\end{enumerate}
+
 
 \end{document}
