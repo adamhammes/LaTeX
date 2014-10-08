@@ -2,30 +2,50 @@
 
 \usepackage{enumerate}
 \usepackage{amsmath}
+\usepackage{color}
+\usepackage{listings}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+	basicstyle=\footnotesize, 				% size of fonts used for the code
+	breaklines=true, 								% automatic line breaking only at whitespace
+	captionpos=b,									% sets the caption-position to bottom
+	commentstyle=\color{mygreen},		% comment style
+	keywordstyle=\color{blue},				% keyword style
+	stringstyle=\color{mymauve},			% string literal style
+}
+
+\newenvironment{equ}{$\hfill\begin{aligned}[t]}{\end{aligned}\hfill \null$}
+
+
 
 \begin{document}
 
-\title{Stats 330 Assignment 5}
+\title{\vspace{-8ex}Stats 330 Assignment 5}
 \author{Adam Hammes $\bullet$ hammesa@iastate.edu $\bullet$ Section B}
 \maketitle
 
 \section*{Problem 1}
 We can model a-c as a Bernoulli distribution with $\rho = .08$ and $n=10$; d is a geometric distribution, again with $\rho = .08$.
 
-\begin{enumerate}[(a)]
+
+\begin{enumerate}[(a)]	
 	\item $P_x(2) = .08^2 \times (1-.08)^8 \times \binom{10}{2} = 0.148$
 	\item
-		\begin{align*}
+		\begin{equ}
 			P(x \leq 2)&= P_x(0) + P_x(1) + P_x(2) \\
 			&= .434 + .378 + .148 \\
 			&=0 .960
-		\end{align*}
+		\end{equ}
 	\item
-		\begin{align*}
+		\begin{equ}
 			P( 1 < x < 4) &= P_x(2) + P_x(3) \\
 			&= .148 + .034 \\
 			&= 0.182
-		\end{align*}
+		\end{equ}
 	\item $P( x > 3 ) =1- P( x \geq 4) = 1-(1- (1-.08)^4) = 0.716$
 \end{enumerate}
 
@@ -94,10 +114,18 @@ We can model a-c as a Bernoulli distribution with $\rho = .08$ and $n=10$; d is 
 
 
 \section*{Problem 6}
-I will approximate a binomial distribution with a Poisson distribution, $\lambda = 4000/800 = 5$.
+I approximate as a Poisson distribution, $\lambda = 4000/800 = 5$.
+
 
 \begin{enumerate}[(a)]
-	\item 
+	\item $P( x < 10 ) \approx \sum \limits_{i=0} ^9 \dfrac{e^{-5}\ -5^{i}}{i!}$
+	
+	I calculated the sum with the following python script:
+	
+	\lstinputlisting[language=Python]{6a.py}
+	
+	which printed the answer,  $0.968$.
+
 	\item $P(10) \approx \dfrac{e^{-5}\ -5^{10}}{10!} \approx .018$
 \end{enumerate}
 
