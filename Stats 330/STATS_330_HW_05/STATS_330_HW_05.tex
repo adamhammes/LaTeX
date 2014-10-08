@@ -7,7 +7,9 @@
 
 \newenvironment{equ}{$\hfill\begin{aligned}[t]}{\end{aligned}\hfill \null$}
 
-
+\lstset{
+    tabsize=2
+}
 
 \begin{document}
 
@@ -111,7 +113,7 @@ I approximate as a Poisson distribution, $\lambda = 4000/800 = 5$.
 	
 	\lstinputlisting[language=Python]{6a.py}
 	
-	which printed the answer,  $0.968$.
+	which outputs the answer,  $0.968$.
 
 	\item $P(10) \approx \dfrac{e^{-5}\ -5^{10}}{10!} \approx .018$
 \end{enumerate}
