@@ -3,6 +3,7 @@
 \usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{parskip}
 
 \begin{document}
 
@@ -17,6 +18,24 @@
 \section*{Problem 42}
 
 See Figures 42 a-c
+
+\section*{Problem 43}
+
+Let $M = (Q,\Sigma,\delta,s,F)$ be a DFA that decides a language A. I construct an NFA $N$ that decides $A'$.
+
+The rough intuition for N is that it consists of two DFAs, top and bottom. N will read in a string on the bottom DFA until it nondeterministically "pretends" to read a 1 in addition to the current symbol, at which point it jumps to the top DFA and finishes reading the string.
+
+The states in $N$ are $Q \times \{B,T\}$; each of the top and bottom automata gets a copy of the states in $M$. Our alphabet is the same. We start in the bottom DFA, so $S = (s,B)$. We only accept a string if we have nondeterministically read a 1 and jumped to the top DFA, so our accept states are $F \times \{T\}$.
+
+Finally, we come to our transition function. $\Delta$ maps from $((q \in Q, a \in \{B,T\}) , b \in \Sigma)$ to $ \mathbb{P}(Q \times \{B,T\}))$, and is defined as the following:
+
+\begin{itemize}
+	\item If $a = B$: We are in the bottom DFA, so our options are to either read the symbol as normal or "pretend" to read a 1, jumping up to the top DFA and then the symbol. Therefore $\Delta((q, B), b) = \{ (\delta(q, b), B),\ (\ (\delta( \delta( q, 1), b)),\  T) \}$.
+	
+	\item If $a = T$: A simpler case. We have already placed our 1 into the string, so we must keep reading as normal. $\Delta((q, T), b) = \{ (\delta(q, b),\ T) \}$
+\end{itemize}
+
+Now consider $N$ reading a string $s$. We accept $s$ iff we end in an accepting state of A, in the top DFA; the only way we can move to the top is by pretending to read a 1 after some number of bits in $s$. Let all the bits before our imaginary 1 be referred collectively as $x$, and the bits after as $y$. With this new notation, we can write that $N$ accepts a string iff $ s = x1y \in A$ which is equivalent to $L(N) = A'$ by the definition of $A'$. $\checkmark$
 
 \section*{Problem 45}
 
