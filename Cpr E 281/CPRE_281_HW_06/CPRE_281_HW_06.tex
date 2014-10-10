@@ -30,10 +30,10 @@
 
 \section*{Problem 3}
 \begin{enumerate}[(a)]
-	\item 13
-	\item 21
-	\item 78
-	\item 256
+	\item $2^3+ 2^2+2^0=13$
+	\item $2^4+2^2+2^0 =21$
+	\item $2^6 + 2^3 + 2^2 +2^1 =78$
+	\item $2^8 =256$
 \end{enumerate}
 
 \section*{Problem 4}
@@ -56,6 +56,7 @@ Let each finger represent a binary number, with an extend finger representing a 
 \end{enumerate}
 
 \section*{Problem 7}
+For this problem and problem 8, I used the 4-bit substitution technique taught in recitation, i.e. $0000_2 = 0_{16}$, $0001_2 = 1_{16}$, etc.
 \begin{enumerate}[(a)]
 	\item D
 	\item 15
@@ -72,9 +73,9 @@ Let each finger represent a binary number, with an extend finger representing a 
 
 \section*{Problem 9}
 \begin{enumerate}[(a)]
-	\item 7B
-	\item D2
-	\item 3FF
+	\item $123 = 7 \times 16 + 11 =$ 7B
+	\item $210 = 13 \times 16 + 2 =$ D2
+	\item $1023 = 1024 -1 = 400-1 = $ 3FF
 \end{enumerate}
 
 \section*{Problem 10}
@@ -83,6 +84,23 @@ Let each finger represent a binary number, with an extend finger representing a 
 	\item 10 * 16 + 1 * 1 = 161
 	\item 3* 256 + 13 * 16 + 8 * 1 = 984
 \end{enumerate}
+
+\section*{Problem 11}
+Let $b$ be the unknown base.
+\begin{align*}
+5(8)^2 - 5b(8) + b^2 + 2b + 5 &= 0 \\
+320 - 40b+b^2+2b+5 &= 0 \\
+b^2 -38b+ 325 &= 0 \\	
+b = 13, 25 \\
+\end{align*}
+
+To find which solution is correct we must use the other solution to the original equation, 5.
+\begin{align*}
+5(5)^2 - 5(13)(5) +13^2+2(13)+5 &\stackrel{?}{=} 0\\
+0 &= 0\ \checkmark
+\end{align*}
+
+Therefore $b$ = 13. By making some very unfounded assumptions about Martian anatomy, we can also conclude that Martians had 13 fingers.
 
 \section*{Problem 12}
 \begin{enumerate}[(a)]
@@ -102,7 +120,20 @@ Let each finger represent a binary number, with an extend finger representing a 
 \begin{enumerate}[(a)]
 	\item 1010
 	\item 1111
-	\item 0101
+	\item 0110
+\end{enumerate}
+
+\section*{Problem 15}
+\begin{enumerate}[(a)]
+\item
+	$1111_2+0001_2 =0000_2$; no overflow
+\item
+	$1000_2+1110_2 = 0110_2$; overflow occurs
+\item
+	$1111_2 - 0001_2 = 1111_2 + 1111_2 = 1110_2$; overflow occurs
+\item
+	$1000_2-1101_2 = 1000_2 + 0011_2 = 0101_2$; no overflow
+
 \end{enumerate}
 
 \end{document}
