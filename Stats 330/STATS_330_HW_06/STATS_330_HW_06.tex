@@ -45,6 +45,43 @@
 		$\rho = \dfrac{\text{Cov}(X,Y)}{\text{Std}(X)\text{ Std}(Y)}$ = $\dfrac{0}{\sqrt{0.6 * 0.61}}$ = 0
 \end{enumerate}
 
+\section*{Problem 2}
+\begin{enumerate}[(a)]
+	\item First characteristic: never negative. $\checkmark$
+	
+	Second characteristic: sums to 1.
+	
+	\begin{equ}
+	\int _{-\infty} ^{\infty} |x|\ dx &= \int _{-1} ^1 x\ dx \\
+	&= \int _{-1} ^0 -x \ dx + \int _0 ^1 x\ dx \\
+	&= -x^2\ \big| _{-1} ^0 + x^2\ \big| _{0}	^1 \\
+	&= 1/2 + 1/2\\
+	&= 1\ \checkmark
+	\end{equ}
+	
+	\item $[-1,0) \cup (0, 1]$
+	
+	\item 
+		\[F(x) =
+		\begin{cases}
+			1/2-\dfrac{x^2}{2} & : x < 0 \vspace{1ex} \\ 
+			1/2 + \dfrac{x^2}{2} & : x \geq 0
+		\end{cases}
+		\]
+		
+	\item 
+		$E[X]$ = 0 (symmetric around 0)
+		
+		\begin{equ}
+			\text{Var}[X] &= \int _{-1} ^0 x^2 |x|\ dx - 0^2 \\
+			&= \int _{-1} ^0 -x * x^2 \ dx + \int _0 ^1 x * x^2\ dx \\
+			&= \int _{-1} ^0 -x^3 \ dx + \int _0 ^1 x^3 \ dx \\
+			&= 0.5
+		\end{equ}
+
+\end{enumerate}
+
+
 
 \section*{Problem 3}
 \begin{enumerate}[(a)]
@@ -52,10 +89,55 @@
 	\item $\lambda$
 	\item Exponential distribution with $\lambda = 10$
 	\item $F(10) = 1 - e^{-10 * 1/6} = 0.998$
-	\item Gamma( 10, $\lambda = 10$ )
-	\item $E[X] = 10/10 = 1$ hour
-	\item $P(X \leq 10) = P(X \geq 9)$
-
+	\item Gamma( $\alpha = 10$, $\lambda = 1/6$ )
+	\item $E[X] = 10/(1/6) = 60$ minutes
+	\item $P( X < 10 ) = 0.458$ (Poisson distribution with $\lambda = 1/6 \times 60$)
 \end{enumerate}
+	
+\section*{Problem 4}
+	
+\begin{enumerate}[(a)]
+	\item
+		We need to find a constant $C$ such that the area from 0 to 10 is 1.
+		
+		\begin{equ}
+			C \times \int _0 ^{10} (10-x^2)\ dx &= 1 \\
+			C \times (\dfrac{x^3}{3} -10x^2 +100x\ \big| _0 ^{10} ) &= 1 \\
+			C \times \dfrac{1000}{3} &= 1 \\
+			C &= \dfrac{3}{1000}
+		\end{equ}
+		
+	\item 
+		\begin{equ}
+			P(  1 \leq x \leq 2 ) &= \dfrac{3}{1000} \int _1 ^2 (10-x)^2\ dx \\
+			&= \dfrac{3}{1000} (\dfrac{x^3}{3} -10x^2 +100x\ \big| _1 ^2) \\
+			&= 0.217
+		\end{equ}
+\end{enumerate}
+
+\section*{Problem 5}
+
+Poisson distribution with $\lambda = 1/12 \times 60 = 5$. 
+
+	\begin{equ}
+		P(X \geq 3) &= 1 - P( X \leq 2) \\
+		&= 1-0.12 \\
+		&= 0.88
+	\end{equ}
+
+\section*{Problem 6}
+\begin{enumerate}[(a)]
+	\item Poisson distribution with $\lambda = 12/5 \times 9/12 = 9/5$.
+	
+		\begin{equ}
+			P(X \geq 3) &= 1- P( X \leq 2 ) \\
+			&= 1-0.731\\
+			&= 0.269
+		\end{equ}
+		
+	\item Because an exponential distribution is memory-less,  we can simply ignore the first twelve months and let $\lambda = 4/5$. $P( X \leq 3 ) = 0.047$
+\end{enumerate}
+
+
 
 \end{document}
