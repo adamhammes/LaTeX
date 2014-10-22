@@ -16,13 +16,27 @@
 
 $\Sigma = \{0,\ 1\} = \Gamma$
 
-\begin{tabular}{ c | c | c | c| c }
+\begin{tabular}{ c | c | c | c | c }
 			& $\vdash$ 			& 0 					& 1 				& \textvisiblespace \\
 			\hline
 	s		& a, $\vdash$, R 	& -					& -				& - \\
 	a		& - 						& r, -, -				& b, 1, R		&  c, \textvisiblespace , L\\
 	b		& -						& b, 0, r			& b, 1, R		& c, \textvisiblespace , L \\
 	c		& -						& t, -, -				& r, -, -			& -
+\end{tabular}
+
+
+\section*{Problem 51}
+
+$\Sigma = \{0,\ 1\} = \Gamma$
+
+\begin{tabular}{ c | c | c | c | c }
+			& $\vdash$				& 0 					& 1				& \textvisiblespace \\
+		\hline
+		s	& a, $\vdash$, R		& -					& -				& - \\
+		a	& -							& b, 0, R			& a, 1, R		& r, -, - \\
+		b	& -							& b, 0, R			& c, 1, R		& r, -, - \\
+		c	& -							& t, -, -				& a, 1, R		& r, -, -
 \end{tabular}
 
 
