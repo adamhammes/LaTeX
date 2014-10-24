@@ -83,5 +83,29 @@ $\delta$ is defined according to the following table:
 		b	& -							& r, -, -				& b, 1, R		& t, -, - \\
 \end{tabular}
 
+\section*{Problem 53}
+
+Intuition: First, we check if there are 0 a's, in which case we reject, or 1 a, where we accept. Then our machine $M$ will erase all a's but the first, additionally marking the rightmost one with a b. 
+
+Now we begin the loop; make the last a an \~a , letting us keep track of the original length. Then copy all the a's on the tape to the space right of \~a, up to and including \~a, effectively doubling the number of a's on the tape. If we try to overwrite our b with an \~a, accept because the original input had a power of two number of a's; if we overwrite b with a regular a, reject because the original input was not a power of two.
+
+
+
+
+
+\section*{Problem 56}
+
+Since $A$ and $B$ are recursive, there are Turing Machines that decide both of them, which I will call $M_A$ and $M_B$. I will construct a TM $N$ that decides $A \cup B$.
+
+The first thing that $N$ does is to replace each symbol to the right of the left end-marker with a pair of the same symbols, vertically stacked. The top symbols will serve as a tape for $M_A$, and the bottom a tape for $M_B$.
+
+The machine then simulates $M_A$ on the top tape symbols, moving the head as $M_A$ dictates and modifying the symbols as directed. If $M_B$ ever writes a symbol to a space that hasn't been divided up as in paragraph two, we do it as soon as $M_B$ writes the symbol. Since $A$ is recursive, $M_A$ is guaranteed to halt; once it does, we do one of two things depending on the halt state If $M_A$ accepted the string $x$, then $x \in A$ implying $x \in A \cup B$, so $N$ immediately accepts. 
+
+If $M_A$ rejects, we repeat the previous process, this time with $M_B$ and the bottom side of the tape, which has not been touched since we first made the two tapes. Again, if $M_B$ accepts, so does $N$. However, this time if $M_B$ rejects, $N$ also rejects.
+
+By simulating each machine separately, we can check if our string is in $A$ or in $B$; if it either, then we accept, else we reject. Therefore $N$ accepts an input iff the input is in $A \cup B$. $\checkmark$
+
+
+
 
 \end{document}
