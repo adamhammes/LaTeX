@@ -12,6 +12,17 @@
 \date{October 22, 2014}
 \maketitle
 
+\section*{Problem 49}
+
+Let $A$ be any infinitely large subset of $\{a^nb^n \mid n \geq 0\}$, $M = (Q, \Sigma, \delta, s, F)$ be any DFA. It suffices to prove that $L(M) \neq A$
+
+ Since $A$ is infinitely large, $\exists s=a^jb^j \in A,$ where $j > |Q|$. Since $j > |Q|$, by the Pigeonhole Principle $M$ passes through a state $q \in Q$ at least twice while reading $a^j$. Let $a^k$ be the string that travels the same path as $a^j$, but skipping the states from the first $q$ up to and including the second $q$. Note that since we are always removing at least one state, the second $q$, $k < j$.
+
+Because $a^k,\ a^j$ still end in the same state, $\hat{\delta}(a^k) = \hat{\delta}(a^j)$ which implies that by definition of $\hat{\delta}$ that $\hat{\delta}(a^jb^j) = \hat{\delta}(a^kb^j)$, so $M$ accepts both $a^ja^j$ and $a^ka^j$. However, $a^ka^j$ is clearly not in $A$ since $k \neq j$; therefore $L(M) \neq A$. $\checkmark$
+
+
+
+
 \section*{Problem 50}
 
 \begin{itemize}
