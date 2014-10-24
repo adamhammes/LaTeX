@@ -83,11 +83,26 @@ $\delta$ is defined according to the following table:
 		b	& -							& r, -, -				& b, 1, R		& t, -, - \\
 \end{tabular}
 
+
 \section*{Problem 53}
 
 Intuition: First, we check if there are 0 a's, in which case we reject, or 1 a, where we accept. Then our machine $M$ will erase all a's but the first, additionally marking the rightmost one with a b. 
 
-Now we begin the loop; make the last a an \~a , letting us keep track of the original length. Then copy all the a's on the tape to the space right of \~a, up to and including \~a, effectively doubling the number of a's on the tape. If we try to overwrite our b with an \~a, accept because the original input had a power of two number of a's; if we overwrite b with a regular a, reject because the original input was not a power of two.
+Now we begin the loop; make the last a an \~a , letting us keep track of the original length. Then copy all the a's on the tape to the space right of \~a, up to and including \~a, effectively doubling the number of a's on the tape. If we try to overwrite our b with an \~a, accept because the original input had a power of two number of a's; if we overwrite b with a regular a, reject because the original input was not a power of two. $\checkmark$
+
+To do the copying mentioned in the previous paragraph, use an additional marker to keep track of what character is being copied; this marker starts on the first character, and moves one character right after each copy. The last copy is made when the marker is at the end of the original input. I make note of this because I will use this copying again in the next problem.
+
+
+\section*{Problem 54}
+
+Intuition: First, accept if the input is empty spaces or is exactly one a. If we don't accept, replace the last a on the tape with a b, and put a "copy marker" and an "add marker" on the first a.
+
+Now we begin our loop, which is actually a double loop. Say that there are initially $n$ a's. The inner loop uses the copy process described in 53 to append an additional $n$ a's to the tape, using the copy marker to do so. Once the $n$ copies have been made we exit to the outer loop.
+
+Outer loop: Move the add marker one character right. If the add marker is on the last character, replace every marked character/b with an a then accept. Note that we have done $n-1$ copies of $n$ a's at this point.
+
+
+At the point we have accepted/exited the outer loop, we have written an additional $n$ a's $n-1$ time. When we take into account the original $n$ a's, we have $n * (n-1) +n = n^2$ a's on the tape. $\checkmark$.
 
 
 
