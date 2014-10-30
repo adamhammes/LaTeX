@@ -5,6 +5,8 @@
 \usepackage{amssymb}
 \usepackage{parskip}
 
+\let\iff\leftrightarrow
+
 \begin{document}
 
 \title{Com S 331 Homework 8}
@@ -14,6 +16,18 @@
 
 \section*{Problem 57}
 
-Since $A,\ B$ are computably enumerable, there exist machines $M_A,\ M_B$ such that the machines decide $A$ and $B$ respectively.
+Since $A, B$ are computably enumerable, there exist machines $M_A, M_B$ such that the machines decide $A$ and $B$ respectively.
+I design a TM $N$ that decides $A \cap B$.
+
+Let $N$ be a two-tape TM, with input $x$ on both the top and bottom tapes. 
+The top tape simulates $M_A$ and the bottom $M_B$, with the tapes running independently of each other.
+$N$ accepts a string if and only if the top and bottom tapes both accept the string. Thus, for all input $x$,
+\begin{align*}
+	x \in L(N) &\iff N \text{ accepts } x \\
+	&\iff M_A \text{ and } M_B \text{ accept } x \\
+	&\iff x \in L(M_A),\ L(M_B) \\
+	&\iff x \in A, B \\
+	&\iff x \in A \cap B \ \checkmark
+\end{align*}
 
 \end{document}
