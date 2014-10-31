@@ -101,4 +101,28 @@ $m$ eventually outputs every $h_n$, and thus eventually every $a \in A$.
 Thus $A \subseteq $ range $m$.
 Additionally, since $m$ only can output what $h$ can, range $m \subseteq A$ so range $m = A$. $\checkmark$
 
+
+\section*{$(f) \imp (a)$}
+
+Assume there is a decidable language $B \subseteq \{0,1\}^*$ such that
+	\[A = \{x \in \{0,1\}^* \mid (\exists w \in \{0,1\}^*) \langle x, w \rangle \in B\}\]
+Let $M_B$ be a TM that decides $B$, and let $b_0, b_1, \ldots b_i$ be the standard enumeration of $\{0,1\}^*$. 
+I prove that there exists a TM $M_A$ that accepts $A$.
+Here is the operation of $M_A$:
+\begin{enumerate}
+	\item input $x$
+	\item i = 0
+	\item run $M_B$ on $\langle x, b_i \rangle$ 
+	\item if $M_B$ accepts, accepts $x$; if $M_B$ rejects, increment $i$ and go back to step 3
+\end{enumerate}
+
+For all $x \in A$, there exists a $w$ such that $\langle x, w \rangle \in B$.
+Our algorithm simply enumerates through every possible $w$, waiting for $M_B$ to accept or reject the pairing (which it is guaranteed to do, since $B$ is decidable).
+$M_A$ will halt and accept a string only if there exists such a pairing.
+Therefore $L(M_A) = A$. $\checkmark$
+
+
+\section*{Problem 64}
+I do not know how to solve this problem.
+
 \end{document}
