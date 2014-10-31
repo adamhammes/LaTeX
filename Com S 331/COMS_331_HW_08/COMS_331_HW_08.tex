@@ -6,6 +6,7 @@
 \usepackage{parskip}
 
 \let\iff\leftrightarrow
+\let\imp\rightarrow
 
 \begin{document}
 
@@ -29,5 +30,28 @@ $N$ accepts a string if and only if the top and bottom tapes both accept the str
 	&\iff x \in A, B \\
 	&\iff x \in A \cap B \ \checkmark
 \end{align*}
+
+
+\textbf{Note:} for problems 58-63, I will prove equivalence through a ``circle'' of implications, e.g. $(a) \imp (b) \imp (c) \imp \ldots \imp (f) \imp (a)$.
+
+\section*{$(a) \imp (b)$}
+
+Assume $A$ is c.e.
+Then there exists TM that decides $A$, which I will call $M$.
+Define the partial function $g: \{0,1\}^* \imp \{0,1\}^* $ as follows:
+\[g(x) =
+	\begin{cases}
+		0 & M_A(x) \text{ halts} \\
+		\text{undefined} & M_A(x) \uparrow
+	\end{cases}
+\]
+I compute $g$ with the TM $M_g$. $M_g$ does the following:
+\begin{enumerate}
+	\item input $x$
+	\item run $M$ on $x$
+	\item if $M_A$ halts output 0 
+\end{enumerate}
+
+Thus $M_g$ computes a partial function that is defined only on inputs in $A$, equivalent to saying that the domain of $g$ is $A$. $\checkmark$
 
 \end{document}
