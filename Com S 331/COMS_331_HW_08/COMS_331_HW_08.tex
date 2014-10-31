@@ -37,7 +37,7 @@ $N$ accepts a string if and only if the top and bottom tapes both accept the str
 \section*{$(a) \imp (b)$}
 
 Assume $A$ is c.e.
-Then there exists a TM that decides $A$, which I will call $M$.
+Then there exists a TM that decides $A$, which I will call $M_A$.
 Define the partial function $g: \{0,1\}^* \imp \{0,1\}^* $ as follows:
 \[g(x) =
 	\begin{cases}
@@ -58,9 +58,9 @@ Thus $M_g$ computes a partial function that is defined only on inputs in $A$, eq
 \section*{$(b) \imp (c)$}
 
 Assume there is a computable partial function $f: \{0,1\}^* \dashrightarrow \{0,1\}^*$ such that $A$ is the domain of $f$.
-Without loss of generality, we can assume that it is in fact our function $g$ we defined in the previous problem.
+Define the partial function $g$ to be the same as in the previous problem.
 $M_g$ computes $g$, so $g$ is a computable function.
-Also, since $g$ is only defined on members of $A$, and $ \forall a \in A,\ g(a) = a$, the range of $g$ is $A$. $\checkmark$
+Since $g$ is only defined on members of $A$, and $ \forall a \in A,\ g(a) = a$, the range of $g$ is $A$. $\checkmark$
 
 
 \section*{$(c) \imp (d)$}
@@ -94,12 +94,17 @@ Since $A$ is infinite, so is range $h$; we just need to ensure that we keep pick
 I denote the output $h$ produces on natural number $n$ as $h_n$.
 Keeping these constraints in mind, we can create an algorithm/defition for $m$. 
 
-$m(i \in \mathbb{N}) = $ the smallest $h_n$ such that for $0 \leq k \in \mathbb{N} < j$, $m( k ) \neq h_n$.
+$m(i \in \mathbb{N}) = $ the smallest $h_n$ such that for $0 \leq k \in \mathbb{N} < n$, $m( k ) \neq h_n$.
 In this definition, $k$ serves as ``iterator'' over the output of $m$ on integers $< i$, ensuring that we don't output the same value twice; because $m$ can't output the same value twice, it is one-to-one.
 
 $m$ eventually outputs every $h_n$, and thus eventually every $a \in A$. 
 Thus $A \subseteq $ range $m$.
 Additionally, since $m$ only can output what $h$ can, range $m \subseteq A$ so range $m = A$. $\checkmark$
+
+
+\section*{$(e) \imp (f)$}
+
+I do not know how to do this problem.
 
 
 \section*{$(f) \imp (a)$}
