@@ -83,5 +83,22 @@ Therefore range $h \subseteq A$.
 Also, for each possible natural number, $h(n)$ maps to a string in $A$, so $A \subseteq $ range $h$ and range $h = A$. $\checkmark$
 
 
+\section*{$(d) \imp (e)$}
+Assume that there is a computable function $f : \mathbb{N} \imp \{0,1\}^*$ such that $A$ = range $f$.
+
+If $A$ is finite, then $(e)$ is true and so is $(d) \imp (e)$.
+
+If $A$ is infinite, we need to find a one-to-one function $m: \mathbb{N} \imp \{0,1\}^*$ such that range $m = A$.
+We have a function $h$ that is close, but is not one-to-one.
+Since $A$ is infinite, so is range $h$; we just need to ensure that we keep picking new values for the output of $m$.
+I denote the output $h$ produces on natural number $n$ as $h_n$.
+Keeping these constraints in mind, we can create an algorithm/defition for $m$. 
+
+$m(i \in \mathbb{N}) = $ the smallest $h_n$ such that for $0 \leq k \in \mathbb{N} < j$, $m( k ) \neq h_n$.
+In this definition, $k$ serves as ``iterator'' over the output of $m$ on integers $< i$, ensuring that we don't output the same value twice; because $m$ can't output the same value twice, it is one-to-one.
+
+$m$ eventually outputs every $h_n$, and thus eventually every $a \in A$. 
+Thus range $A \subseteq $ range $m$.
+Additionally, since $m$ only can output what $h$ can, range $m \subseteq A$ so range $m = A$. $\checkmark$
 
 \end{document}
