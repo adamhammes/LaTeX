@@ -41,7 +41,7 @@ Then there exists a TM that decides $A$, which I will call $M$.
 Define the partial function $g: \{0,1\}^* \imp \{0,1\}^* $ as follows:
 \[g(x) =
 	\begin{cases}
-		0 & M_A(x) \text{ halts} \\
+		x & M_A(x) \text{ halts} \\
 		\text{undefined} & M_A(x) \uparrow
 	\end{cases}
 \]
@@ -49,7 +49,7 @@ I compute $g$ with the TM $M_g$, which does the following:
 \begin{enumerate}
 	\item input $x$
 	\item run $M$ on $x$
-	\item if $M$ halts output 0 
+	\item if $M$ halts output $x$
 \end{enumerate}
 
 Thus $M_g$ computes a partial function that is defined only on inputs in $A$, equivalent to saying that the domain of $g$ is $A$. $\checkmark$
