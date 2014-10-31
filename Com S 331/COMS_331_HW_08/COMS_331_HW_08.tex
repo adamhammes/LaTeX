@@ -63,5 +63,25 @@ $M_g$ computes $g$, so $g$ is a computable function.
 Also, since $g$ is only defined on members of $A$, and $ \forall a \in A,\ g(a) = a$, the range of $g$ is $A$. $\checkmark$
 
 
+\section*($(c) \imp (d)$)
+
+If $A$ is empty, then (d) is true; therefore we consider cases where $A \neq \emptyset$.
+
+Assume that there exists a computable partial function $f : \{0,1\}^* \dashrightarrow \{0,1\}^*$ such that $A = $ the range of $f$.
+Let $b_n$ be the $n^{\text{th}}$ binary string over $\{0,1\}^*$ in the standard enumeration ($\lambda$, 0, 1, 00, 01, etc.) and $a$ be a string in $A$.
+I define the function $h : \mathbb{N} \imp \{0,1\}^*$ as follows:
+\[ h(n) =
+	\begin{cases}
+		b_n & f(b_n) \text{ is defined} \\
+		a & f(b_n) \text{ is not defined}
+	\end{cases}
+\]
+
+Because $h$ is defined directly from the computable function $f$, $h$ is computable.
+Also, for all $x\in A$, there exists a $n$ such that $b_n = x$; accordingly, $h(b_n) = x$. 
+Therefore range $h \subseteq A$.
+Also, for each possible natural number, $h(n)$ maps to a string in $A$, so $A \subseteq $ range $h$ and range $h = A$. $\checkmark$
+
+
 
 \end{document}
