@@ -54,4 +54,14 @@ I compute $g$ with the TM $M_g$, which does the following:
 
 Thus $M_g$ computes a partial function that is defined only on inputs in $A$, equivalent to saying that the domain of $g$ is $A$. $\checkmark$
 
+
+\section*{$(b) \imp (c)$}
+
+Assume there is a computable partial function $f: \{0,1\}^* \dashrightarrow \{0,1\}^*$ such that $A$ is the domain of $f$.
+Without loss of generality, we can assume that it is in fact our function $g$ we defined in the previous problem.
+$M_g$ computes $g$, so $g$ is a computable function.
+Also, since $g$ is only defined on members of $A$, and $ \forall a \in A,\ g(a) = a$, the range of $g$ is $A$. $\checkmark$
+
+
+
 \end{document}
