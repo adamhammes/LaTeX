@@ -15,5 +15,28 @@
 \maketitle
 
 
+\section*{Problem 1}
+\begin{enumerate}[(a)]
+	\item 0.8
+	\item 0.1
+	\item Team A; if a puck is loose, there is a 0.5 chance of them getting it in one second vs. 0.4 for team B
+	\item $0.1 \times 0.1 = 0.01$
+	\item $0.5 \times 0.1 + 0.4 \times 0.3 + 0.1 \times 0.1 = 0.18$
+	\item $ \begin{pmatrix} a \\ b \\ c \end{pmatrix} \times 
+			\begin{pmatrix} 0.8 & 0.1 & 0.1 \\ 
+							0.1 & 0.6 & 0.3 \\
+							0.5 & 0.4 & 0.1 \end{pmatrix} =
+			\begin{pmatrix} a & b & c \end{pmatrix}$
+			\begin{flalign*}
+				a &= 0.8a + 0.1b + 0.5c & \\
+				b &= 0.1a + 0.6b + 0.4c \\
+				c &= 0.1a + 0.3b + 0.1c \\
+				1 &= a + b + c
+			\end{flalign*}
+			$\Rightarrow (a, b, c) = \left( \dfrac{6}{11}, \dfrac{13}{44}, \dfrac{7}{44} \right)$
+	\item $\dfrac{6}{11} \times 3600 = 1963.\overline{63}$
+
+\end{enumerate}
+
 
 \end{document}
