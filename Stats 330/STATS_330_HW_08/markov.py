@@ -19,5 +19,4 @@ for i in xrange( 10000 ):
 		state = 2
 
 for i in range( len( counts ) ):
-	print( "State " + str(i) + ": " + str(counts[i] ) )
-
+	print("State %d: %d" %(i, counts[i]))
