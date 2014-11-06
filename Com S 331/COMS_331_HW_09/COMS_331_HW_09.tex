@@ -15,5 +15,31 @@
 \date{November 6, 2014}
 \maketitle
 
+\section*{Problem 66}
+
+Consider the function $h: \{0,1\}^* \imp \{0,1\}^*$ where $h(x) = x0$.
+A TM can compute $h$ by simply appending a 0 to the input, so $h$ is computable.
+\begin{itemize}
+	\item If $x \in A$, then $h(x) = x0 \in A \sqcup B$ by definition of $\sqcup$. 
+	Therefore $x \in A \imp h(x) \in A \sqcup B$.
+	\item Every possible output of $h$ ends with a 0.
+	The only strings in $A \sqcup B$ that end with a 0 are the strings originally in $A$.
+	Therefore $ x \notin A \imp h(x) \notin A \sqcup B$.
+\end{itemize}
+
+Since $h$ is computable and $x \in A \iff h(x) \in A \sqcup B$, $A \leq _m A \sqcup B$. $\checkmark$
+
+Now consider the function $g: \{0,1\}^* \imp \{0,1\}^*$ where $g(x) = x1$.
+A TM can compute $g$ by simply appending a 1 to the input, to $g$ is computable.
+\begin{itemize}
+	\item If $x \in B$, then $g(x) = x1 \in A \sqcup B$ by definition of $\sqcup$. 
+	Therefore $x \in B \imp g(x) \in A \sqcup B$.
+	\item Every possible output of $g$ ends with a 1.
+	The only strings in $A \sqcup B$ that end with a 1 are the strings originally in $B$.
+	Therefore $ x \notin B \imp g(x) \notin A \sqcup B$.
+\end{itemize}
+
+Since $g$ is computable and $x \in B \iff g(x) \in A \sqcup B$, $B \leq _m A \sqcup B$. $\checkmark$.
+
 
 \end{document}
