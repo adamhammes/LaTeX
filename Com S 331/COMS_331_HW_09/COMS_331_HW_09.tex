@@ -42,4 +42,15 @@ A TM can compute $g$ by simply appending a 1 to the input, to $g$ is computable.
 Since $g$ is computable and $x \in B \iff g(x) \in A \sqcup B$, $B \leq _m A \sqcup B$. $\checkmark$.
 
 
+\section*{Problem 67}
+
+$K^C$ is not c.e. (proved in class and in the text)
+Since by Problem 66 $K \leq _M K \sqcup K^C$, $K \sqcup K^C$ is also not c.e. (Theorem 33.3, page 241 of the text). $\checkmark$
+
+Assume for contradiction $K \sqcup K^C$ is co-c.e.
+Then the complement of $K \sqcup K^C$ is c.e.
+By definition of $\leq _M$, $K^C \leq _M (K \sqcup K^C)^C$, so $K^C$ is c.e., a contradiction.
+Therefore $K \sqcup K^C$ is not co-c.e. $\checkmark$
+
+
 \end{document}
