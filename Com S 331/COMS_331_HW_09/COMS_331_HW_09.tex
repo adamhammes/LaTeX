@@ -174,4 +174,41 @@ The function $f$ described in 68 not only puts an upper and lower bound on the v
 Meanwhile $g$ from 69 provides much less information. It provides only a lower bound of $x_K$; plugging in a larger value may or may not decrease $|g(x) - x_K|$.
 Therefore Problem 69 does not contradict 68 because the functions involved compute very different things.
 
+
+\section*{Problem 72}
+
+Suppose for contradiction that $\sum _{n \in K} \frac{1}{n^2}$ is computable, and let $M_K$ be the function that computes it.
+I define a machine $M$ that, using the previous sum, accepts input $x$ if $x \in K$ else rejects, thus deciding $K$.
+
+Let $s$ be the sum from the previous paragraph.
+We will use a similar method to 69.
+Consider checking if 1 is in $K$. There are two cases:
+\begin{enumerate}
+	\item if $\frac{1}{1^2} < s$, then 1 can't be in $K$ because if it was $s$ would be too small to account for that. 
+	Therefore $1 \notin K$.
+	\item if $\frac{1}{1^2} \geq s$, then 1 must be in $K$ because we would never be able to attain the value of $s$ without it.
+	Therefore $1 \in K$.
+\end{enumerate}
+Using our knowledge of the membership of 1, we can use that to determine if 2 is in $K$.
+First, if $1 \in K$ in $s$ create a new sum $s' = s - \frac{1}{1^2}$; if $1 \notin K\ s' = s$.
+Now repeat the process we just did, comparing $\frac{1}{2^2}$ to $s'$, and use the same cases.
+
+For any $z \in \mathbb{Z}^+$, we can iterate up to $z$, repeatedly using the previously described method, until we can finally determine if $z \in K$.
+I define $M$ to do just that:
+\begin{itemize}
+	\item input $z \in \mathbb{Z}^+$
+	\item let $s = \sum _{n\in K} \frac{1}{n^2}$
+	\item for $i$ from 1 to $z$:
+	\begin{itemize}
+		\item let $r = \frac{1}{i^2}$
+		\item if $i = z$, ACCEPT if $r \geq s$ and REJECT if $r < s$
+		\item if $i \neq z$ and $r \geq s$, s -= $r$
+	\end{itemize}
+\end{itemize}
+
+On an input $z \in \mathbb{Z}$ $M$ accepts if $z \in K$ and rejects if $z \notin K$, so $M$ decides $K$.
+However, $K$ is undecidable, so there is a contradiction.
+Therefore $\sum _{n \in K} \frac{1}{n^2}$ is not computable. $\checkmark$
+
+
 \end{document}
