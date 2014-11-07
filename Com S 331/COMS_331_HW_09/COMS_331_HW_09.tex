@@ -168,6 +168,23 @@ By increasing the number of steps we run $M'$, this set gets closer and closer t
 Therefore $\lim \limits _{t \imp \infty} M'(t) = x_K$. $\checkmark$
 
 
+\section*{Problem 70}
+
+Assume that $g: \mathbb{Z}^* \imp \mathbb{Q}$ is computable and $\sum _{n=1} ^\infty g(n)$ has a modulus, which I will denote $m$.
+I define the TM $R$ as follows:
+\begin{enumerate}
+	\item input $r \in \mathbb{N}$
+	\item output $\sum _{n= 1} ^{m(r) -1} g(n)$
+\end{enumerate}
+
+Let's examine step 2 a little more in depth.
+\begin{align*}
+	\sum \limits _{n=1} ^{m(r) -1} g(n) &= \sum \limits _{n=1} ^\infty g(n) - \sum \limits _{n=m(r)} ^\infty g(n) & \text{summation properties} \\
+	\sum \limits _{n=m(r)} ^\infty g(n) &\leq 2^{-r} & \text{def. of modulus}
+\end{align*}
+By plugging the inequality into the equality, we can definitely say that the output of $R$ is at most $2^{-r}$ less than $\sum _{n=1} ^\infty g(n)$.
+Therefore $\sum _{n=1} ^\infty g(n)$ is a computable real number. $\checkmark$
+
 \section*{Problem 71}
 
 The function $f$ described in 68 not only puts an upper and lower bound on the value of $x_K$, you can also deterministically decrease the error by plugging in larger values.
