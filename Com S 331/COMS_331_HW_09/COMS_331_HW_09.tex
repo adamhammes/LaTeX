@@ -149,4 +149,22 @@ From these conditions we can find the formula for the max error of $M'$:
 Therefore $M'$ computes a function $f: \mathbb{N} \imp \mathbb{Q}$ whose max error with respect to $x_A$ is $2^{-n}$. $\checkmark$
 
 
+\section*{Problem 69}
+
+Recall that $K$ is c.e.; therefore there exists a machine $M_K$ takes a natural number $z$ and accepts iff $z \in L(M_Z)$.
+I define the machine $M'$ as follows:
+\begin{itemize}
+	\item input $t \in \mathbb{N}$
+	\item let s = 0
+	\item run $M_k$ for $n$ steps on the first $n$ natural numbers
+	\item every time $M_k$ accepts a number $z$, $s$ += $2^{-z}$
+\end{itemize}
+
+$M'$ can never be negative, and since it only checks a finite number of Turing Machines, $M'(t \in \mathbb{N}) < x_K$.
+Therefore $\forall t \in \mathbb{N},\ 0 \leq M'(t) < x_K$.
+
+As $M'$ accepts more and more numbers, it starts building a ``set'' of numbers.
+By increasing the number of steps we run $M'$, this set gets closer and closer to $K$.
+Therefore $\lim \limits _{t \imp \infty} M'(t) = x_K$. $\checkmark$
+
 \end{document}
