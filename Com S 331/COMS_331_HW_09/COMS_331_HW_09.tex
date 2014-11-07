@@ -53,4 +53,100 @@ By definition of $\leq _M$, $K^C \leq _M (K \sqcup K^C)^C$, so $K^C$ is c.e., a 
 Therefore $K \sqcup K^C$ is not co-c.e. $\checkmark$
 
 
+\section*{Problem 68}
+
+Assume that $x_A$ is computable. Then there is a function $f_x$ such that for all $f \in \mathbb{N}$, $|f_x(r)-x| \leq 2^{-r}$
+
+There are three possibilities for $A$:
+\begin{enumerate}[(1)]
+	\item $A$ is finite, in which case $A$ is regular
+	\item There exists a $k \in \mathbb{Z}^+$ such that $k, k+1, k+2, \ldots \in A$.
+	There are finite number of positive integers $< k$, so we can construct a TM $M$ that decides $A$ by the following process:
+	\begin{enumerate}
+		\item input $x \in \mathbb{Z}^+$
+		\item if $x$ is less than $k$, accept if it is one of the (finitely many) numbers in $A$ less than $k$ and reject otherwise
+		\item accept if $x \geq k$
+	\end{enumerate}
+	\item There does not exist a $k$ as described in (2). This possibility is discussed in the upcoming paragraph(s).
+\end{enumerate}
+
+Consider the task of determining if $1 \in A$ given knowledge of $x_A$.
+If $x_A > \frac{1}{2}$, then clearly $1 \in A$, since $\sum _{i=2} ^{\infty} = \frac{1}{2} \not> \frac{1}{2}$.
+Similarly, if $x_A < \frac{1}{2}$ then $1 \notin A$.
+
+The trickier case is when $x_A = \frac{1}{2}$.
+Obviously $A$ could be the set $\{1\}$, so $1 \in A$.
+Recall, however, that $\sum _{i=2} ^{\infty} = \frac{1}{2}$, meaning that $A$ could also be $\{2,3,4,\ldots \}$ in which case $1 \notin A$.
+Notice that in either case $A$ actually belongs to scenario (1) or (2), and is decidable; We need not concern ourselves with these cases.
+
+Now that we can determine if $1 \in A$, what can we do?
+Well, determine if $2 \in A$ for starters.
+First, if $1 \in A$ subtract $\frac{1}{2}$ from $x_A$.
+Then repeat the process used for $1$, with the magic number being $2^{-2} = \frac{1}{4}$.
+If $x_A - 1/2 > 1/4$, then $2 \in A$; else $2 \notin A$.
+Note that we don't consider $x_A = 1/4$, as that would mean we are in scenario (1) or (2). 
+
+This process can repeated indefinitely, allowing us to determine if any positive integer is in $A$ if we have knowledge of $x_A$.
+However, $f$ gives a bound on $x_A$ that converges at a predictable rate.
+To test whether $x_A$ is above or below a certain number, call $f$ with increasingly large numbers until the number we are comparing to is out of the error range.
+Because of the way our algorithm works, we can guarantee that the number we are comparing $x_A$ to is not equal to $x_A$ (if it was, we would be in scenario 1 or 2!); therefore the error range will always converge to one side of the number, allowing us to compare it to $x_A$.
+
+With a general idea of how to check membership in $A$, we can finally make a TM $M$ that, given a function $f$ as mentioned in the problem, decides $A$.
+\begin{itemize}
+	\item input $i \in \mathbb{Z}^+$
+	\item let $n$ and $a$ be 0
+	\item for $z$ from 1 to $i$:
+		\begin{itemize}
+			\item compute $f(n) -a$
+			\item if $2^{-z}$ falls within the error bound of $f(n)-a$, increment $n$ and go back to the previous step 
+			\item if $z =i$, ACCEPT if $2^{-z} < $ the lower bound of $f(n)-a$, else REJECT
+			\item if $z \neq i$ and $2^{-z} <$ the lower bound of $f(n)-a$, $a$ += $2^{-z}$
+		\end{itemize}
+\end{itemize}
+
+Intuition for the machine:
+
+Starting with 1, our machine computes a bound for $x_A$ such that $2^{-1}$ falls outside the bound.
+If $2^{-1}$ is less than the bound, then $A$ includes 1, and pretend that $x_A$ is 1/2 less than it was.
+Repeat for every integer less than our input, alternating tightening the bound for $x_A$ and testing if numbers fall below or above that bound.
+
+Our machine only accepts an input if it is in $A$, and rejects otherwise, halting either way; therefore $x_A$ being computable implies that $A$ is decidable. $\checkmark$
+
+Now, assume $A$ is decidable.
+Then there is a TM $M_A$ that on input $z$, accepts if $z \in A$ else rejects.
+Define the machine $M'$ as follows:
+\begin{itemize}
+	\item input $n \in \mathbb{N}$
+	\item let $i$, $j$, $s$ = 0
+	\item while $j \neq n$
+		\begin{itemize}
+			\item run $M_A$ on $i$
+			\item if $M_A$ accepts, increment j and add $2^{-i}$ to $s$
+			\item increment $i$
+		\end{itemize}
+	\item output $s$
+\end{itemize}
+
+$M'$ finds the $n$ smallest numbers in $A$, then computes $x_{n \text{ smallest elements}}$.
+I prove two conditions present in the ``worst case'' scenario (max error):
+\begin{itemize}
+	\item The maximum error for $M'$ is if every integer larger than the smallest $n$ elements was also present in $A$.
+	If this weren't true, then there is an integer $z$ larger than the smaller element not in $A$.
+	If $z \in A$, then the error would be $2^{-z}$ bigger.
+	Therefore the maximum error for $M'$ is if every integer larger than the smallest $n$ elements is also present in $A$.
+	\item The other condition for max error is that the smallest elements used in $M_A$ are $1,2,3, \ldots, n$.
+	By the previous condition, every ``bigger'' element is in $A$.
+	We can increase the error by ``shifting'' our smallest elements to the left, so they fill the slots $1, 2, 3, \ldots, n$.
+	Therefore the maximum error is found when the the smallest elements in $M_A$ are $1,2,3, \ldots, n$.
+\end{itemize}
+
+From these conditions we can find the formula for the max error of $M'$:
+\begin{align*}
+	\sum \limits _{i=n+1} ^{\infty} 2^{-i}&= 1 - \sum \limits _{i=1} ^{n} 2^{-i} \\
+	&= 1 - 1 - 2^{-n} \\
+	&= 2^{-n}
+\end{align*}
+Therefore $M'$ computes a function $f: \mathbb{N} \imp \mathbb{Q}$ whose max error with respect to $x_A$ is $2^{-n}$. $\checkmark$
+
+
 \end{document}
