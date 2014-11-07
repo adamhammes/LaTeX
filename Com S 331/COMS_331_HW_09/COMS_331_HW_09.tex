@@ -201,8 +201,8 @@ I define $M$ to do just that:
 	\item for $i$ from 1 to $z$:
 	\begin{itemize}
 		\item let $r = \frac{1}{i^2}$
-		\item if $i = z$, ACCEPT if $r \geq s$ and REJECT if $r < s$
-		\item if $i \neq z$ and $r \geq s$, s -= $r$
+		\item if $i = z$, ACCEPT if $r < s$ and REJECT if $r \geq s$
+		\item if $i \neq z$ and $r < s$, s -= $r$
 	\end{itemize}
 \end{itemize}
 
