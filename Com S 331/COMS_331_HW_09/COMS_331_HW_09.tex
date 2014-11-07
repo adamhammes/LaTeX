@@ -15,6 +15,35 @@
 \date{November 6, 2014}
 \maketitle
 
+\section*{Problem 65}
+
+From the $a \imp e$ on the previous homework, we know that if $A$ is infinite and c.e., there is a computable, one-to-one function $f: \mathbb{N} \imp \{0,1\}^*$ such that $A$ = range $f$. Let $M_f$ compute $f$. I define a TM $M_g$ that computes $g: \mathbb{N} \imp \{0,1\}^*$ as follows:
+\begin{itemize}
+	\item input $n \in \mathbb{N}$
+	\item let $B = \emptyset$
+	\item for $i$ from 0 to $\infty$:
+	\begin{itemize}
+		\item for $j$ from 0 to $i$:
+		\begin{itemize}
+			\item run $M_f$ on $j$ for $i$ steps
+			\item if $M_f$ accepts and $j$ is greater than the biggest element in $B$, add $j$ to $B$
+			\item if size($B$) = $n$, output $j$ and ACCEPT
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+Because $A$ is infinite, for any number in $A$ there is a bigger number in $A$.
+This means that $M_g$ will never stop and that $B$ is infinite.
+For any number in $A$, there exists a number of steps and input that causes $M_f$ to accept that number.
+Our machine $M_g$ will eventually try any possible number of steps and any possible input with $M_f$, so it will eventually output any element in $A$.
+
+$M_g$ is constantly adding larger and larger numbers to $B$; at no point does it add a smaller element to $B$.
+Therefore $\forall n \in \mathbb{N}, f(n) < f(n+1)$ (1).
+Also, $M_g$ only adds elements from $A$ to $B$, range $g \subseteq B$ (2).
+
+By Problem 64 on the previous homework, (1) and (2) are sufficient to prove that a language is decidable.
+Therefore every infinite c.e. language has an infinite decidable subset. $\checkmark$
+
+
 \section*{Problem 66}
 
 Consider the function $h: \{0,1\}^* \imp \{0,1\}^*$ where $h(x) = x0$.
