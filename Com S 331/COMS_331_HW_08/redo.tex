@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+
+\let\iff\leftrightarrow
+\let\imp\rightarrow
+
+\begin{document}
+
+\title{Com S 331 Homework 8 Remake}
+\author{Adam Hammes $\bullet$ hammesa@iastate.edu}
+\date{November 13, 2014}
+\maketitle
+
+\section*{Problem 64}
+
+Assume that $A$ is decidable. 
+Then there exists a TM $M_A$ that decides $A$.
+Prove that one of the following is true:
+\begin{enumerate}[(a)]
+	\item $A$ is finite
+	\item $A$ is infinite, and there is a computable function $f: \mathbb{N} \imp \{0,1\}^*$ such that range(f) = A and each $f(n)$ comes strictly before $f(n+1)$ in the standard enumeration of $\{0,1\}^*$.
+\end{enumerate}
+
+$A$ is either finite or infinite.
+If it is finite, then we have satisfied (1) and the implication is true.
+If $A$ is infinite, then define the TM $M_f$ as follows:
+\begin{itemize}
+	\item input $n \in \mathbb{N}$
+	\item let $c$ be 0
+	\item for $i$ from 0 to $\infty$:
+	\begin{itemize}
+		\item let $s$ be the $i^{\text{th}}$ string in the standard enumeration of $\{0,1\}^*$
+		\item if $M_A$ accepts $s$, increment $c$
+		\item if $c > n$ output $s$
+	\end{itemize}
+\end{itemize}
+
+$M_f$ iterates through the standard enumeration of $\{0,1\}^*$, running $M_A$ on each until we have found $n$ members of $A$.
+Because of this iteration, $f( n+ 1) > f(n)$.
+Also, since $M_f$ only outputs strings that $M_A$ accepts, and eventually outputs every string in $A$, range($f$) = $A$.
+Therefore $A$ is decidable implies (2). $\checkmark$
+
+Now, assume there exists a computable function $f: \mathbb{N} \imp \{0,1\}^*$ such that range(f) = A and each $f(n)$ comes strictly before $f(n+1)$ in the standard enumeration of $\{0,1\}^*$.
+Let $M_f$ be the machine that computes $f$.
+Define the machine $M_A$ as follows:
+\begin{itemize}
+	\item input $x \in \{0,1\}^*$
+	\item for $i$ from 0 to $\infty$:
+	\begin{itemize}
+		\item $s := M_f(i)$
+		\item if $s == x$ ACCEPT
+		\item if $s$ comes after $x$ in the standard enumeration, REJECT
+	\end{itemize}
+\end{itemize}
+
+Consider a string $x \in \{0,1\}^*$.
+$M_f$ outputs $x$ iff $(\exists n \in \mathbb{N})\ f(n) = x$.
+$M_A$ eventually tries every natural number, and can only output what $f$ outputs, so $L(M_A)$ = range($f$).
+Also, because eventually $f(n) > x$ and $f(n+1) > f(n)$, $M_A$ can tell definitively if $x \notin A$ by rejecting if $M_f(i)$ has ``passed by'' $x$.
+Therefore $M_A$ decides $A$. $\checkmark$
+
+
+\end{document}
