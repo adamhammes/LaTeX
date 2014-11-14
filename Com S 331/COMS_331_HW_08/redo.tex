@@ -15,6 +15,57 @@
 \date{November 13, 2014}
 \maketitle
 
+Note: $s_i$ refers to the $i^{\text{th}}$ binary string in the standard enumeration of $\{0,1\}^*$.
+
+\section*{$c \imp d$}
+
+Assume there is a computable partial function $f: \{0,1\}^* \imp \{0,1\}^*$, and let $M_f$ be the machine that computes it.
+There are three cases for $A$:
+\begin{enumerate}
+	\item $A = \emptyset$. The implication is true.
+	\item $A$ is finite
+	\item $A$ is infinite.
+\end{enumerate}
+
+I consider cases 2 and 3.
+
+(2) Let $A \neq \emptyset$ be finite. 
+Then there exists a machine $M_x$ that decides $A$.
+Define $M_A$ as follows:
+\begin{itemize}
+	\item input $n \in \mathbb{N}$
+	\item Iterating through $\{0,1\}^*$, let $a \in A$ be the first string $M_x$ accepts.
+	\item If $M_x$ accepts $s_n$, output $s_n$; else output $a$
+\end{itemize}
+
+Note that the exact identity of $a$ is not important; what is important is that $a \in A$.
+For $x \in A$, $\exists n\ \in \mathbb{N}$ s.t. $f(n) = x$.
+Because of this, $A \subseteq $ L($M_A$).
+Also, since $M_A$ can only output strings in $A$, L($M_A$) $\subseteq A$.
+Therefore L($M_A$) = $A$. $\checkmark$
+
+(3) Let $A$ be infinite.
+I define $M_A$ as follows:
+\begin{itemize}
+	\item input $n \in \mathbb{N}$
+	\item for $i$ from 1 to $\infty$:
+	\begin{itemize}
+		\item $c := 0$
+		\item for $j$ from 0 to $i$
+		\begin{itemize}
+			\item run $M_f$ for $i$ steps on $s_j$
+			\item if $M_f$ accepts, increment $c$
+			\item if $c$ = $n$, output $s_j$
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+$M_A$ searches through all possible input/time combinations to find the n$^{\text{th}}$ term in $A$.
+Once again, $M_A$ can only input strings in $A$, so L($M_A$) $\subseteq A$.
+Also, since $L(M_f) = A$, for $a \in A$ there exists an input $j$ and number of steps $i$ such that $M_f(j)$ outputs $a$ within $i$ steps.
+We try all possible combinations of $i$ and $j$, so $A \subseteq$ L($M_A$), implying $L(M_A) = A$.
+Finally, because $A$ is infinite, $\forall n \in \mathbb{N}$ there exists an $n^{\text{th}}$ string in $A$, so $M_A$ computes a total function. $\checkmark$
+
 \section*{Problem 64}
 
 Assume that $A$ is decidable. 
