@@ -66,6 +66,47 @@ Also, since $L(M_f) = A$, for $a \in A$ there exists an input $j$ and number of 
 We try all possible combinations of $i$ and $j$, so $A \subseteq$ L($M_A$), implying $L(M_A) = A$.
 Finally, because $A$ is infinite, $\forall n \in \mathbb{N}$ there exists an $n^{\text{th}}$ string in $A$, so $M_A$ computes a total function. $\checkmark$
 
+
+\section*{$e \imp f$}
+
+Assume $A$ is finite or there is a computable, one-to-one function $f: \mathbb{N} \imp \{0,1\}^*$ such that $A$ = range $f$, and let $M_f$ compute $f$.
+Prove that there is a decidable language $B \subseteq \{0,1\}^*$ such that
+	\[A = \{x \in \{0,1\}^* \mid (\exists w \in \{0,1\}^*)\ \langle x,w \rangle \in B \} \]
+where $\langle x,w \rangle$ = $0^{|x|}1xw$. 
+Note that a TM passed the output from the string-pairing function can retrieve both of the function's arguments.
+
+I examine two cases:
+\begin{enumerate}[(1)]
+	\item $A$ is finite
+	\item $A$ is infinite
+\end{enumerate}
+
+(1) Since $A$ is finite, there exists a TM that decides $A$, which I will call $M_A$.
+Let $B = \{\langle x, y \rangle \mid x \in A, y \in \{0,1\}^* \}$.
+
+Obviously only strings in $A$ can be paired with a witness testifying that they are in $B$.
+Also, $B$ is decidable from the following machine:
+\begin{itemize}
+	\item input $\langle x, y \rangle \in \{0,1\}^*$
+	\item ACCEPT if $M_A$ accepts, else REJECT
+\end{itemize}
+
+Therefore the implication is true if $A$ is finite $\checkmark$
+
+(2) Let $B = \{ \langle x, y\rangle \mid f(y) = x\}$.
+
+Because range $f = A$, for every $x \in A$ there exists a string $y$ such that $f(y) = x$.
+$B$ is decided by the following machine:
+\begin{itemize}
+	\item input $\langle x, y\rangle \in \{0,1\}^*$
+	\item ACCEPT if $f(y)=x$ else REJECT
+\end{itemize}
+
+Consider a string $x$.
+$x \in A \iff (\exists y)\ f(y) =x$.
+Therefore there exists a witness for $x$ if and only if $x \in A$. $\checkmark$
+
+
 \section*{Problem 64}
 
 Assume that $A$ is decidable. 
