@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+
+\let\iff\leftrightarrow
+\let\imp\rightarrow
+
+\begin{document}
+
+\title{Com S 331 Homework 10}
+\author{Adam Hammes $\bullet$ hammesa@iastate.edu}
+\date{November 19, 2014}
+\maketitle
+
+\section*{Problem 73}
+
+By Theorem 5 in lecture, there exists an infinite number of strings $x \in \{0,1\}^n$ such that $C(x) < n$.
+Note that $\forall n \in \mathbb{N}$, $T(n) > n$.
+Since there are an infinite number of strings whose Kolmogorov complexity is less than their length, there is an infinite number of strings $x \in \{0,1\}^*$ such that $C(x) < T(|x|)$. $\checkmark$
+
+
+\section*{Problem 74}
+
+Consider a Turing maching M that simply stores the result of the string pairing function and outputs it straight from memory.
+$M$ needs to store the two strings; it also needs to store a number of zeroes equal to the length of one of the strings.
+Without loss of generality, we can store the length of the shorter string.
+
+Instead of storing the strings directly, we can store the Turing machines that output the strings.
+The size of $M$ therefore is equal to $C(x) + C(y)$ + min$\{C(x), C(y)\} + c$, where $c$ is a constant unique to the machine.
+Since $M$ can store any string pairing result, it acts as an upper bound to the string pairing function. $\checkmark$
+
+
+\section*{Problem 75}
+ 
+Suppose for contradiction that max$\{C(x),C(y)\} -c $ is not a lower bound on the string pairing function.
+Then there exists $x, y \in \{0,1\}^*$ such that $C( \langle x, y \rangle ) < $ max $\{C(x), C(y)\} -c$.
+
+Let $C(x) = a$, and $\langle x, y \rangle = z$. Because $C(x) > C(y)$, $C(z) = C(x) -c$ where $c \in \mathbb{N}$ is a constant.
+Because a Turing machine can output $x$ given $z$, $C(x) < C(z)$, implying $C(x) < C(x) -c$, a contradiction.
+Therefore max$\{C(x),C(y)\} -c $ is a lower bound on the complexity of the string pairing function. $\checkmark$
+
+
+
+
+\end{document}
