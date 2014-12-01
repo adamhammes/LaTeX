@@ -43,6 +43,73 @@ Because a Turing machine can output $x$ given $z$, $C(x) < C(z)$, implying $C(x)
 Therefore max$\{C(x),C(y)\} -c $ is a lower bound on the complexity of the string pairing function. $\checkmark$
 
 
+\section*{Problem 76}
 
+Consider a language $A$, and let the Turing machine $M$ decide $A$.
+By listing the elements of $A$ in the standard enumeration of $\{0,1\}^*$, you can represent strings in $A$ by a natural number $n$ indicating thier position in the sequence.
+
+Given $n$, a Turing machine $M'$ can produce the original string by iterating through the standard enumeration of $\{0,1\}^*$ until $M$ has accepted $n$ elements.
+Therefore the Kolmogorov complexity of $a \in A$ is equal to the number of elements in $A$ the same length or shorter, as that is what determines the size of $n$.
+The complexity of $a$ is at most the optimality constant $c$ of $M'$ plus the $C$(maximum value of $n$), so
+\[C(a \in A) \leq c + \text{log} \mid A \cap \{0,1\}^{\leq |x|}\ \checkmark \]
+
+
+\section*{Problem 77}
+
+A the last half of a palindrome is the same as the first half, a fact we can exploit with the following TM $M'$:
+
+\begin{itemize}
+	\item store $x'$, the first half of $x \in $ PAL
+	\item store $b$, a bit indicating whether $|x|$ is even
+	\item if $|x|$ is even, output $x' \cdot rev( x' )$; if $|x|$ is odd, don't put the last bit of $x'$ in $rev( x' )$
+\end{itemize}
+
+The size of $M'$ depends only on $x'$ and an optimality constant $c$ (which includes $b$). Therefore
+	\[C(x \in \text{PAL}) \leq \dfrac{|x|}{2} + c \ \checkmark\]
+
+\section*{Problem 78}
+
+Let $M$ be as follows:
+
+\begin{itemize}
+	\item store $x$
+	\item store a list $s$ of natural numbers indicating the bits in $x$ to flip to get $y$
+	\item output $y$ by flipping the bits of $x$ indicated by $s$
+\end{itemize}
+
+Note that $C$(y) is dependent on three things: $C(x)$, $C(s)$, and the optimality constant $c$ of $M$.
+No number in $s$ will be greater than $|x|$, so their Kolgomorov complexity will be at most $C$(log $x$).
+The size of $s$ is equal to the Hamming distance of $x$ and $y$
+Therefore
+\begin{align*}
+	C(y) & \leq C(x) + H(x, y) \cdot \text{log } x  + c \\
+	&\leq C(x) + 2 \cdot H(x, y) \cdot \text{log } x  + c\ \checkmark
+\end{align*}
+
+
+\section*{Problem 79}
+
+Let $A$ be a decidable set and $M$ the TM that decides it.
+Define $M'$ as follows:
+
+\begin{itemize}
+	\item store $n \in N$
+	\item let $x$ represent $\chi_{A,n}$
+	\item for $i$ from 1 to $n$:
+	\begin{itemize}
+		\item let $x_i$ be the i$^{\text{th}}$ bit of $x$
+		\item if $M$ accepts $i$, $x_i$ = 1; else $x_i$ = 0
+	\end{itemize}
+	\item output $x$
+\end{itemize}
+
+The size of $M'$ depends only on the complexity of $n$ and an optimality constant $c_{M'}$; therefore $\forall n \in \mathbb{N}$
+	\[C(\chi_{A,n}) \leq \text{log }n +c\]
+by Observation 8. 
+
+
+\section*{Problem 80}
+
+Not attempted.
 
 \end{document}
