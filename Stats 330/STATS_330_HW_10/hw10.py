@@ -1,7 +1,7 @@
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 
-f = open( 'data.txt', 'r' )
+f = open( 'p1.txt', 'r' )
 lines = f.readlines();
 f.close()
 
