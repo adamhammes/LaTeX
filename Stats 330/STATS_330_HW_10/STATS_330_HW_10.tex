@@ -60,5 +60,30 @@
 The population appears to be going up exponentially. The time plot allows breaks in trends to be spotted easily (such as the small dip around World War II), as well as visually aid in forecasting future trends (I predict that the population will keep increasing).
 
 
+\section*{Problem 3}
+
+\begin{enumerate}[(a)]
+	\item $\lambda$ is the mean of a Poisson distribution, so we can use the first sample moment. $\hat{\lambda} = \bar{X}$
+
+	\item The pmf of Poisson distribution is
+	\[P(x) = e^{-\lambda} \dfrac{\lambda^x}{x^!} \]
+	whose logarithm is
+	\[\text{ln } P(x) = -\lambda + x\, \text{ln } \lambda -  \text{ln}(x!).\]
+	Thus we need to maximize
+	\begin{align*}
+		\text{ln } P(x) &= \sum \limits _{i=1} ^n -\lambda + x\, \text{ln } \lambda -  \text{ln}(x!) \\
+		&= -n\lambda + \text{ln } \lambda \sum \limits _{i=1} ^n X_i
+	\end{align*}
+	Differentiating with respect to $\lambda$ and setting equal to zero yields
+	\[\frac{\partial}{\partial x} \text{ln}\ P(x) = -n + \frac{1}{\lambda} \sum \limits _{i=1} ^n X_i = 0 \]
+	which has one solution,
+	\[ \hat{\lambda} = \frac{1}{n} \sum \limits _{i=1} ^n X_i = \bar{X}. \]
+
+	\item Note that both methods yield the same estimator, $\hat{\lambda} = \bar{X}$. We can therefore estimate $\hat{\lambda}$ as the sample mean, 5.2.
+
+
+\end{enumerate}
+
+
 
 \end{document}
