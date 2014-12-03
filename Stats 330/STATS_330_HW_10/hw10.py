@@ -1,5 +1,6 @@
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
+from pylab import *
 
 f = open( 'p1.txt', 'r' )
 lines = f.readlines();
@@ -55,6 +56,7 @@ for i, column in enumerate(data):
 	uq.append( column[upper_mid] )
 	print( "Upper Quartile %d: %f" %( i + 1, uq[i] ) )
 
+plt.rcParams.update({'font.size': 22})
 
 plt.boxplot( data )
 plt.savefig( './Figures/Boxplot' )
@@ -67,3 +69,25 @@ for i, column in enumerate(data):
 
 plt.savefig( './Figures/Histogram', bbox_inches = 'tight' )
 plt.close()
+
+strings = []
+with open( 'p2.txt', 'r' ) as f:
+	strings = f.readlines()
+
+x, y = [], []
+for string in strings:
+	split = string.split()
+	x.append( int( split[0] ) )
+	y.append( float( split[1] ) )
+
+scatter( x, y )
+axis( 	[1780, 2020, 0, 350 ] )
+xlabel( 'Year' )
+ylabel( 'Population in Millions' )
+title( 'US Population vs Time')
+savefig( './Figures/Timeplot' )
+
+
+
+
+
