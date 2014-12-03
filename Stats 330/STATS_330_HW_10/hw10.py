@@ -7,8 +7,8 @@ lines = f.readlines();
 f.close()
 
 data = []
-for i in range( len( strings ) ):
-	data.append( [float(x) for x in strings[i].split()] )
+for i in range( len( lines ) ):
+	data.append( [float(x) for x in lines[i].split()] )
 
 data = [sorted(list(x)) for x in zip( *data )]
 
