@@ -6,8 +6,6 @@ f = open( 'p1.txt', 'r' )
 lines = f.readlines();
 f.close()
 
-strings = lines[1:]
-
 data = []
 for i in range( len( strings ) ):
 	data.append( [float(x) for x in strings[i].split()] )
