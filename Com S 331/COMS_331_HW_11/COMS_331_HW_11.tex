@@ -23,7 +23,7 @@
 
 \section*{Problem 81}
 
-Lemma 1: $f(n)$ grows faster than $f( \log n)$; that is, for any $c \in \mathbb{N}$ there exists $d$ such that $c - \log c > d$. 
+Lemma 1: $f(n)$ grows faster than $f( \log n)$; that is, for any $c \in \mathbb{N}$ there exists $d$ such that $d - \log d > c$. 
 It suffices to prove that $\lim _{n \imp \infty} \frac{n}{\log n}= \infty$.
 	\begin{align*}
 		\lim _{n \imp \infty} \frac{n}{\log n}  &= \lim _{n \imp \infty} n &\text{l'H\^{o}pital's Rule} \\
@@ -113,6 +113,20 @@ Then
 $(00 + 11)^* 01 (0+1)^* $
 
 
+\section*{Problem 87}
+
+The possible output of the string pairing function $0^{|x|}1xy$ is the set
+	\[A = \{0^{|x|}1xy \mid x,y \in \{0,1^*\}\}\]
+Let $c \in \mathbb{N}$.
+Pick $n$ such that $C(0^n) > c$, and let $x$ = $0^n1$.
+Because $0^n$ comes first in the standard enumeration of $\{0,1\}^n$, $y_{x,1} ^A$ = $0^n$ (recall that you can pair $x$ with $\lambda$.
+Thus
+	\begin{align*}
+		y_{x,1} ^A &= C(0^n) \\
+		&> c + \log 1
+	\end{align*}
+
+
 \section*{Problem 88}
 \begin{enumerate}[(a)]
 	\item The last half of a palindrome is uniquely determined by the first half, so the number of palindromes is the number of possible strings that can form the first half. 
@@ -129,10 +143,23 @@ $(00 + 11)^* 01 (0+1)^* $
 	thus
 		\[ |PAL \cap \{0,1\}^n| = 2^{\floor*{ \frac{|n+1|}{2} }}\ \checkmark\]
 
-	\item  As proved in lecture, there are infinitely many strings such that their Kolmogorov complexity.
-	Let $x$ be any of these strings, and $y = x \cdot x^R$.
+	\item  As proved in lecture, there are infinitely many strings such that their Kolmogorov complexity is greater than their size.
+	Let $x$ be any of these strings and $y = x \cdot x^R$.
 
 	Suppose for contradiction that 
+		\[C(y) < \floor*{ \frac{|y|+1}{2}} \]
+	and consider the following TM $M$:
+		\begin{itemize}
+			\item store $y$
+			\item output the first $\frac{|y|}{2}$ bits of $y$
+		\end{itemize}
+	which outputs $x$; therefore
+		\begin{align*}
+			C(x) &< \floor*{ \frac{|y|+1}{2}} + c_M \\
+			&< \frac{|y|}{2} + c_M &|y| \text{ is even}
+		\end{align*}
+
+
 \end{enumerate}
 
 
