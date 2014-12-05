@@ -21,6 +21,16 @@
 \maketitle
 
 
+\section*{Problem 81}
+
+Lemma 1: $f(n)$ grows faster than $f( \log n)$; that is, for any $c \in \mathbb{N}$ there exists $d$ such that $c - \log c > d$. 
+It suffices to prove that $\lim _{n \imp \infty} \frac{n}{\log n}= \infty$.
+	\begin{align*}
+		\lim _{n \imp \infty} \frac{n}{\log n}  &= \lim _{n \imp \infty} n &\text{l'H\^{o}pital's Rule} \\
+		&= \infty \ \checkmark
+	\end{align*}
+
+
 \section*{Problem 82}
 
 Let $c \in \mathbb{N}$. Choose $n \in \mathbb{Z}^+$ such that $C(1^n) > c$ and let $x = 0^n$.
@@ -57,6 +67,20 @@ Because $n,\ n-1$ are relatively prime and sequential $y _{x,1} ^{A} = 1^n$ so
 	\begin{align*}
 		C( y _{x,1} ^{A} ) &= C(1^n) \\
 		&> c + \log n \ \checkmark
+	\end{align*}
+
+
+\section*{Problem 85}
+
+Let $A$ be any infinite subset of $\{ 0^n 1^n | n \in \mathbb{N} \}$.
+It suffices to prove that $A$ is not regular.
+
+Let $c \in \mathbb{N}$. Choose $n \in \mathbb{Z}^+$ such that $C(1^n) > c$ and $0^n 1^n \in A$.
+Let $x = 0^n$.
+Then
+	\begin{align*}
+		C(y_{x,1} ^A) &= C(1^n) \\
+		&> c + \log 1 \ \checkmark
 	\end{align*}
 
 
