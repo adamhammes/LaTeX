@@ -29,6 +29,25 @@ It suffices to prove that $\lim _{n \imp \infty} \frac{n}{\log n}= \infty$.
 		\lim _{n \imp \infty} \frac{n}{\log n}  &= \lim _{n \imp \infty} n &\text{l'H\^{o}pital's Rule} \\
 		&= \infty \ \checkmark
 	\end{align*}
+Note two things: $T$ is a computable function and $\{ 0^{T(n)} | n \in \mathbb{N} \}$ is infinite.
+Consider the TM $M$ defined as follows:
+	\begin{itemize}
+		\item store $n \in \mathbb{N}$
+		\item output $0^{T(n)}$
+	\end{itemize}
+$M$ demonstrates that
+	\begin{align*}
+		C( 0^{T(n)} ) &< \log n + c_M + 1 \\
+		\intertext{thus} \\
+		T( C( 0^{T(n)}) ) &< T( \log n + c_M +1 ).
+	\end{align*}
+$n$ grows faster than $\log n$, so there exists $a \in \mathbb{N}$ such that $a > c_M + 1$.
+Consider the set $A = \{ 0^b \mid b \in \mathbb{N},\ b \geq a \}$, noting that it is infinite.
+Because of how we picked $a$, $\forall x \in A$,
+	\begin{align*}
+		T(|x|) &< \log |x| + c_M + 1 \\
+		&< |x| \ \checkmark
+	\end{align*}
 
 
 \section*{Problem 82}
