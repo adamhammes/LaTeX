@@ -21,6 +21,16 @@
 \maketitle
 
 
+\section*{Problem 81}
+
+Let $c \in \mathbb{N}$. Choose $n \in \mathbb{Z}^+$ such that $C(1^n) > c$ and let $x = 0^n$.
+Then
+	\begin{align*}
+		C(y_{x,1} ^A) &= C(1^n) \\
+		&> c + \log 1 \ \checkmark
+	\end{align*}
+
+
 \section*{Problem 86} $B$ is regular by the following regular expression: 
 
 $(00 + 11)^* 01 (0+1)^* $
@@ -36,6 +46,16 @@ $(00 + 11)^* 01 (0+1)^* $
 	since the middle bit is included in both halves.
 	This piecewise formula can be alternatively expressed by
 		\[\floor*{ \frac{|x+1|}{2} } \]
+	which, as to recollect, is the max length of the first half of a string.
+	Since a palindrome is deterined by its first half, and there are no restrictions on the form of the palindrom, the number of palindromes of length $n$ is 
+		\[2^{\floor*{ \frac{|x+1|}{2} }} \]
+	thus
+		\[ |PAL \cap \{0,1\}^n| = 2^{\floor*{ \frac{|n+1|}{2} }}\ \checkmark\]
+
+	\item  As proved in lecture, there are infinitely many strings such that their Kolmogorov complexity.
+	Let $x$ be any of these strings, and $y = x \cdot x^R$.
+
+	Suppose for contradiction that 
 \end{enumerate}
 
 
