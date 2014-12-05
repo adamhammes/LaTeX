@@ -31,6 +31,35 @@ Then
 	\end{align*}
 
 
+\section*{Problem 82}
+
+Lemma 1: The function $f(n) = (n+1)^2 - n^2$ is strictly increasing.
+	\begin{align*}
+		(n+1)^2 - n^2 &= n^2 + 2n + 1 + n^2 + 1 \\
+		&= 2n +1 \ \checkmark
+	\end{align*}
+
+Let $c \in \mathbb{N}$.
+Pick $n \in \mathbb{Z^*}$ such that $C( 0^{(n+1)^2 - n^2)}) > c + \log 2$ (we can do this because of Lemma 1) and let $x= 0^{n^2}$.
+Then
+	\begin{align*}
+		C(y _{x, 2} ^A) &= C( 0^{(n+1)^2 - n^2)}) \\
+		&> c + \log 2 \ \checkmark
+	\end{align*}
+Note that we pick the second possible $y$ because $x \cdot \lambda$ is the first possibility.
+
+
+\section*{Problem 83}
+
+Let $c \in \mathbb{N}$.
+Pick $n \in \mathbb{Z^*}$ such that $C(1^n) > c$ and let $x = 0 ^{n-1}$.
+Because $n,\ n-1$ are relatively prime and sequential $y _{x,1} ^{A} = 1^n$ so
+	\begin{align*}
+		C( y _{x,1} ^{A} ) &= C(1^n) \\
+		&> c + \log n \ \checkmark
+	\end{align*}
+
+
 \section*{Problem 86} $B$ is regular by the following regular expression: 
 
 $(00 + 11)^* 01 (0+1)^* $
