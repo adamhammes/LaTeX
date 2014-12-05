@@ -81,11 +81,16 @@ Note that we pick the second possible $y$ because $\lambda$ is the first possibi
 \section*{Problem 84}
 
 Let $c \in \mathbb{N}$.
-Pick $n \in \mathbb{Z^*}$ such that $C(1^n) > c$ and let $x = 0 ^{n-1}$.
-Because $n,\ n-1$ are relatively prime and sequential $y _{x,1} ^{A} = 1^n$ so
+Pick $n \in PRIMES$ such that $C(1^n) > c + 1$ and let $x = 0 ^{(n-1)!}$.
+$n$ is prime so gcd( $n$, $(n-1)!$ ) = 1.
+Also, $\{2, 3, \dots, n-1\}$ are all multiples of $(n-1)!$ so their gcd with $(n-1)! \neq 1$.
+Thus
 	\begin{align*}
-		C( y _{x,1} ^{A} ) &= C(1^n) \\
-		&> c + \log n \ \checkmark
+		y _{x,1} ^{A} &= 1 \\
+		y _{x,1} ^{A} &= n \\
+	\intertext{and} \\
+		C( y _{x,2} ^{A} ) &= C(1^n) \\
+		&> c + \log n + \log 2 \ \checkmark
 	\end{align*}
 
 
