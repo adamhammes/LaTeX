@@ -4,9 +4,14 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{parskip}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \let\iff\leftrightarrow
 \let\imp\rightarrow
+
 
 \begin{document}
 
@@ -16,11 +21,22 @@
 \maketitle
 
 
-\section*{Problem 86} $A$ is regular by the following regular expression: 
+\section*{Problem 86} $B$ is regular by the following regular expression: 
 
 $(00 + 11)^* 01 (0+1)^* $
 
 
+\section*{Problem 88}
+\begin{enumerate}[(a)]
+	\item The last half of a palindrome is uniquely determined by the first half, so the number of palindromes is the number of possible strings that can form the first half. 
+	For a string $x$ with even length, the first, the length of the first half is simply 
+		\[\frac{|x|}{2} \] 
+	and for odd $|x|$, the first half length is
+		\[\frac{|x+1|}{2} \]
+	since the middle bit is included in both halves.
+	This piecewise formula can be alternatively expressed by
+		\[\floor*{ \frac{|x+1|}{2} } \]
+\end{enumerate}
 
 
 \end{document}
