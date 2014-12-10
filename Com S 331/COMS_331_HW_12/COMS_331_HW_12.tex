@@ -4,14 +4,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{parskip}
-\usepackage{mathtools}
-
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\let\iff\leftrightarrow
-\let\imp\rightarrow
-
 
 \begin{document}
 
@@ -21,9 +13,18 @@
 \maketitle
 
 
+\section*{Problem 90}
 
+Consider $s \in A$.
+By definition of $A$, $s$ is of the form $0^kx$ where $\#(0,x) \geq k$ and $k>0$.
+Note that $x$ must contain at least one zero.
 
-
-
+Let $y$ be $0^{k-1}x$. $x$ has at least one 0, so $0y \in A$.
+Also, $0y = s$.
+Because $k >0$, such a $y$ exists for every $s \in A$.
+Thus we can can express the language $A$ as follows:
+	\[ A = \{0x \mid \#(0,x) > 0 \}\]
+which is decided by the regular expression
+	\[ 0\ (0+1)^*\ 0\ (0+1)^*\]
 
 \end{document}
