@@ -5,6 +5,9 @@
 \usepackage{amssymb}
 \usepackage{parskip}
 
+\let\iff\leftrightarrow
+\let\imp\rightarrow
+
 \begin{document}
 
 \title{Com S 331 Homework 12}
@@ -13,6 +16,37 @@
 \maketitle
 
 Note: $REG$ stands for the set of all regular languages, $DEC$ all decidable languages, $CE$ computable, and $co-CE$ co-computable.
+
+
+\section*{Problem 89}
+
+Let $A'$ denote the intersection of $0^*10^*$ and $A'$.
+Then
+	\[A' = \{0^m10^n \mid  m \geq n \}\]
+Additionally, let $B$ be defined as follows:
+	\[B = \{ \text{rev } a \mid A \} \]
+where rev $a \in \{0,1\}^*$ is the reverse of the string.
+This language can be alternatively expressed as
+	\[ B = \{0^n10^m \mid m \geq n\}\]
+
+Lemma 1: $B$ is not regular.
+
+Let $c \in \mathbb{N}$.
+Choose $n \in \mathbb{Z}^+$ such that $C(0^n) > c$, and let $x = 0^n1$.
+Then
+	\begin{align*}
+		C( y^{B} _{x,1} ) &= C( 0^n) \\
+		&> c + \log 1\ \checkmark
+	\end{align*}
+
+Since $REG$ is closed under intersection (proven in text) and rev (proved in earlier homework), we can say the following:
+	\begin{align*}
+		A \in REG &\iff A' \in REG \\
+		&\iff B \in REG
+	\end{align*}
+Since $B$ is not regular, $A$ is not regular. $\checkmark$
+ 
+
 
 
 \section*{Problem 90}
@@ -28,5 +62,13 @@ Thus we can can express the language $A$ as follows:
 	\[ A = \{0x \mid \#(0,x) > 0 \}\]
 which is decided by the regular expression
 	\[ 0\ (0+1)^*\ 0\ (0+1)^*\]
+
+
+\section*{Problem 96}
+
+From 95 we know that every c.e. subset of $R$ is finite.
+Because $R$ is infinite and a subset of itself, we know that $R \notin CE$.
+Since $DEC \subseteq CE$, we can conclude that $R \notin DEC$. $\checkmark$.
+
 
 \end{document}
