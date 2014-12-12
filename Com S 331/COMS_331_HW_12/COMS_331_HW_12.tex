@@ -129,6 +129,39 @@ $M_R$ iterates through every possible encoding of a Turing machine with length l
 Therefore $L(M_R) = R^C$. $\checkmark$
 
 
+\section*{Problem 95}
+
+Lemma 1: There are an infinite number of compressible strings.
+
+Proof: Consider $A 0^n \mid n \in \mathbb{N}\}$; for $a \in A$ C($a$) < $\log |n| +c$.
+Since $|n|$ grows faster than $\log |n|$, at some point $C(n) < |n|$. $\checkmark$
+
+Assume for contradiction that there is an infinite $CE$ subset of $R$, which I will call $B$.
+Let $M_B$ accept $B$.
+Consider the following machine $M_f$:
+\begin{itemize}
+	\item input $n \in \mathbb{N}$
+	\item for $i$ from 1 to $\infty$:
+	\begin{itemize}
+		\item let $c$ = 0
+		\item for $j$ from 0 to $i$:
+		\begin{itemize}
+			\item run $M_B$ on the $j^{\text{th}}$ string in $\{0,1\}^*$ for $i$ steps; if $M_B$ accepts, increment $c$
+			\item if $c = n$, output the string we ran $M_B$ on
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+For all $b \in B$, there exists a number of steps such that $M_B$ accepts $b$ in that time; thus $B \subseteq L(M_f)$.
+$M_f$ can only output strings that $B$ accepts, so $L(M_f) \subseteq B$ and $B = L(M_f)$.
+Thus $M_f$ computes a function $f: \mathbb{N} \imp B$.
+
+By Lemma 1, the number of strings grows faster than the number of incompressible strings.
+Because of that, on average the number of strings of a certain length is greater than the number of strings in $B$ with the same length. Thus for any constant $c$ there exists $b \in B$ such that $C(f^{-1}(b)) < C(b)$, a contradiction. $\checkmark$
+
+
+
+
 
 \section*{Problem 96}
 
