@@ -53,12 +53,38 @@ which is decided by the regular expression
 	\[ 0\ (0+1)^*\ 0\ (0+1)^*\]
 
 
+\section*{Problem 91}
+
+Because $A$ is regular, there exists a DFA $M = (Q, \Sigma, \delta, s, F)$ that decides $A$.
+Imagine running every string in $A$ through $M$; because $A$ is infinite, an infinite number of strings must ``loop'' inside of $M$, passing through the same state more than once. Call this state $q$; because a string can loop through $q$ once and still be accepted, a string can loop through $q$ any number of times and still be accepted.
+
+Our goal is to have sets $B$ and $C$ represent the strings that go through $q$ an even and odd number of times respectively. The intuition to my approach of differentiating the two is that I have two copies of $Q$, $Q_B$ and $Q_C$. Whenever we go into $q$, we switch sets of states; for instance, if I was in a state in $Q_B$ and was about to enter $q_B$, I would instead go to $q_C$. Thus the two sets of states act as a counter for how many times I've visited $q$.
+
+Formally, I can define two DFAs as follows:
+\begin{align*}
+	M_B &= (Q \times \{b, c\}, \Sigma, \delta', (s, b), F \times b) \\
+	M_C &= (Q \times \{b, c\}, \Sigma, \delta', (s, b), F \times c)
+\end{align*}
+
+Let $a \in \{b, c\}$ and $a'$ be whichever character $a$ is not.
+We then define the transiton function as follows:
+\begin{displaymath}
+   \delta'((s \in Q,a), b \in \Sigma) = \left\{
+     \begin{array}{lr}
+       \delta(s, b) \times a & : \delta(s, b) \neq q\\
+       (q, a') & : \delta(s, b) = q
+     \end{array}
+   \right.
+\end{displaymath}
+
+Because a string either passes through $q$ an even or odd number of times (note that not passing through $q$ is the same as passing through an even number of times) and never both, $L(M_B) \cup L(M_C) = A$ and $L(M_B) \cap L(M_C) = \emptyset$. $\checkmark$
+
 \section*{Problem 92}
 
 Let $P_\infty$ be the following property:
 	\[ P_\infty = \{ n \mid L(M_n) \text{ is infinite}. \}\] 
 
-Let $M_A$ and $M_B$ be Turing mahcines, with $M_A$ accepting on all inputs and $M_B$ rejecting on all inputs.
+Let $M_A$ and $M_B$ be Turing machines, with $M_A$ accepting on all inputs and $M_B$ rejecting on all inputs.
 Then L($M_A$) is finite and L($M_B$) is infinite. 
 Thus $P_\infty$ is non-trivial.
 Since $P_\infty$ is non-trivial, by Rice's theorem $INF$ is undecidable. $\checkmark$
