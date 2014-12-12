@@ -20,31 +20,22 @@ Note: $REG$ stands for the set of all regular languages, $DEC$ all decidable lan
 
 \section*{Problem 89}
 
-Let $A'$ denote the intersection of $0^*10^*$ and $A'$.
-Then
-	\[A' = \{0^m10^n \mid  m \geq n \}\]
-Additionally, let $B$ be defined as follows:
-	\[B = \{ \text{rev } a \mid A \} \]
-where rev $a \in \{0,1\}^*$ is the reverse of the string.
-This language can be alternatively expressed as
-	\[ B = \{0^n10^m \mid m \geq n\}\]
-
-Lemma 1: $B$ is not regular.
+Let \textbf{rev} $L \subseteq \Sigma^*$ be as defined on page 302 of the text; that is,
+	\[\text{\textbf{rev }} L = \{\text{\textbf{rev }} \mid x \in L\}\]
+where \textbf{rev} $x \in \Sigma^*$ is the reverse of the string. Let $B$ = \textbf{rev} $A$.
+I prove $B$ is not regular.
 
 Let $c \in \mathbb{N}$.
 Choose $n \in \mathbb{Z}^+$ such that $C(0^n) > c$, and let $x = 0^n1$.
-Then
+The biggest possible value for $k$ in the string is $n$; thus we need at least another $n$ zeroes to get a valid string.
+Thus $y^{B} _{x,1} = 0^n10^n$ and 
 	\begin{align*}
 		C( y^{B} _{x,1} ) &= C( 0^n) \\
 		&> c + \log 1\ \checkmark
 	\end{align*}
 
-Since $REG$ is closed under intersection (proven in text) and rev (proved in earlier homework), we can say the following:
-	\begin{align*}
-		A \in REG &\iff A' \in REG \\
-		&\iff B \in REG
-	\end{align*}
-Since $B$ is not regular, $A$ is not regular. $\checkmark$
+We proved on problem 18 of the homework that if a set $L$ is regular then \textbf{rev} $L$ is also regular.
+Since $B$ is not regular, $A$ is not regular by contrapositive. $\checkmark$
 
 
 \section*{Problem 90}
