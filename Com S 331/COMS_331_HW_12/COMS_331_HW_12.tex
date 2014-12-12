@@ -45,17 +45,6 @@ Since $REG$ is closed under intersection (proven in text) and rev (proved in ear
 		&\iff B \in REG
 	\end{align*}
 Since $B$ is not regular, $A$ is not regular. $\checkmark$
- 
-
-\section*{Problem 92}
-
-Let $P_\infty$ be the following property:
-	\[ P_\infty = \{ n \mid L(M_n) \text{ is infinite}. \}\] 
-
-Let $M_A$ and $M_B$ be Turing mahcines, with $M_A$ accepting on all inputs and $M_B$ rejecting on all inputs.
-Then L($M_A$) is finite and L($M_B$) is infinite. 
-Thus $P_\infty$ is non-trivial.
-Since $P_\infty$ is non-trivial, by Rice's theorem $INF$ is undecidable. $\checkmark$
 
 
 \section*{Problem 90}
@@ -71,6 +60,42 @@ Thus we can can express the language $A$ as follows:
 	\[ A = \{0x \mid \#(0,x) > 0 \}\]
 which is decided by the regular expression
 	\[ 0\ (0+1)^*\ 0\ (0+1)^*\]
+
+
+\section*{Problem 92}
+
+Let $P_\infty$ be the following property:
+	\[ P_\infty = \{ n \mid L(M_n) \text{ is infinite}. \}\] 
+
+Let $M_A$ and $M_B$ be Turing mahcines, with $M_A$ accepting on all inputs and $M_B$ rejecting on all inputs.
+Then L($M_A$) is finite and L($M_B$) is infinite. 
+Thus $P_\infty$ is non-trivial.
+Since $P_\infty$ is non-trivial, by Rice's theorem $INF$ is undecidable. $\checkmark$
+
+
+\section*{Problem 94}
+
+Consider $R^C$,
+	\[ \{x \in \{0,1\}^* \mid C(x) < |x| \}. \]
+I prove that $R^C \in CE$, equivalent to $R \in co-CE$.
+
+Let $U$ be a universal Turing machine.
+Define $M_R$ as follows:
+\begin{itemize}
+	\item input $x \in \{0,1\}^* $
+	\item let $A$ be $\{0,1\}^{\leq |x|}$
+	\item for $i \in \mathbb{Z}^+$ from 1 to $\infty$:
+	\begin{itemize}
+		\item for $a \in A$, run $U(a)$ for $i$ steps
+		\item if $U$ outputs $x$, ACCEPT
+	\end{itemize}
+\end{itemize}
+
+Consider $x \in R^C$.
+Because $C(x) < |x|$, there exists a Turing machine $\pi$ such that $|\pi| < x$ and $U(\pi) = x$.
+$M_R$ iterates through every possible encoding of a Turing machine with length less than $|x|$, accepting if and only if the universal Turing machine outputs $x$ on that encoding.
+Therefore $L(M_R) = R^C$. $\checkmark$
+
 
 
 \section*{Problem 96}
