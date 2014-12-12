@@ -73,6 +73,21 @@ Thus $P_\infty$ is non-trivial.
 Since $P_\infty$ is non-trivial, by Rice's theorem $INF$ is undecidable. $\checkmark$
 
 
+
+\section*{Problem 93}
+
+Suppose for contradiction that $T$ is computable.
+Let $M_K$ be as follows:
+\begin{itemize}
+	\item input $n \in \mathbb{N}$
+	\item let $a = T(n)$
+	\item run $M_n(n)$; if in that time $M_n(n)$ halts, ACCEPT else REJECT
+\end{itemize}
+
+Because $T(n)$ places an upper limit on how long a halting Turing machine will take to halt, we can definitely tell if $M_n(n)$ halts.
+Thus $M_K$ decides the diagonal halting problem, a contradiction. $\checkmark$
+
+
 \section*{Problem 94}
 
 Consider $R^C$,
