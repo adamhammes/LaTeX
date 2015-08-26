@@ -110,7 +110,7 @@ Then
 
 \section*{Problem 86} $B$ is regular by the following regular expression: 
 
-$(00 + 11)^* 01 (0+1)^* $
+$(00 + 11)^* 01 (0+1)^* \ \checkmark$
 
 
 \section*{Problem 87}
@@ -123,7 +123,7 @@ Because $0^n$ comes first in the standard enumeration of $\{0,1\}^n$, $y_{x,1} ^
 Thus
 	\begin{align*}
 		y_{x,1} ^A &= C(0^n) \\
-		&> c + \log 1
+		&> c + \log 1 \ \checkmark
 	\end{align*}
 
 
@@ -143,21 +143,7 @@ Thus
 	thus
 		\[ |PAL \cap \{0,1\}^n| = 2^{\floor*{ \frac{|n+1|}{2} }}\ \checkmark\]
 
-	\item  As proved in lecture, there are infinitely many strings such that their Kolmogorov complexity is greater than their size.
-	Let $x$ be any of these strings and $y = x \cdot x^R$.
-
-	Suppose for contradiction that 
-		\[C(y) < \floor*{ \frac{|y|+1}{2}} \]
-	and consider the following TM $M$:
-		\begin{itemize}
-			\item store $y$
-			\item output the first $\frac{|y|}{2}$ bits of $y$
-		\end{itemize}
-	which outputs $x$; therefore
-		\begin{align*}
-			C(x) &< \floor*{ \frac{|y|+1}{2}} + c_M \\
-			&< \frac{|y|}{2} + c_M &|y| \text{ is even}
-		\end{align*}
+	\item  Not attempted.
 
 
 \end{enumerate}

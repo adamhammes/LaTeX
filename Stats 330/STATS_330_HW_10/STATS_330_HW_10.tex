@@ -68,19 +68,79 @@ The population appears to be going up exponentially. The time plot allows breaks
 	\item The pmf of Poisson distribution is
 	\[P(x) = e^{-\lambda} \dfrac{\lambda^x}{x^!} \]
 	whose logarithm is
-	\[\text{ln } P(x) = -\lambda + x\, \text{ln } \lambda -  \text{ln}(x!).\]
+	\[\ln P(x) = -\lambda + x\, \ln \lambda -  \ln(x!).\]
 	Thus we need to maximize
 	\begin{align*}
-		\text{ln } P(x) &= \sum \limits _{i=1} ^n -\lambda + x\, \text{ln } \lambda -  \text{ln}(x!) \\
-		&= -n\lambda + \text{ln } \lambda \sum \limits _{i=1} ^n X_i
+		\ln P(x) &= \sum \limits _{i=1} ^n -\lambda + x\, \ln \lambda -  \ln(x!) \\
+		&= -n\lambda + \ln \lambda \sum \limits _{i=1} ^n X_i
 	\end{align*}
 	Differentiating with respect to $\lambda$ and setting equal to zero yields
-	\[\frac{\partial}{\partial x} \text{ln}\ P(x) = -n + \frac{1}{\lambda} \sum \limits _{i=1} ^n X_i = 0 \]
+	\[\frac{\partial}{\partial x} \ln P(x) = -n + \frac{1}{\lambda} \sum \limits _{i=1} ^n X_i = 0 \]
 	which has one solution,
 	\[ \hat{\lambda} = \frac{1}{n} \sum \limits _{i=1} ^n X_i = \bar{X}. \]
 
 	\item Note that both methods yield the same estimator, $\hat{\lambda} = \bar{X}$. We can therefore estimate $\hat{\lambda}$ as the sample mean, 5.2.
+\end{enumerate}
 
+\section*{Problem 4}
+
+\begin{enumerate}[(a)]
+	\item 
+		\begin{align*}
+			E[f(t)] &= \int _0 ^1 t \cdot \theta t^{\theta-1} \\
+			&= \int _0 ^1 \theta t^{\theta} \\
+			&= \dfrac{ \theta}{\theta + 1}
+		\end{align*}
+		This is equal to the first sample moment, or the sample mean, so
+
+		\begin{align*}
+			\dfrac{ \theta t}{\theta + 1} &= \frac{2}{3} \\
+			\theta &= 2
+		\end{align*}
+\end{enumerate}
+
+
+\section*{Problem 5}
+
+\begin{enumerate}[(a)]
+	\item
+		\begin{align*}
+			E[P] &= 3\theta + 7(1- \theta) \\
+			&= 7 - 4\theta
+		\end{align*}
+		$\mu_1 = 4.5$, so
+		\begin{align*}
+			7-4\hat{\theta} &= 4.5 \\
+			\hat{\theta} &= 0.625
+		\end{align*}
+
+	\item
+
+\end{enumerate}
+
+
+\section*{Problem 6}
+
+\begin{enumerate}[(a)]
+	\item Uniform(0, $b$) density is 
+	\[ f(x) = \frac{1}{b}\]
+
+	As $b$ grows, $f(x)$ decreases; therefore the maximum likelihood occurs at the smallest possible value of $\hat{b}$, which is max($X_i$).
+
+	\item Exponential density function is 
+	\[ f(x) = \lambda e ^{-\lambda x}\]
+		\begin{align*}
+			\ln f( X ) &= \sum \limits _{i=1} ^n \ln(\lambda e ^{-\lambda X_i} ) \\
+			&= \sum \limits _{i=1} ^n (\ln \lambda - \lambda X_i) \\
+			&= n \ln \lambda - \lambda \sum \limits _{i=1} ^n X_i
+		\end{align*}
+
+	Take derivative with respect to $\lambda$ and set equal to zero:
+	\[ \frac{\partial}{\partial \lambda} \ln f(X) = \frac{n}{\lambda} - \sum \limits _{i=1} ^n X_i = 0 \]
+	Gives us
+	\[ \hat{\lambda} = \frac{n}{\sum X_i} = \frac{ 1}{\bar{X}} \]
+
+	\item 
 
 \end{enumerate}
 

@@ -61,7 +61,7 @@ plt.savefig( './Figures/Boxplot' )
 plt.close()
 
 
-colors = ['red', 'blue', 'green' ]
+colors = ['red', 'blue', 'yellow' ]
 for i, column in enumerate(data):
 	plt.hist( column, 40, color = colors[i] )
 
