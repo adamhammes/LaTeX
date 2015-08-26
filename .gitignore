@@ -22,9 +22,6 @@ ux
 *.maf
 *.mtc
 *.mtc1
-*.out
-*.pdf
-*.synctex.gz
 .AppleDouble
 .LSOverride
 
@@ -45,3 +42,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# LaTeX specific
+*.out
+*.pdf
+*.synctex.gz
+*.fdb_latexmk
+*.fls
