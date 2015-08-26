@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+
+\let\iff\leftrightarrow
+\let\imp\rightarrow
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+\begin{document}
+
+\title{Com S 342 Homework 3}
+\author{Adam Hammes $\bullet$ hammesa@iastate.edu}
+\date{February 2, 2015}
+\maketitle
+
+\section*{Problem 2}
+
+\begin{enumerate}[(a)]
+	\item \code{(list (list 3) (list 4) (list 2))}
+
+		  \code{(define lst (list (list 3) (list 4) (list 2)))}
+	\item \code{(car (car (cdr lst)))}
+	\item \code{(cdr (cdr lst))}
+
+		  \code{(define lstC (cdr (cdr lst)))}
+	\item \code{(cons lst (list 5 4 1))}
+	\item \code{(null? (car lstC))}
+
+\end{enumerate}
+
+
+
+
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,mathtools}
+
+
+\begin{document}
+Queuing Systems \\
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+& M/M/1 & M/M/1/K & M/M/k & M/M/k/K & M/M/$\infty$ \\
+\hline
+$P(X=0) = p_0$ & 1-a & $\frac{1-a}{1-a^{K+1}} $ & $(\sum _{x=0} ^{k-1} \frac{a^x}{x!} + \frac{a^{k}}{(1-p)k!)})^{-1} $
+& ($\sum _{x=0} ^{k-1} \frac{a^x}{x!} + \sum _{x=k} ^K \frac{a^k}{k!}\rho^{x-k})^-1 $ & $e^{-a}$ \\
+\hline
+$P(X=x)=p_x$ & $a^x(1-a)$ & $a^xp_0$ &
+$\begin{dcases}
+	\frac{a^x}{x!}p_0				& x \leq k \\
+	\frac{a^x}{x!}\rho^{x-k}p_0 	& x > k
+\end{dcases}$ &$\leftarrow$, not defined for $x > K$ & $e^{-a}\frac{a^x}{x!}$ \\
+\hline
+$\lambda_a$ & $\lambda$ & $(1-p_K)\lambda$ & $\lambda$ & $(1-p_K)\lambda$ & $\lambda$ \\
+\hline
+$E[X] = L$ & $\frac{a}{1-a}$ & $\frac{a}{1-a}- \frac{(K+1)a^{K+1}}{1-a^{K+1}} $ & $W\lambda$ & $\sum _{x=0}^K xp_x$ & $a$ \\
+\hline
+$E[X_s] = L_s$ & $a$ & $L-L_q$ & $L-L_q$ & $L-L_q$ & $a$ \\
+\hline
+$E[X_w] = L_q$ & $\frac{a^2}{1-a}$ & $W_q\lambda_a$ & $p_0 \frac{a^k}{k!} \frac{\rho}{(1-\rho)^2} $ & $W_q\lambda_a$ & 0 \\
+\hline
+$E[T]=W$ & $\frac{1}{\mu} \frac{1}{1-a}$ & $\frac{L}{\lambda_a}$ & $W_s + W_q$ & $\frac{L}{\lambda_a}$ & $a$ \\
+\hline
+$E[T_s]=W_s$ & $\frac{1}{\mu}$ & $\frac{1}{\mu}$ & $\frac{1}{\mu}$ & $\frac{1}{\mu}$ & $\frac{1}{\mu}$ \\
+\hline
+$E[T_w]=W_q$ & $\frac{1}{\mu} \frac{a}{1-a}$ & $W-W_s$ & $\frac{L_q}{\lambda}$ & $W-W_s$ & 0 \\
+\hline
+\end{tabular}
+\\
+Terms: \\
+\begin{tabular}{|c|c|}
+\hline
+$\lambda$ &arr. rate/hour \\
+\hline
+$\mu$ & serv. rate/hour \\
+\hline
+$X$ & \# indiv. in steady state \\
+\hline
+$T$ & total time in queue \\
+\hline
+$a$ & $\frac{\lambda}{\mu}$ \\
+\hline
+$\rho$ & $\frac{a}{k}$ \\
+\hline
+\end{tabular}
+
+
+\end{document}

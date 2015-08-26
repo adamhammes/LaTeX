@@ -1,0 +1,392 @@
+\documentclass[11pt]{article}
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+
+\let\iff\leftrightarrow
+\let\imp\rightarrow
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+
+\begin{document}
+
+\title{Com S 342 Homework 3}
+\author{Adam Hammes $\bullet$ hammesa@iastate.edu}
+\date{February 2, 2015}
+\maketitle
+
+
+\section*{Problem 1}
+
+\begin{enumerate}
+	\item 
+		\code{(let ((z 1) (y 2)) y)}
+
+		outputs 2
+
+	\item
+		\code{(let ((y 4) (y 10)) y)}
+
+		outputs 10
+
+	\item
+		\code{(let ((x 2) (y 4) (z 4)) (* x y z))}
+
+		outputs 32
+
+	\item
+		\code{(let ((x 1) (y 10)) (/ x y))}
+
+		outputs 0
+
+	\item
+		\code{(let ((x 10) (y 12) (z 1)) (+ x (* y z)))}
+
+		outputs 22
+
+\end{enumerate}
+
+
+\section*{Problem 3}
+
+\begin{enumerate}
+	\item
+		program \\
+		exp \\
+		letexp \\
+		'(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')' \\
+		'(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')' \\
+		'(' 'let' '(' '(' Identifier exp ')' ')' exp ')' \\
+		'(' 'let' '(' '(' Letter LetterOrDigit* exp ')' ')' exp ')' \\
+		'(' 'let' '(' '(' Letter exp ')' ')' exp ')' \\
+		'(' 'let' '(' '(' 'x' exp ')' ')' exp ')' \\
+		'(' 'let' '(' '(' 'x' exp ')' ')' exp ')' \\
+		'(' 'let' '(' '(' 'x' numexp ')' ')' exp ')' \\
+		'(' 'let' '(' '(' 'x' Number ')' ')' exp ')' \\
+		'(' 'let' '(' '(' 'x' DIGIT ')' ')' exp ')' \\
+		'(' 'let' '(' '(' 'x' 1 ')' ')' exp ')' \\
+		'(' 'let' '(' '(' 'x' 1 ')' ')' varexp ')' \\
+		'(' 'let' '(' '(' 'x' 1 ')' ')' Identifier ')' \\
+		'(' 'let' '(' '(' 'x' 1 ')' ')' Letter LetterOrDigit* ')' \\
+		'(' 'let' '(' '(' 'x' 1 ')' ')' Letter ')' \\
+		'(' 'let' '(' '(' 'x' 1 ')' ')' 'x' ')' \\
+
+	\item
+		program
+
+		exp
+
+		letexp
+
+		'(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+		'(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+		'(' 'let' '(' '(' Identifier exp ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' Letter LetterOrDigit* exp ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' Letter exp ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' exp ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' numexp ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' Number ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' Digit ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' Identifier exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' Letter LetterOrDigit* exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' Letter exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' exp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' numexp ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' Number ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' DIGIT ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' exp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' addexp ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' exp (exp)+ ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' varexp (exp)+ ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' Identifier (exp)+ ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' Letter LetterOrDigit* (exp)+ ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' LetterOrDigit* (exp)+ ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' (exp)+ ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' exp ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' varexp ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' Identifier ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' Letter LetterOrDigit* ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' 'y' LetterOrDigit* ')' ')'
+
+		'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' '+' 'x' 'y' ')' ')'
+
+	\item program
+
+	exp
+
+	letexp
+
+	'(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+	'(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+	'(' 'let' '(' '(' Identifier exp ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' Letter LetterOrDigit* exp ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' LetterOrDigit* exp ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' exp ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' numexp ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' Number ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' DIGIT ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' Letter LetterOrDigit* exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' LetterOrDigit* exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' numexp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' Number ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' DIGIT ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' exp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' letexp ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' Identifier exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' Letter LetterOrDigit* exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' LetterOrDigit* exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' numexp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' Number ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' DIGIT ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' addexp ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' exp (exp)+ ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' varexp (exp)+ ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' Identifier (exp)+ ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' Letter LetterOrDigit* (exp)+ ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' LetterOrDigit* (exp)+ ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' (exp)+ ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' exp exp ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' varexp exp ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' Identifier exp ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' Letter LetterOrDigit* exp ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' 'y' LetterOrDigit* exp ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' 'y' exp ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' 'y' varexp ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' 'y' Identifier ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' 'y' Letter LetterOrDigit* ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' 'y' 'z' LetterOrDigit* ')' ')' ')'
+
+	'(' 'let' '(' '(' 'x' 1 ')' '(' 'y' 1 ')' ')' '(' 'let' '(' '(' 'z' 1 ')' ')' '(' '+' 'x' 'y' 'z' ')' ')' ')'
+
+	\item program
+
+	exp
+
+	letexp
+
+	'(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+	'(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+	'(' 'let' '(' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' Letter LetterOrDigit* exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x LetterOrDigit* exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x numexp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x Number ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x Number ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x DIGIT ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' letexp ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' Identifier exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' Letter LetterOrDigit* exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' LetterOrDigit* exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' numexp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' Number ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' DIGIT ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' 4 ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' 4 ')' ')' varexp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' 4 ')' ')' Identifier ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' 4 ')' ')' Letter LetterOrDigit* ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' 4 ')' ')' 'x' LetterOrDigit* ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'x' 4 ')' ')' 'x' ')' ')'
+
+	\item program
+
+	exp
+
+	letexp
+
+	'(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+	'(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')'
+
+	'(' 'let' '(' '(' Identifier exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' Letter LetterOrDigit* exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x LetterOrDigit* exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x exp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x numexp ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x Number ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x Number ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x DIGIT ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' exp ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' letexp ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' Let '(' ( '(' Identifier exp ')' )+ ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' ( '(' Identifier exp ')' )+ ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' Identifier exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' LetterOrDigit* exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' exp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' varexp ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' Identifier ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' Letter LetterOrDigit* ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' 'x' LetterOrDigit* ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' 'x' ')' ')' exp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' 'x' ')' ')' varexp ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' 'x' ')' ')' Identifier ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' 'x' ')' ')' Letter LetterOrDigit* ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' 'x' ')' ')' 'y' LetterOrDigit* ')' ')'
+
+	'(' 'let' '(' '(' x 5 ')' ')' '(' 'let' '(' '(' 'y' 'x' ')' ')' 'y' ')' ')'
+
+\end{enumerate}
+
+
+
+\section*{Problem 5}
+
+\begin{tabular}{| c | c| c |}
+	\hline
+	& Free & Bound \\
+	\hline
+	1 & $x$ & None \\
+	\hline
+	2 & $x$, $y$ & $z$ \\
+	\hline
+	3 & $c$, $s$ & $l$, $p$ \\
+	\hline
+	4 & $x$ & None \\
+	\hline
+	5 & $q$, $r$ & $s$ \\
+	\hline
+\end{tabular}
+
+
+
+
+\end{document}
+
+\end{enumerate}
