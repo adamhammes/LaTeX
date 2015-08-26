@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\begin{document}
+\title{Com S 311 - Homework 1}
+\author{Adam Hammes}
+\maketitle
+
+\section*{Problem 1}
+
+\begin{enumerate}[label=(\alph*)]
+\item
+  \begin{tabular}{| c | c | c | c |}
+    \hline
+    $x$ & $y$ & $z$ & $x \rightarrow (y \wedge z)$ \\
+    \hline
+    T & T & T & T \\
+    \hline
+    T & T & F & F \\
+    \hline
+    T & F & T & F \\
+    \hline
+    T & F & F & F \\
+    \hline
+    F & T & T & T \\
+    \hline
+    F & T & F & T\\
+    \hline
+    F & F & T & T \\
+    \hline
+    F & F & F & T \\
+    \hline
+  \end{tabular} 
+
+\item
+  The formulas are not equivalent. Counter-example:
+
+  For the values of $x$ = true, $y$ = false, and $z$ = false,
+  
+  $x \implies (y \implies z)$ evaluates to false, and
+
+  $(x \implies y) \implies z$ evaluates to true.
+\end{enumerate}
+
+
+\end{document}
